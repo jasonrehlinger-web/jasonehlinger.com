@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout
+  title="Blog"
+  description="Articles on leadership, personal finance, and building a life of purpose — by Jason Ehlinger."
+>
+
+  <section class="page-hero">
+    <span class="section-label">Insights</span>
+    <h1>Leadership & Finance<br/>From the Trenches</h1>
+    <p>No fluff. No filler. Real lessons from building a 7-figure company and a life on purpose.</p>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:800px;">
+
+      {posts.length === 0 && (
+        <p style="color:var(--gray); text-align:center; padding:3rem 0;">
+          Posts coming soon. In the meantime, check out the
+          <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" style="color:var(--gold);">Vision Tribe Money YouTube channel</a>.
+        </p>
+      )}
+
+      {posts.map(post => (
+        <div class="blog-card">
+          <div class="blog-meta">{formatDate(post.data.date)}</div>
+          <h3><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+          <a href={`/blog/${post.slug}`} style="display:inline-block; margin-top:0.75rem; font-size:0.875rem; font-weight:600; color:var(--gold);">Read more →</a>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <!-- YouTube plug -->
+  <section class="section section-gray text-center">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Vision Tribe Money</span>
+      <h2 style="font-size:1.8rem; margin-bottom:1rem;">777+ Videos on YouTube</h2>
+      <p style="color:var(--gray); margin-bottom:2rem;">From budgeting and wealth building to money in marriage and the mindset shifts that change everything — it's all on the channel.</p>
+      <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-gold">Watch on YouTube</a>
+    </div>
+  </section>
+
+</Layout>
