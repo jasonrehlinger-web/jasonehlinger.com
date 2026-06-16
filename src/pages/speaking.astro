@@ -95,26 +95,26 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- FORMATS -->
   <section class="section">
-    <div class="container" style="max-width:800px;">
+    <div class="container formats-container">
       <div class="text-center" style="margin-bottom:3rem;">
         <span class="section-label">Formats</span>
         <h2>How Jason Speaks</h2>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem;">
-        <div style="text-align:center; padding:2rem; background:var(--light-gray); border-radius:4px;">
-          <div style="font-size:2rem; margin-bottom:0.75rem;">🎤</div>
-          <h3 style="font-size:1rem; margin-bottom:0.5rem;">Keynote</h3>
-          <p style="color:var(--gray); font-size:0.9rem;">45–75 minutes. High-energy, story-driven, actionable. Perfect for conferences and annual events.</p>
+      <div class="formats-grid">
+        <div class="format-card">
+          <div class="format-icon">🎤</div>
+          <h3>Keynote</h3>
+          <p>45–75 minutes. High-energy, story-driven, actionable. Perfect for conferences and annual events.</p>
         </div>
-        <div style="text-align:center; padding:2rem; background:var(--light-gray); border-radius:4px;">
-          <div style="font-size:2rem; margin-bottom:0.75rem;">🛠</div>
-          <h3 style="font-size:1rem; margin-bottom:0.5rem;">Workshop</h3>
-          <p style="color:var(--gray); font-size:0.9rem;">Half or full day. Interactive deep-dive with real tools, exercises, and implementation planning.</p>
+        <div class="format-card">
+          <div class="format-icon">🛠️</div>
+          <h3>Workshop</h3>
+          <p>Half or full day. Interactive deep-dive with real tools, exercises, and implementation planning.</p>
         </div>
-        <div style="text-align:center; padding:2rem; background:var(--light-gray); border-radius:4px;">
-          <div style="font-size:2rem; margin-bottom:0.75rem;">💻</div>
-          <h3 style="font-size:1rem; margin-bottom:0.5rem;">Virtual / Live</h3>
-          <p style="color:var(--gray); font-size:0.9rem;">Jason runs weekly live masterclasses and is highly experienced with virtual delivery and live Q&A.</p>
+        <div class="format-card">
+          <div class="format-icon">💻</div>
+          <h3>Virtual / Live</h3>
+          <p>Jason runs weekly live masterclasses and is highly experienced with virtual delivery and live Q&A.</p>
         </div>
       </div>
     </div>
@@ -146,10 +146,44 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+  .formats-container {
+    max-width: 860px;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .format-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--light-gray);
+    border-radius: 4px;
+  }
+
+  .format-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .format-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+  }
+
+  .format-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
   @media (max-width: 768px) {
-    div[style*="grid-template-columns:1fr 1fr 1fr"],
-    div[style*="grid-template-columns:1fr 1fr"] {
-      grid-template-columns: 1fr !important;
+    .formats-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
+                                                                                                                                                                   
