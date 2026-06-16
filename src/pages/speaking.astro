@@ -95,12 +95,12 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- FORMATS -->
   <section class="section">
-    <div class="container formats-container">
+    <div class="container" style="max-width:860px;">
       <div class="text-center" style="margin-bottom:3rem;">
         <span class="section-label">Formats</span>
         <h2>How Jason Speaks</h2>
       </div>
-      <div class="formats-grid">
+      <div class="three-col">
         <div class="format-card">
           <div class="format-icon">🎤</div>
           <h3>Keynote</h3>
@@ -145,45 +145,4 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 
-<style>
-  .formats-container {
-    max-width: 860px;
-  }
-
-  .formats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .format-card {
-    text-align: center;
-    padding: 2.5rem 2rem;
-    background: var(--light-gray);
-    border-radius: 4px;
-  }
-
-  .format-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .format-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--dark);
-  }
-
-  .format-card p {
-    color: var(--gray);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  @media (max-width: 768px) {
-    .formats-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
