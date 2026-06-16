@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Leadership & Financial Freedom"
-  description="Jason Ehlinger — Leadership coach and personal finance expert. Built a 7-figure business from scratch. Helping you lead better and build wealth."
+  title="Leadership Coach & Personal Finance Expert"
+  description="Jason Ehlinger is a leadership coach, personal finance expert, and CEO of Taika Translations. Built a 7-figure business from scratch with no investors. Helping entrepreneurs build high-performing teams and lasting wealth."
+  keywords="leadership coach, business coach, personal finance coach, executive coaching, team building, wealth building, veteran entrepreneur, leadership development, performance coaching, financial freedom, entrepreneur coach, small business coach, how to build a high-performing team, zero-based budgeting, building wealth from nothing"
 >
 
   <!-- HERO -->
@@ -169,4 +170,70 @@ import Layout from '../layouts/Layout.astro';
           <div style="color:#aaa; font-size:0.85rem;">Of 8 kids — leadership starts at home</div>
         </div>
         <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:4px; padding:1.5rem;">
-          <div
+          <div style="color:var(--gold); font-size:1.8rem; font-weight:900; margin-bottom:0.25rem;">Faith</div>
+          <div style="color:#aaa; font-size:0.85rem;">Christ-centered — purpose and integrity in everything</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-gray">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label">What People Say</span>
+        <h2 style="font-size:2rem;">Real Leaders. Real Results.</h2>
+      </div>
+      <div class="card-grid">
+        <div class="testimonial">
+          <blockquote>"Before I started working with Jason, my life and business felt out of sync with the goals and dreams I had for myself. From the moment I began using the strategies Jason shared, everything started to change."</blockquote>
+          <cite>Jake Gardner</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>"Working with Jason has completely changed how I see leadership. He doesn't just give orders — he listens, challenges us, and makes sure we understand the bigger mission. I've grown more in the past year than in all my previous experiences combined."</blockquote>
+          <cite>Karina Romano</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>"Jason has a way of making you feel both supported and accountable at the same time. He pushes you to think bigger, trusts you with real responsibility, and is always ready to jump in when needed."</blockquote>
+          <cite>João Vitor</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MASTERCLASS CTA -->
+  <section class="section" style="background:var(--black); text-align:center;">
+    <div class="container" style="max-width:680px;">
+      <span class="section-label">Free Masterclasses · Every Wednesday</span>
+      <h2 style="font-size:2.2rem; color:var(--white); margin-bottom:1rem;">Want to Build an Unbreakable Life?</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">Join our free weekly live masterclasses on leadership, finance, mindset, and building a life on your own terms.</p>
+      <form name="masterclass" method="POST" data-netlify="true"
+        style="display:flex; gap:0.75rem; max-width:460px; margin:0 auto; flex-wrap:wrap;">
+        <input type="hidden" name="form-name" value="masterclass" />
+        <input type="email" name="email" placeholder="Your email address" required
+          style="flex:1; padding:0.85rem 1rem; border:none; border-radius:2px; font-size:1rem; min-width:200px;" />
+        <button type="submit" class="btn btn-gold">Register Free</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section" style="text-align:center;">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Ready to Start?</span>
+      <h2 style="font-size:2rem; margin-bottom:1rem;">Stop Operating. Start Leading.</h2>
+      <p style="color:var(--gray); margin-bottom:2rem;">Whether it's leadership, personal finance, or a full life overhaul — let's figure out where you are and build a plan to get you there.</p>
+      <a href="/contact" class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Schedule a Free Assessment</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns:auto 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

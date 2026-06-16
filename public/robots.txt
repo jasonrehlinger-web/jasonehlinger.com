@@ -1,0 +1,66 @@
+# Jason Ehlinger — jasonehlinger.com
+# Allow all crawlers including AI bots
+
+User-agent: *
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Google AI (Bard / Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# Common Crawl (trains most AI models)
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta / Llama
+User-agent: FacebookBot
+Allow: /
+
+# Amazon / Alexa
+User-agent: ia_archiver
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.jasonehlinger.com/sitemap-index.xml

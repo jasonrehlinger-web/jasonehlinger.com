@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Speaking"
-  description="Book Jason Ehlinger for keynotes and workshops on leadership, personal finance, and building a life of purpose."
+  title="Keynote Speaker on Leadership & Personal Finance"
+  description="Book Jason Ehlinger for keynotes and workshops on leadership development, personal finance, veteran entrepreneurship, and building a purpose-driven life. Real experience — not theory."
+  keywords="leadership keynote speaker, business speaker, personal finance speaker, veteran speaker, entrepreneur keynote, leadership workshop, team building speaker, executive keynote, motivational speaker, leadership development speaker, financial freedom speaker, military entrepreneur speaker"
 >
 
   <section class="page-hero">
@@ -107,4 +108,48 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div style="text-align:center; padding:2rem; background:var(--light-gray); border-radius:4px;">
           <div style="font-size:2rem; margin-bottom:0.75rem;">🛠</div>
-          <h3 style="font-
+          <h3 style="font-size:1rem; margin-bottom:0.5rem;">Workshop</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Half or full day. Interactive deep-dive with real tools, exercises, and implementation planning.</p>
+        </div>
+        <div style="text-align:center; padding:2rem; background:var(--light-gray); border-radius:4px;">
+          <div style="font-size:2rem; margin-bottom:0.75rem;">💻</div>
+          <h3 style="font-size:1rem; margin-bottom:0.5rem;">Virtual / Live</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">Jason runs weekly live masterclasses and is highly experienced with virtual delivery and live Q&A.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE RESOURCES PLUG -->
+  <section class="section section-gray">
+    <div class="container" style="max-width:780px; text-align:center;">
+      <span class="section-label">Experience Jason First</span>
+      <h2 style="font-size:1.8rem; margin-bottom:1rem;">Watch Before You Book</h2>
+      <p style="color:var(--gray); margin-bottom:2rem;">See Jason's teaching style and content depth firsthand — 777+ free videos on the Vision Tribe Money channel, including the full 13-part "Forge" leadership masterclass.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://www.youtube.com/playlist?list=PL9gAYdG_RPlGi3HtmLBxfCVI0BRa4phIP" target="_blank" rel="noopener" class="btn btn-dark">The Forge (Leadership) ↗</a>
+        <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-gold">Vision Tribe Money Channel ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="section section-dark text-center">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Book Jason</span>
+      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Ready to Book?</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">Tell me about your event, your audience, and what you're hoping they walk away with. Let's see if we're a fit.</p>
+      <a href="/contact?type=speaking" class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Send a Speaking Inquiry</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr 1fr"],
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

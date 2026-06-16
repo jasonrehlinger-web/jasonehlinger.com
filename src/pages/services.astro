@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Services"
-  description="Free leadership courses, personal finance coaching, and 1-on-1 consulting with Jason Ehlinger."
+  title="Leadership Coaching & Personal Finance Services"
+  description="Free leadership masterclass (The Forge), personal finance coaching, and 1-on-1 consulting with Jason Ehlinger. Proven frameworks for transitioning from manager to leader and building real wealth."
+  keywords="leadership coaching services, business coaching, The Forge leadership course, personal finance coaching, executive coaching, team building coaching, manager to leader, leadership development program, financial coaching, small business coach, entrepreneurship coach, Patrick Lencioni framework, performance coaching"
 >
 
   <section class="page-hero">
@@ -134,4 +135,50 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div class="card" style="margin-bottom:1rem;">
             <h3 style="margin-bottom:0.5rem; font-size:1.1rem;">Wealth Building From Nothing</h3>
-            <p style="color:var(--gray); font-size:0.95rem;">The habits, mindset, and systems behind saving $100k
+            <p style="color:var(--gray); font-size:0.95rem;">The habits, mindset, and systems behind saving $100k on a military salary and building from there.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:0.5rem; font-size:1.1rem;">Why You're Broke Despite Working Hard</h3>
+            <p style="color:var(--gray); font-size:0.95rem;">The income is rarely the problem. We'll find where the real breakdown is and fix it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING -->
+  <section class="section" id="coaching">
+    <div class="container" style="max-width:800px; text-align:center;">
+      <span class="section-label">1-on-1</span>
+      <h2 style="font-size:2rem; margin-bottom:1.25rem;">Work Directly With Jason</h2>
+      <p style="color:var(--gray); margin-bottom:1.25rem; font-size:1.05rem;">Sometimes content isn't enough. You need someone who's been where you are to look at your specific situation and tell you exactly what to do next.</p>
+      <p style="color:var(--gray); margin-bottom:2.5rem;">Every engagement starts with a free assessment — no pitch, just an honest look at where you are and a clear path forward.</p>
+      <a href="/contact" class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Schedule a Free Assessment</a>
+    </div>
+  </section>
+
+  <!-- MASTERCLASS -->
+  <section class="section section-dark text-center">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Free · Every Wednesday</span>
+      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Weekly Live Masterclasses</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">Join live every Wednesday for sessions on leadership, money, mindset, and building an unbreakable life. Free — always.</p>
+      <form name="masterclass" method="POST" data-netlify="true"
+        style="display:flex; gap:0.75rem; max-width:440px; margin:0 auto; flex-wrap:wrap;">
+        <input type="hidden" name="form-name" value="masterclass" />
+        <input type="email" name="email" placeholder="Your email address" required
+          style="flex:1; padding:0.85rem 1rem; border:none; border-radius:2px; font-size:1rem; min-width:180px;" />
+        <button type="submit" class="btn btn-gold">Register Free</button>
+      </form>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

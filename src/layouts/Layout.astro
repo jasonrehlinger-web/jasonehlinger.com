@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  keywords?: string;
 }
 
 const {
   title,
-  description = 'Jason Ehlinger — Leadership coach, personal finance expert, CEO of Taika Translations, and U.S. Air Force veteran.',
+  description = 'Jason Ehlinger — leadership coach, personal finance expert, and CEO of Taika Translations. Veteran entrepreneur helping business owners build high-performing teams and lasting wealth.',
   image = '/og-image.jpg',
+  keywords = 'leadership coach, business coach, personal finance coach, executive coaching, team building, wealth building, veteran entrepreneur, financial freedom, leadership development, performance coaching',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -28,6 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <title>{title} | Jason Ehlinger</title>
   <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Open Graph -->
@@ -36,6 +39,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={image} />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jason Ehlinger" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | Jason Ehlinger`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+
+  <!-- Structured Data: Person -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jason Ehlinger",
+      "url": "https://www.jasonehlinger.com",
+      "jobTitle": "Leadership Coach, CEO",
+      "description": "Leadership coach, personal finance expert, CEO of Taika Translations, U.S. Air Force veteran, husband and father of 8. Helping entrepreneurs build high-performing teams and lasting wealth.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Taika Translations",
+        "url": "https://www.taikatranslations.com"
+      },
+      "sameAs": [
+        "https://www.instagram.com/jason.ehlinger/",
+        "https://www.facebook.com/jason.r.ehlinger",
+        "https://www.youtube.com/@Visiontribemoney"
+      ],
+      "knowsAbout": [
+        "Leadership Coaching",
+        "Business Coaching",
+        "Personal Finance",
+        "Wealth Building",
+        "Team Building",
+        "Executive Coaching",
+        "Entrepreneurship",
+        "Zero-Based Budgeting",
+        "Military Entrepreneurship",
+        "Leadership Development"
+      ]
+    }
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
