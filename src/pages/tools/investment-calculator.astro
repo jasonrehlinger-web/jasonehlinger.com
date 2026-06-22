@@ -4,8 +4,8 @@ import Layout from '../../layouts/Layout.astro';
 
 <Layout
   title="Investment Calculator — Grow Your Wealth"
-  description="Use Jason Ehlinger's free investment calculator to see how your money grows over time with compound interest. Enter your initial investment, monthly contribution, and expected return."
-  keywords="investment calculator, compound growth calculator, wealth building calculator, how much will my investment grow, retirement investment calculator"
+  description="Use Jason Ehlinger's free investment calculator to see how your money grows over time with compound interest."
+  keywords="investment calculator, compound growth calculator, wealth building calculator, retirement investment calculator"
 >
 
   <section class="page-hero">
@@ -18,14 +18,12 @@ import Layout from '../../layouts/Layout.astro';
     <div class="container" style="max-width:960px;">
       <div class="calc-grid">
 
-        <!-- INPUTS -->
         <div class="calc-inputs">
-
           <div class="field-group">
             <label>Initial Investment</label>
             <div class="field-wrap">
               <span class="field-symbol">$</span>
-              <input type="number" id="initial" value="10000" min="0" step="100" placeholder="10,000" />
+              <input type="number" id="initial" value="10000" min="0" step="100" />
             </div>
           </div>
 
@@ -33,19 +31,19 @@ import Layout from '../../layouts/Layout.astro';
             <label>Monthly Contribution</label>
             <div class="field-wrap">
               <span class="field-symbol">$</span>
-              <input type="number" id="monthly" value="500" min="0" step="50" placeholder="500" />
+              <input type="number" id="monthly" value="500" min="0" step="50" />
             </div>
             <div class="quick-btns">
-              <button onclick="addMonthly(100)">+$100</button>
-              <button onclick="addMonthly(250)">+$250</button>
-              <button onclick="addMonthly(500)">+$500</button>
+              <button class="quick-add" data-amount="100">+$100</button>
+              <button class="quick-add" data-amount="250">+$250</button>
+              <button class="quick-add" data-amount="500">+$500</button>
             </div>
           </div>
 
           <div class="field-group">
             <label>Expected Annual Return</label>
             <div class="field-wrap">
-              <input type="number" id="rate" value="10" min="0" max="30" step="0.5" placeholder="10" />
+              <input type="number" id="rate" value="10" min="0" max="30" step="0.5" />
               <span class="field-symbol right">%</span>
             </div>
             <p class="field-hint">The S&P 500 has averaged ~10% annually over the long term.</p>
@@ -54,36 +52,34 @@ import Layout from '../../layouts/Layout.astro';
           <div class="field-group">
             <label>Years to Invest</label>
             <div class="field-wrap">
-              <input type="number" id="years" value="30" min="1" max="60" step="1" placeholder="30" />
+              <input type="number" id="years" value="30" min="1" max="60" step="1" />
               <span class="field-symbol right">yrs</span>
             </div>
           </div>
 
-          <button class="calc-btn" onclick="calculate()">Crunch the Numbers</button>
+          <button class="calc-btn" id="calcBtn">Crunch the Numbers</button>
         </div>
 
-        <!-- RESULTS -->
         <div class="calc-results">
           <p class="result-label">Your investments could grow to</p>
           <div class="result-hero">
             <div class="result-ring">
-              <span id="finalBalance">$437,327</span>
+              <span id="finalBalance">$0</span>
             </div>
           </div>
 
           <div class="result-stats">
             <div class="stat-item">
               <span class="stat-label">What You Put In</span>
-              <span class="stat-value" id="totalContributions">$36,000</span>
+              <span class="stat-value" id="totalContributions">$0</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
               <span class="stat-label">The Extra Growth</span>
-              <span class="stat-value gold" id="interestEarned">$401,327</span>
+              <span class="stat-value gold" id="interestEarned">$0</span>
             </div>
           </div>
 
-          <!-- BAR CHART -->
           <div class="chart-wrap">
             <p class="chart-label">Growth Over Time</p>
             <div id="chartBars" class="chart-bars"></div>
@@ -91,17 +87,16 @@ import Layout from '../../layouts/Layout.astro';
           </div>
 
           <div class="result-cta">
-            <p>You've got the estimate.<br/><strong>Now let's build the real plan.</strong></p>
-            <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.75rem;">Work With Jason →</a>
+            <p>You have the estimate.<br/><strong>Now let's build the real plan.</strong></p>
+            <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.75rem;">Work With Jason</a>
           </div>
         </div>
       </div>
 
-      <!-- EXPLAINER -->
       <div class="explainer">
         <h3>How This Calculator Works</h3>
         <p>This calculator uses the future value of an annuity formula, compounded monthly. It assumes your monthly contribution is made at the beginning of each month and your initial lump sum earns interest from day one.</p>
-        <p>The default 10% return reflects the historical long-term average of the S&P 500 before inflation. Past performance doesn't guarantee future results — this is for planning purposes only.</p>
+        <p>The default 10% return reflects the historical long-term average of the S&P 500 before inflation. Past performance does not guarantee future results — this is for planning purposes only.</p>
       </div>
     </div>
   </section>
@@ -109,232 +104,43 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    align-items: start;
-  }
-
-  /* --- INPUTS --- */
-  .calc-inputs {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .field-group {
-    margin-bottom: 1.5rem;
-  }
-  .field-group label {
-    display: block;
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-    color: var(--black);
-  }
-  .field-wrap {
-    display: flex;
-    align-items: center;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #fafafa;
-    transition: border-color 0.2s;
-  }
-  .field-wrap:focus-within {
-    border-color: var(--gold);
-    background: #fff;
-  }
-  .field-symbol {
-    padding: 0.75rem 0.85rem;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gray);
-    background: transparent;
-    user-select: none;
-  }
-  .field-symbol.right {
-    border-left: 1px solid #e5e5e5;
-  }
-  .field-wrap input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 0.75rem 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--black);
-    min-width: 0;
-  }
-  .field-wrap input:focus { outline: none; }
-  .field-hint {
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-top: 0.4rem;
-  }
-  .quick-btns {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.6rem;
-  }
-  .quick-btns button {
-    flex: 1;
-    padding: 0.4rem 0;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background: #f4f4f4;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--gray);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .quick-btns button:hover {
-    background: var(--gold);
-    color: #fff;
-    border-color: var(--gold);
-  }
-  .calc-btn {
-    width: 100%;
-    padding: 0.9rem;
-    background: var(--gold);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-    margin-top: 0.5rem;
-  }
-  .calc-btn:hover { opacity: 0.88; }
-
-  /* --- RESULTS --- */
-  .calc-results {
-    background: var(--black);
-    border-radius: 8px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    color: var(--white);
-  }
-  .result-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #aaa;
-    margin-bottom: 1rem;
-  }
-  .result-hero {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  .result-ring {
-    border: 4px solid var(--gold);
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 0 8px rgba(200,152,42,0.12);
-  }
-  .result-ring span {
-    font-size: 1.9rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1.1;
-  }
-  .result-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-top: 1px solid #222;
-    padding-top: 1.5rem;
-  }
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #888;
-  }
-  .stat-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #fff;
-  }
-  .stat-value.gold { color: var(--gold); }
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: #333;
-  }
-  .chart-wrap {
-    border-top: 1px solid #222;
-    padding-top: 1.25rem;
-    margin-bottom: 1.5rem;
-  }
-  .chart-label {
-    font-size: 0.75rem;
-    color: #888;
-    margin-bottom: 0.75rem;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .chart-bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    height: 100px;
-  }
-  .chart-labels {
-    display: flex;
-    gap: 4px;
-    margin-top: 4px;
-  }
-  .result-cta {
-    border-top: 1px solid #222;
-    padding-top: 1.5rem;
-    font-size: 0.95rem;
-    color: #bbb;
-    line-height: 1.5;
-  }
-  .result-cta strong { color: #fff; }
-
-  /* EXPLAINER */
-  .explainer {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: var(--light-gray);
-    border-radius: 8px;
-  }
-  .explainer h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-  }
-  .explainer p {
-    color: var(--gray);
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-  }
-
-  @media (max-width: 768px) {
-    .calc-grid { grid-template-columns: 1fr; }
-    .result-ring { width: 160px; height: 160px; }
-    .result-ring span { font-size: 1.5rem; }
-  }
+  .calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start; }
+  .calc-inputs { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .field-group { margin-bottom:1.5rem; }
+  .field-group label { display:block; font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; color:var(--black); }
+  .field-wrap { display:flex; align-items:center; border:2px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa; transition:border-color 0.2s; }
+  .field-wrap:focus-within { border-color:var(--gold); background:#fff; }
+  .field-symbol { padding:0.75rem 0.85rem; font-size:1rem; font-weight:700; color:var(--gray); background:transparent; user-select:none; }
+  .field-symbol.right { border-left:1px solid #e5e5e5; }
+  .field-wrap input { flex:1; border:none; background:transparent; padding:0.75rem 0.5rem; font-size:1.1rem; font-weight:600; color:var(--black); min-width:0; }
+  .field-wrap input:focus { outline:none; }
+  .field-hint { font-size:0.8rem; color:var(--gray); margin-top:0.4rem; }
+  .quick-btns { display:flex; gap:0.5rem; margin-top:0.6rem; }
+  .quick-btns button { flex:1; padding:0.4rem 0; border:1px solid #ddd; border-radius:20px; background:#f4f4f4; font-size:0.8rem; font-weight:600; color:var(--gray); cursor:pointer; transition:background 0.2s,color 0.2s,border-color 0.2s; }
+  .quick-btns button:hover { background:var(--gold); color:#fff; border-color:var(--gold); }
+  .calc-btn { width:100%; padding:0.9rem; background:var(--gold); color:#fff; border:none; border-radius:6px; font-size:1rem; font-weight:800; letter-spacing:0.03em; cursor:pointer; text-transform:uppercase; transition:opacity 0.2s; margin-top:0.5rem; }
+  .calc-btn:hover { opacity:0.88; }
+  .calc-results { background:var(--black); border-radius:8px; padding:2.5rem 2rem; text-align:center; color:var(--white); }
+  .result-label { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#aaa; margin-bottom:1rem; }
+  .result-hero { display:flex; justify-content:center; margin-bottom:1.5rem; }
+  .result-ring { border:4px solid var(--gold); border-radius:50%; width:200px; height:200px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 8px rgba(200,152,42,0.12); }
+  .result-ring span { font-size:1.9rem; font-weight:900; color:var(--gold); line-height:1.1; }
+  .result-stats { display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:1.5rem; border-top:1px solid #222; padding-top:1.5rem; }
+  .stat-item { display:flex; flex-direction:column; gap:0.25rem; }
+  .stat-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:#888; }
+  .stat-value { font-size:1.3rem; font-weight:800; color:#fff; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-divider { width:1px; height:40px; background:#333; }
+  .chart-wrap { border-top:1px solid #222; padding-top:1.25rem; margin-bottom:1.5rem; }
+  .chart-label { font-size:0.75rem; color:#888; margin-bottom:0.75rem; text-align:left; text-transform:uppercase; letter-spacing:0.05em; }
+  .chart-bars { display:flex; align-items:flex-end; gap:4px; height:100px; }
+  .chart-labels { display:flex; gap:4px; margin-top:4px; }
+  .result-cta { border-top:1px solid #222; padding-top:1.5rem; font-size:0.95rem; color:#bbb; line-height:1.5; }
+  .result-cta strong { color:#fff; }
+  .explainer { margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:8px; }
+  .explainer h3 { font-size:1.1rem; margin-bottom:0.75rem; }
+  .explainer p { color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem; }
+  @media (max-width:768px) { .calc-grid { grid-template-columns:1fr; } .result-ring { width:160px; height:160px; } .result-ring span { font-size:1.5rem; } }
 </style>
 
 <script>
@@ -343,35 +149,19 @@ import Layout from '../../layouts/Layout.astro';
     return '$' + Math.round(n).toLocaleString('en-US');
   }
 
-  function addMonthly(amount) {
-    const el = document.getElementById('monthly');
-    el.value = Math.max(0, (parseFloat(el.value) || 0) + amount);
-    calculate();
-  }
-
   function calculate() {
     const P = parseFloat(document.getElementById('initial').value) || 0;
     const pmt = parseFloat(document.getElementById('monthly').value) || 0;
     const annualRate = parseFloat(document.getElementById('rate').value) || 0;
     const years = parseInt(document.getElementById('years').value) || 1;
-
     const r = annualRate / 100 / 12;
     const n = years * 12;
-
-    let finalBalance;
-    if (r === 0) {
-      finalBalance = P + pmt * n;
-    } else {
-      finalBalance = P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
-    }
-
+    let finalBalance = r === 0 ? P + pmt * n : P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
     const totalContributions = P + pmt * n;
     const interestEarned = finalBalance - totalContributions;
-
     document.getElementById('finalBalance').textContent = fmt(finalBalance);
     document.getElementById('totalContributions').textContent = fmt(totalContributions);
     document.getElementById('interestEarned').textContent = fmt(Math.max(interestEarned, 0));
-
     buildChart(P, pmt, r, years);
   }
 
@@ -380,37 +170,46 @@ import Layout from '../../layouts/Layout.astro';
     const step = Math.max(Math.floor(years / steps), 1);
     const balances = [];
     const labels = [];
-
     for (let i = 1; i <= steps; i++) {
       const yr = i * step;
       const n = yr * 12;
-      let bal = r === 0 ? P + pmt * n : P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+      const bal = r === 0 ? P + pmt * n : P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
       balances.push(bal);
       labels.push('Yr ' + yr);
     }
-
     const max = Math.max(...balances, 1);
     const barsEl = document.getElementById('chartBars');
     const labelsEl = document.getElementById('chartLabels');
     barsEl.innerHTML = '';
     labelsEl.innerHTML = '';
-
-    balances.forEach((val, i) => {
+    balances.forEach(function(val, i) {
       const pct = (val / max) * 100;
       const bar = document.createElement('div');
-      bar.style.cssText = `flex:1; background:var(--gold); height:${pct}%; border-radius:3px 3px 0 0; min-height:3px;`;
+      bar.style.cssText = 'flex:1;background:var(--gold);height:' + pct + '%;border-radius:3px 3px 0 0;min-height:3px;';
       bar.title = fmt(val);
       barsEl.appendChild(bar);
-
       const lbl = document.createElement('div');
       lbl.textContent = labels[i];
-      lbl.style.cssText = 'flex:1; text-align:center; font-size:0.62rem; color:#666;';
+      lbl.style.cssText = 'flex:1;text-align:center;font-size:0.62rem;color:#666;';
       labelsEl.appendChild(lbl);
     });
   }
 
-  document.addEventListener('DOMContentLoaded', calculate);
-  ['initial','monthly','rate','years'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calculate);
+  document.addEventListener('DOMContentLoaded', function() {
+    calculate();
+
+    document.getElementById('calcBtn').addEventListener('click', calculate);
+
+    document.querySelectorAll('.quick-add').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var el = document.getElementById('monthly');
+        el.value = Math.max(0, (parseFloat(el.value) || 0) + parseInt(btn.getAttribute('data-amount')));
+        calculate();
+      });
+    });
+
+    ['initial', 'monthly', 'rate', 'years'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calculate);
+    });
   });
 </script>

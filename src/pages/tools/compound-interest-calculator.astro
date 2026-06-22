@@ -18,9 +18,7 @@ import Layout from '../../layouts/Layout.astro';
     <div class="container" style="max-width:1040px;">
       <div class="calc-grid">
 
-        <!-- INPUTS -->
         <div class="calc-inputs">
-
           <div class="field-group">
             <label>Starting Amount</label>
             <div class="field-wrap">
@@ -48,11 +46,10 @@ import Layout from '../../layouts/Layout.astro';
           <div class="field-group">
             <label>Choose your compounding frequency. (Daily is the most common.)</label>
             <div class="freq-btns">
-              <button class="freq-btn" data-freq="1" onclick="setFreq(this,1)">Yearly</button>
-              <button class="freq-btn" data-freq="12" onclick="setFreq(this,12)">Monthly</button>
-              <button class="freq-btn active" data-freq="365" onclick="setFreq(this,365)">Daily</button>
+              <button class="freq-btn" data-freq="1">Yearly</button>
+              <button class="freq-btn" data-freq="12">Monthly</button>
+              <button class="freq-btn active" data-freq="365">Daily</button>
             </div>
-            <input type="hidden" id="compoundFreq" value="365" />
           </div>
 
           <div class="field-group">
@@ -62,51 +59,44 @@ import Layout from '../../layouts/Layout.astro';
             </div>
           </div>
 
-          <button class="calc-btn" onclick="calcCompound()">Calculate</button>
+          <button class="calc-btn" id="calcBtn">Calculate</button>
         </div>
 
-        <!-- RESULTS -->
         <div class="calc-results">
           <div class="results-header">
             <div>
               <p class="result-eyebrow">Estimated Savings Value</p>
               <p class="result-subtext" id="resultSubtext">In 30 years, your savings could be worth:</p>
             </div>
-            <div class="result-number" id="ciBalance">$1,139,791</div>
+            <div class="result-number" id="ciBalance">$0</div>
           </div>
 
           <div class="result-stats">
             <div class="stat-col">
               <span class="stat-label">Initial Balance</span>
-              <span class="stat-value" id="ciPrincipal">$5,000</span>
+              <span class="stat-value" id="ciPrincipal">$0</span>
               <span class="stat-pct" id="pctPrincipal">0% of Total</span>
             </div>
             <div class="stat-col">
               <span class="stat-label">Contributions</span>
-              <span class="stat-value" id="ciContributions">$72,000</span>
-              <span class="stat-pct" id="pctContribs">6% of Total</span>
+              <span class="stat-value" id="ciContributions">$0</span>
+              <span class="stat-pct" id="pctContribs">0% of Total</span>
             </div>
             <div class="stat-col">
               <span class="stat-label">Growth</span>
-              <span class="stat-value gold" id="ciInterest">$1,062,791</span>
-              <span class="stat-pct" id="pctInterest">93% of Total</span>
+              <span class="stat-value gold" id="ciInterest">$0</span>
+              <span class="stat-pct" id="pctInterest">0% of Total</span>
             </div>
           </div>
 
-          <!-- BAR CHART -->
           <div class="chart-container">
-            <div class="chart-inner">
-              <div class="y-axis" id="yAxis"></div>
-              <div class="bars-area">
-                <div class="bars-wrap" id="barsWrap"></div>
-                <div class="x-axis" id="xAxis"></div>
-              </div>
-            </div>
+            <canvas id="ciChart" height="200"></canvas>
+            <div id="xLabels" class="x-labels"></div>
           </div>
 
           <div class="result-cta">
             <p>Ready to put compound interest to work for your family?</p>
-            <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.6rem;">Work With Jason →</a>
+            <a href="/contact" class="btn btn-gold" style="display:inline-block;margin-top:0.6rem;">Work With Jason</a>
           </div>
         </div>
       </div>
@@ -121,265 +111,49 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 2.5rem;
-    align-items: start;
-  }
-
-  /* INPUTS */
-  .calc-inputs {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .field-group {
-    margin-bottom: 1.4rem;
-  }
-  .field-group label {
-    display: block;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    color: var(--black);
-    line-height: 1.4;
-  }
-  .field-wrap {
-    display: flex;
-    align-items: center;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #fafafa;
-    transition: border-color 0.2s;
-  }
-  .field-wrap:focus-within { border-color: var(--gold); background: #fff; }
-  .field-symbol {
-    padding: 0.7rem 0.85rem;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gray);
-    background: transparent;
-    user-select: none;
-  }
-  .field-symbol.right { border-left: 1px solid #e5e5e5; }
-  .field-wrap input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 0.7rem 0.5rem;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--black);
-    min-width: 0;
-  }
-  .field-wrap input:focus { outline: none; }
-
-  /* FREQ BUTTONS */
-  .freq-btns {
-    display: flex;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .freq-btn {
-    flex: 1;
-    padding: 0.65rem 0;
-    border: none;
-    background: #fafafa;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--gray);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    border-right: 1px solid #ddd;
-  }
-  .freq-btn:last-child { border-right: none; }
-  .freq-btn.active {
-    background: var(--gold);
-    color: #fff;
-  }
-  .calc-btn {
-    width: 100%;
-    padding: 0.9rem;
-    background: var(--gold);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-    margin-top: 0.25rem;
-  }
-  .calc-btn:hover { opacity: 0.88; }
-
-  /* RESULTS */
-  .calc-results {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .results-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-    gap: 1rem;
-  }
-  .result-eyebrow {
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--black);
-    margin-bottom: 0.3rem;
-  }
-  .result-subtext {
-    font-size: 0.85rem;
-    color: var(--gray);
-  }
-  .result-number {
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--black);
-    white-space: nowrap;
-  }
-
-  .result-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 1.5rem;
-  }
-  .stat-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .stat-label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #aaa;
-  }
-  .stat-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--black);
-  }
-  .stat-value.gold { color: var(--gold); }
-  .stat-pct {
-    font-size: 0.75rem;
-    color: var(--gray);
-  }
-
-  /* CHART */
-  .chart-container {
-    margin-bottom: 1.5rem;
-  }
-  .chart-inner {
-    display: flex;
-    gap: 8px;
-    height: 260px;
-  }
-  .y-axis {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 24px;
-    min-width: 52px;
-  }
-  .y-label {
-    font-size: 0.7rem;
-    color: #aaa;
-    white-space: nowrap;
-  }
-  .bars-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .bars-wrap {
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    border-left: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    padding: 8px 0 0 4px;
-  }
-  .bar-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
-  }
-  .bar-fill {
-    border-radius: 2px 2px 0 0;
-    transition: height 0.4s ease;
-    min-height: 2px;
-  }
-  .x-axis {
-    display: flex;
-    padding-left: 4px;
-    margin-top: 4px;
-    height: 20px;
-  }
-  .x-label {
-    flex: 1;
-    text-align: center;
-    font-size: 0.68rem;
-    color: #aaa;
-    white-space: nowrap;
-  }
-
-  .result-cta {
-    border-top: 1px solid #eee;
-    padding-top: 1.25rem;
-    text-align: center;
-    font-size: 0.95rem;
-    color: var(--gray);
-  }
-
-  .explainer {
-    margin-top: 2.5rem;
-    padding: 2rem;
-    background: var(--light-gray);
-    border-radius: 8px;
-  }
-  .explainer h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
-  .explainer p { color: var(--gray); font-size: 0.95rem; }
-
-  @media (max-width: 860px) {
-    .calc-grid { grid-template-columns: 1fr; }
-    .result-number { font-size: 1.7rem; }
-  }
+  .calc-grid { display:grid; grid-template-columns:380px 1fr; gap:2.5rem; align-items:start; }
+  .calc-inputs { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .field-group { margin-bottom:1.4rem; }
+  .field-group label { display:block; font-weight:700; font-size:0.9rem; margin-bottom:0.5rem; color:var(--black); line-height:1.4; }
+  .field-wrap { display:flex; align-items:center; border:2px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa; transition:border-color 0.2s; }
+  .field-wrap:focus-within { border-color:var(--gold); background:#fff; }
+  .field-symbol { padding:0.7rem 0.85rem; font-size:1rem; font-weight:700; color:var(--gray); background:transparent; user-select:none; }
+  .field-symbol.right { border-left:1px solid #e5e5e5; }
+  .field-wrap input { flex:1; border:none; background:transparent; padding:0.7rem 0.5rem; font-size:1.05rem; font-weight:600; color:var(--black); min-width:0; }
+  .field-wrap input:focus { outline:none; }
+  .freq-btns { display:flex; border:2px solid #ddd; border-radius:6px; overflow:hidden; }
+  .freq-btn { flex:1; padding:0.65rem 0; border:none; background:#fafafa; font-size:0.9rem; font-weight:600; color:var(--gray); cursor:pointer; transition:background 0.2s,color 0.2s; border-right:1px solid #ddd; }
+  .freq-btn:last-child { border-right:none; }
+  .freq-btn.active { background:var(--gold); color:#fff; }
+  .calc-btn { width:100%; padding:0.9rem; background:var(--gold); color:#fff; border:none; border-radius:6px; font-size:1rem; font-weight:800; letter-spacing:0.03em; cursor:pointer; text-transform:uppercase; transition:opacity 0.2s; margin-top:0.25rem; }
+  .calc-btn:hover { opacity:0.88; }
+  .calc-results { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .results-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee; gap:1rem; }
+  .result-eyebrow { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--black); margin-bottom:0.3rem; }
+  .result-subtext { font-size:0.85rem; color:var(--gray); }
+  .result-number { font-size:2.2rem; font-weight:900; color:var(--black); white-space:nowrap; }
+  .result-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding-bottom:1.5rem; border-bottom:1px solid #eee; margin-bottom:1.5rem; }
+  .stat-col { display:flex; flex-direction:column; gap:0.2rem; }
+  .stat-label { font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#aaa; }
+  .stat-value { font-size:1.3rem; font-weight:800; color:var(--black); }
+  .stat-value.gold { color:var(--gold); }
+  .stat-pct { font-size:0.75rem; color:var(--gray); }
+  .chart-container { margin-bottom:1.5rem; }
+  canvas { width:100%; display:block; }
+  .x-labels { display:flex; margin-top:4px; }
+  .x-lbl { flex:1; text-align:center; font-size:0.65rem; color:#aaa; overflow:hidden; }
+  .result-cta { border-top:1px solid #eee; padding-top:1.25rem; text-align:center; font-size:0.95rem; color:var(--gray); }
+  .explainer { margin-top:2.5rem; padding:2rem; background:var(--light-gray); border-radius:8px; }
+  .explainer h3 { font-size:1.1rem; margin-bottom:0.75rem; }
+  .explainer p { color:var(--gray); font-size:0.95rem; }
+  @media (max-width:860px) { .calc-grid { grid-template-columns:1fr; } .result-number { font-size:1.7rem; } }
 </style>
 
 <script>
-  let currentFreq = 365;
+  var currentFreq = 365;
 
-  function setFreq(btn, freq) {
-    document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('compoundFreq').value = freq;
-    currentFreq = freq;
-    calcCompound();
+  function fmtFull(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
   }
 
   function fmtShort(n) {
@@ -388,35 +162,29 @@ import Layout from '../../layouts/Layout.astro';
     return '$' + Math.round(n);
   }
 
-  function fmtFull(n) {
-    return '$' + Math.round(n).toLocaleString('en-US');
+  function getBalance(P, addPerPeriod, r, periods) {
+    if (r === 0) return P + addPerPeriod * periods;
+    return P * Math.pow(1 + r, periods) + addPerPeriod * ((Math.pow(1 + r, periods) - 1) / r);
   }
 
   function calcCompound() {
-    const P = parseFloat(document.getElementById('principal').value) || 0;
-    const add = parseFloat(document.getElementById('addition').value) || 0;
-    const annualRate = parseFloat(document.getElementById('ciRate').value) || 0;
-    const freq = currentFreq;
-    const years = parseInt(document.getElementById('ciYears').value) || 1;
+    var P = parseFloat(document.getElementById('principal').value) || 0;
+    var add = parseFloat(document.getElementById('addition').value) || 0;
+    var annualRate = parseFloat(document.getElementById('ciRate').value) || 0;
+    var freq = currentFreq;
+    var years = parseInt(document.getElementById('ciYears').value) || 1;
 
-    const r = annualRate / 100 / freq;
-    const n = years * freq;
-    const addPerPeriod = add * (12 / freq);
+    var r = annualRate / 100 / freq;
+    var addPerPeriod = add * 12 / freq;
+    var totalPeriods = years * freq;
 
-    let balance;
-    if (r === 0) {
-      balance = P + add * 12 * years;
-    } else {
-      balance = P * Math.pow(1 + r, n) + addPerPeriod * ((Math.pow(1 + r, n) - 1) / r);
-    }
-
-    const totalContribs = add * 12 * years;
-    const interest = Math.max(balance - P - totalContribs, 0);
-    const total = balance || 1;
+    var balance = getBalance(P, addPerPeriod, r, totalPeriods);
+    var totalContribs = add * 12 * years;
+    var interest = Math.max(balance - P - totalContribs, 0);
+    var total = balance || 1;
 
     document.getElementById('ciBalance').textContent = fmtFull(balance);
-    document.getElementById('resultSubtext').textContent =
-      `In ${years} year${years !== 1 ? 's' : ''}, your savings could be worth:`;
+    document.getElementById('resultSubtext').textContent = 'In ' + years + ' year' + (years !== 1 ? 's' : '') + ', your savings could be worth:';
     document.getElementById('ciPrincipal').textContent = fmtFull(P);
     document.getElementById('ciContributions').textContent = fmtFull(totalContribs);
     document.getElementById('ciInterest').textContent = fmtFull(interest);
@@ -424,83 +192,107 @@ import Layout from '../../layouts/Layout.astro';
     document.getElementById('pctContribs').textContent = Math.round(totalContribs / total * 100) + '% of Total';
     document.getElementById('pctInterest').textContent = Math.round(interest / total * 100) + '% of Total';
 
-    buildChart(P, add, annualRate, freq, years);
+    buildChart(P, addPerPeriod, r, freq, years);
   }
 
-  function getBalance(P, addPerPeriod, r, freq, years) {
-    const n = years * freq;
-    if (r === 0) return P + addPerPeriod * (12 / freq) * n / (12 / freq);
-    return P * Math.pow(1 + r, n) + addPerPeriod * ((Math.pow(1 + r, n) - 1) / r);
-  }
+  function buildChart(P, addPerPeriod, r, freq, years) {
+    var canvas = document.getElementById('ciChart');
+    var ctx = canvas.getContext('2d');
+    var currentYear = new Date().getFullYear();
 
-  function buildChart(P, add, annualRate, freq, years) {
-    const r = annualRate / 100 / freq;
-    const addPerPeriod = add * (12 / freq);
-    const currentYear = new Date().getFullYear();
-
-    // Sample up to 30 data points
-    const totalBars = Math.min(years, 30);
-    const step = years / totalBars;
-    const dataPoints = [];
-
-    for (let i = 1; i <= totalBars; i++) {
-      const yr = Math.round(i * step);
-      const bal = r === 0
-        ? P + add * 12 * yr
-        : P * Math.pow(1 + r, yr * freq) + addPerPeriod * ((Math.pow(1 + r, yr * freq) - 1) / r);
-      dataPoints.push({ yr, bal, calYear: currentYear + yr });
+    // Collect data points — max 30 bars
+    var totalBars = Math.min(years, 30);
+    var step = years / totalBars;
+    var data = [];
+    for (var i = 1; i <= totalBars; i++) {
+      var yr = Math.round(i * step);
+      var bal = getBalance(P, addPerPeriod, r, yr * freq);
+      data.push({ yr: yr, bal: bal, label: String(currentYear + yr) });
     }
 
-    const maxBal = Math.max(...dataPoints.map(d => d.bal), 1);
+    var maxBal = 0;
+    for (var j = 0; j < data.length; j++) {
+      if (data[j].bal > maxBal) maxBal = data[j].bal;
+    }
+    maxBal = maxBal || 1;
 
-    // Y-axis: 5 nice labels
-    const ySteps = 5;
-    const yMax = Math.ceil(maxBal / Math.pow(10, Math.floor(Math.log10(maxBal)))) * Math.pow(10, Math.floor(Math.log10(maxBal)));
-    const yInterval = yMax / ySteps;
+    // Canvas dimensions
+    var W = canvas.parentElement.clientWidth || 500;
+    var H = 200;
+    var padLeft = 60;
+    var padTop = 10;
+    var padBottom = 4;
+    var chartH = H - padTop - padBottom;
+    var chartW = W - padLeft;
 
-    const yAxisEl = document.getElementById('yAxis');
-    yAxisEl.innerHTML = '';
-    for (let i = 0; i <= ySteps; i++) {
-      const val = i * yInterval;
-      const lbl = document.createElement('div');
-      lbl.className = 'y-label';
-      lbl.textContent = fmtShort(val);
-      yAxisEl.appendChild(lbl);
+    canvas.width = W;
+    canvas.height = H;
+    ctx.clearRect(0, 0, W, H);
+
+    // Y-axis labels and grid lines
+    var ySteps = 5;
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.textAlign = 'right';
+    for (var k = 0; k <= ySteps; k++) {
+      var val = (maxBal / ySteps) * k;
+      var y = padTop + chartH - (k / ySteps) * chartH;
+      ctx.fillText(fmtShort(val), padLeft - 6, y + 4);
+      ctx.strokeStyle = '#eee';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padLeft, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
     }
 
     // Bars
-    const barsWrap = document.getElementById('barsWrap');
-    const xAxis = document.getElementById('xAxis');
-    barsWrap.innerHTML = '';
-    xAxis.innerHTML = '';
+    var barGap = 3;
+    var barW = Math.max(2, (chartW / data.length) - barGap);
+    var goldColor = '#C8982A';
+    var grayColor = '#d4d4d4';
 
-    // Show x-labels every ~5 bars to avoid crowding
-    const labelEvery = Math.ceil(totalBars / 6);
+    for (var m = 0; m < data.length; m++) {
+      var barH = (data[m].bal / maxBal) * chartH;
+      var x = padLeft + m * (barW + barGap);
+      var y2 = padTop + chartH - barH;
+      ctx.fillStyle = (m === data.length - 1) ? goldColor : grayColor;
+      ctx.beginPath();
+      ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]);
+      ctx.fill();
+    }
 
-    dataPoints.forEach((d, i) => {
-      const pct = (d.bal / maxBal) * 100;
-      const isLast = i === dataPoints.length - 1;
-
-      const col = document.createElement('div');
-      col.className = 'bar-col';
-
-      const fill = document.createElement('div');
-      fill.className = 'bar-fill';
-      fill.style.height = pct + '%';
-      fill.style.background = isLast ? 'var(--gold)' : '#d4d4d4';
-      fill.title = `${d.calYear}: ${fmtFull(d.bal)}`;
-      col.appendChild(fill);
-      barsWrap.appendChild(col);
-
-      const xlbl = document.createElement('div');
-      xlbl.className = 'x-label';
-      xlbl.textContent = (i % labelEvery === 0 || isLast) ? String(d.calYear) : '';
-      xAxis.appendChild(xlbl);
-    });
+    // X-axis labels
+    var labelsEl = document.getElementById('xLabels');
+    labelsEl.innerHTML = '';
+    labelsEl.style.paddingLeft = padLeft + 'px';
+    var labelEvery = Math.ceil(data.length / 6);
+    for (var n = 0; n < data.length; n++) {
+      var lbl = document.createElement('div');
+      lbl.className = 'x-lbl';
+      lbl.textContent = (n % labelEvery === 0 || n === data.length - 1) ? data[n].label : '';
+      labelsEl.appendChild(lbl);
+    }
   }
 
-  document.addEventListener('DOMContentLoaded', calcCompound);
-  ['principal','addition','ciRate','ciYears'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcCompound);
+  document.addEventListener('DOMContentLoaded', function() {
+    calcCompound();
+
+    document.getElementById('calcBtn').addEventListener('click', calcCompound);
+
+    document.querySelectorAll('.freq-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.freq-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentFreq = parseInt(btn.getAttribute('data-freq'));
+        calcCompound();
+      });
+    });
+
+    ['principal', 'addition', 'ciRate', 'ciYears'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcCompound);
+    });
+
+    window.addEventListener('resize', calcCompound);
   });
 </script>
