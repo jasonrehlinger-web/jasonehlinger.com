@@ -15,113 +15,105 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
   <section class="section">
-    <div class="container" style="max-width:960px;">
+    <div class="container" style="max-width:1040px;">
       <div class="calc-grid">
 
         <!-- INPUTS -->
         <div class="calc-inputs">
-          <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Your Numbers</h2>
 
-          <div class="form-group">
-            <label for="principal">Starting Amount</label>
-            <div class="input-prefix">
-              <span>$</span>
+          <div class="field-group">
+            <label>Starting Amount</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
               <input type="number" id="principal" value="5000" min="0" step="500" />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="addition">Monthly Addition</label>
-            <div class="input-prefix">
-              <span>$</span>
+          <div class="field-group">
+            <label>Monthly Addition</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
               <input type="number" id="addition" value="200" min="0" step="50" />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="ciRate">Annual Interest Rate</label>
-            <div class="input-suffix">
+          <div class="field-group">
+            <label>Annual Interest Rate</label>
+            <div class="field-wrap">
               <input type="number" id="ciRate" value="8" min="0" max="30" step="0.5" />
-              <span>%</span>
+              <span class="field-symbol right">%</span>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="compoundFreq">Compound Frequency</label>
-            <select id="compoundFreq">
-              <option value="365">Daily</option>
-              <option value="12" selected>Monthly</option>
-              <option value="4">Quarterly</option>
-              <option value="2">Semi-Annually</option>
-              <option value="1">Annually</option>
-            </select>
+          <div class="field-group">
+            <label>Choose your compounding frequency. (Daily is the most common.)</label>
+            <div class="freq-btns">
+              <button class="freq-btn" data-freq="1" onclick="setFreq(this,1)">Yearly</button>
+              <button class="freq-btn" data-freq="12" onclick="setFreq(this,12)">Monthly</button>
+              <button class="freq-btn active" data-freq="365" onclick="setFreq(this,365)">Daily</button>
+            </div>
+            <input type="hidden" id="compoundFreq" value="365" />
           </div>
 
-          <div class="form-group">
-            <label for="ciYears">Time Period (Years)</label>
-            <input type="number" id="ciYears" value="20" min="1" max="60" step="1" />
+          <div class="field-group">
+            <label>Time Period (Years)</label>
+            <div class="field-wrap">
+              <input type="number" id="ciYears" value="30" min="1" max="60" step="1" />
+            </div>
           </div>
 
-          <button class="btn btn-gold" style="width:100%; margin-top:0.5rem;" onclick="calcCompound()">Calculate</button>
+          <button class="calc-btn" onclick="calcCompound()">Calculate</button>
         </div>
 
         <!-- RESULTS -->
         <div class="calc-results">
-          <div class="result-hero">
-            <div style="font-size:0.85rem; color:#aaa; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Final Balance</div>
-            <div class="result-number" id="ciBalance">$0</div>
+          <div class="results-header">
+            <div>
+              <p class="result-eyebrow">Estimated Savings Value</p>
+              <p class="result-subtext" id="resultSubtext">In 30 years, your savings could be worth:</p>
+            </div>
+            <div class="result-number" id="ciBalance">$1,139,791</div>
           </div>
 
-          <div class="result-breakdown">
-            <div class="result-row">
-              <span>Starting Amount</span>
-              <strong id="ciPrincipal">$0</strong>
+          <div class="result-stats">
+            <div class="stat-col">
+              <span class="stat-label">Initial Balance</span>
+              <span class="stat-value" id="ciPrincipal">$5,000</span>
+              <span class="stat-pct" id="pctPrincipal">0% of Total</span>
             </div>
-            <div class="result-row">
-              <span>Total Contributions</span>
-              <strong id="ciContributions">$0</strong>
+            <div class="stat-col">
+              <span class="stat-label">Contributions</span>
+              <span class="stat-value" id="ciContributions">$72,000</span>
+              <span class="stat-pct" id="pctContribs">6% of Total</span>
             </div>
-            <div class="result-row">
-              <span>Interest Earned</span>
-              <strong id="ciInterest" style="color:var(--gold);">$0</strong>
-            </div>
-          </div>
-
-          <!-- DONUT-STYLE BREAKDOWN -->
-          <div style="margin-top:2rem;">
-            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.75rem;">Where Your Balance Comes From</div>
-            <div id="stackBar" style="display:flex; border-radius:4px; overflow:hidden; height:20px;"></div>
-            <div style="display:flex; gap:1rem; margin-top:0.5rem;">
-              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
-                <div style="width:10px; height:10px; background:#2a2a2a; border-radius:2px;"></div> Principal
-              </div>
-              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
-                <div style="width:10px; height:10px; background:#555; border-radius:2px;"></div> Contributions
-              </div>
-              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
-                <div style="width:10px; height:10px; background:var(--gold); border-radius:2px;"></div> Interest
-              </div>
+            <div class="stat-col">
+              <span class="stat-label">Growth</span>
+              <span class="stat-value gold" id="ciInterest">$1,062,791</span>
+              <span class="stat-pct" id="pctInterest">93% of Total</span>
             </div>
           </div>
 
-          <!-- YEAR-BY-YEAR TABLE -->
-          <div style="margin-top:2rem; max-height:200px; overflow-y:auto;">
-            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.5rem;">Year-by-Year Breakdown</div>
-            <table id="yearTable" style="width:100%; font-size:0.8rem; border-collapse:collapse;"></table>
+          <!-- BAR CHART -->
+          <div class="chart-container">
+            <div class="chart-inner">
+              <div class="y-axis" id="yAxis"></div>
+              <div class="bars-area">
+                <div class="bars-wrap" id="barsWrap"></div>
+                <div class="x-axis" id="xAxis"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-cta">
+            <p>Ready to put compound interest to work for your family?</p>
+            <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.6rem;">Work With Jason →</a>
           </div>
         </div>
       </div>
 
-      <!-- EXPLAINER -->
-      <div style="margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:4px;">
-        <h3 style="font-size:1.1rem; margin-bottom:0.75rem;">Why Compound Interest Changes Everything</h3>
-        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem;">With simple interest, you only earn interest on your original principal. With compound interest, you earn interest on your interest — and over time, that difference becomes massive.</p>
-        <p style="color:var(--gray); font-size:0.95rem;">The earlier you start, the more time your money has to compound. A 25-year-old investing $200/month will typically end up with significantly more at retirement than a 35-year-old investing twice as much — because of compounding's exponential nature.</p>
-      </div>
-
-      <div style="margin-top:2rem; text-align:center;">
-        <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1rem;">Ready to put compound interest to work for your family?</p>
-        <a href="/contact" class="btn btn-gold">Work With Jason →</a>
+      <div class="explainer">
+        <h3>Why Compound Interest Changes Everything</h3>
+        <p>With simple interest, you only earn interest on your original principal. With compound interest, you earn interest on your interest — and over time, that difference becomes massive. The earlier you start, the more time your money has to compound exponentially.</p>
       </div>
     </div>
   </section>
@@ -131,77 +123,272 @@ import Layout from '../../layouts/Layout.astro';
 <style>
   .calc-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 380px 1fr;
+    gap: 2.5rem;
     align-items: start;
   }
+
+  /* INPUTS */
   .calc-inputs {
-    background: var(--light-gray);
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
     padding: 2rem;
-    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
-  .calc-results {
-    background: var(--black);
-    color: var(--white);
-    padding: 2rem;
-    border-radius: 4px;
+  .field-group {
+    margin-bottom: 1.4rem;
   }
-  .result-hero {
-    text-align: center;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #2a2a2a;
-    margin-bottom: 1.5rem;
+  .field-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+    line-height: 1.4;
   }
-  .result-number {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .result-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    color: #ccc;
-  }
-  .input-prefix, .input-suffix {
+  .field-wrap {
     display: flex;
     align-items: center;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 2px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fafafa;
+    transition: border-color 0.2s;
+  }
+  .field-wrap:focus-within { border-color: var(--gold); background: #fff; }
+  .field-symbol {
+    padding: 0.7rem 0.85rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray);
+    background: transparent;
+    user-select: none;
+  }
+  .field-symbol.right { border-left: 1px solid #e5e5e5; }
+  .field-wrap input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.7rem 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--black);
+    min-width: 0;
+  }
+  .field-wrap input:focus { outline: none; }
+
+  /* FREQ BUTTONS */
+  .freq-btns {
+    display: flex;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     overflow: hidden;
   }
-  .input-prefix span, .input-suffix span {
-    padding: 0.65rem 0.75rem;
-    background: #eee;
-    color: var(--gray);
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-  .input-prefix input, .input-suffix input {
-    border: none;
+  .freq-btn {
     flex: 1;
-    padding: 0.65rem 0.75rem;
-    font-size: 1rem;
+    padding: 0.65rem 0;
+    border: none;
+    background: #fafafa;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    border-right: 1px solid #ddd;
   }
-  .input-prefix input:focus, .input-suffix input:focus { outline: none; }
-  #yearTable tr { border-bottom: 1px solid #1a1a1a; }
-  #yearTable td { padding: 0.4rem 0.5rem; color: #ccc; }
-  #yearTable td:last-child { color: var(--gold); text-align: right; }
-  @media (max-width: 768px) {
+  .freq-btn:last-child { border-right: none; }
+  .freq-btn.active {
+    background: var(--gold);
+    color: #fff;
+  }
+  .calc-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+    margin-top: 0.25rem;
+  }
+  .calc-btn:hover { opacity: 0.88; }
+
+  /* RESULTS */
+  .calc-results {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+  }
+  .result-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--black);
+    margin-bottom: 0.3rem;
+  }
+  .result-subtext {
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+  .result-number {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--black);
+    white-space: nowrap;
+  }
+
+  .result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+  }
+  .stat-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #aaa;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--black);
+  }
+  .stat-value.gold { color: var(--gold); }
+  .stat-pct {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  /* CHART */
+  .chart-container {
+    margin-bottom: 1.5rem;
+  }
+  .chart-inner {
+    display: flex;
+    gap: 8px;
+    height: 260px;
+  }
+  .y-axis {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    min-width: 52px;
+  }
+  .y-label {
+    font-size: 0.7rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+  .bars-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .bars-wrap {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0 0 4px;
+  }
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+  }
+  .bar-fill {
+    border-radius: 2px 2px 0 0;
+    transition: height 0.4s ease;
+    min-height: 2px;
+  }
+  .x-axis {
+    display: flex;
+    padding-left: 4px;
+    margin-top: 4px;
+    height: 20px;
+  }
+  .x-label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.68rem;
+    color: #aaa;
+    white-space: nowrap;
+  }
+
+  .result-cta {
+    border-top: 1px solid #eee;
+    padding-top: 1.25rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--gray);
+  }
+
+  .explainer {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: var(--light-gray);
+    border-radius: 8px;
+  }
+  .explainer h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .explainer p { color: var(--gray); font-size: 0.95rem; }
+
+  @media (max-width: 860px) {
     .calc-grid { grid-template-columns: 1fr; }
-    .result-number { font-size: 2rem; }
+    .result-number { font-size: 1.7rem; }
   }
 </style>
 
 <script>
-  function fmt(n) {
+  let currentFreq = 365;
+
+  function setFreq(btn, freq) {
+    document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('compoundFreq').value = freq;
+    currentFreq = freq;
+    calcCompound();
+  }
+
+  function fmtShort(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + Math.round(n);
+  }
+
+  function fmtFull(n) {
     return '$' + Math.round(n).toLocaleString('en-US');
   }
 
@@ -209,59 +396,111 @@ import Layout from '../../layouts/Layout.astro';
     const P = parseFloat(document.getElementById('principal').value) || 0;
     const add = parseFloat(document.getElementById('addition').value) || 0;
     const annualRate = parseFloat(document.getElementById('ciRate').value) || 0;
-    const freq = parseInt(document.getElementById('compoundFreq').value) || 12;
+    const freq = currentFreq;
     const years = parseInt(document.getElementById('ciYears').value) || 1;
 
     const r = annualRate / 100 / freq;
     const n = years * freq;
-    const monthlyToFreq = add * (12 / freq);
+    const addPerPeriod = add * (12 / freq);
 
     let balance;
     if (r === 0) {
       balance = P + add * 12 * years;
     } else {
-      balance = P * Math.pow(1 + r, n) + monthlyToFreq * ((Math.pow(1 + r, n) - 1) / r);
+      balance = P * Math.pow(1 + r, n) + addPerPeriod * ((Math.pow(1 + r, n) - 1) / r);
     }
 
     const totalContribs = add * 12 * years;
-    const interest = balance - P - totalContribs;
-
-    document.getElementById('ciBalance').textContent = fmt(balance);
-    document.getElementById('ciPrincipal').textContent = fmt(P);
-    document.getElementById('ciContributions').textContent = fmt(totalContribs);
-    document.getElementById('ciInterest').textContent = fmt(Math.max(interest, 0));
-
-    // Stack bar
+    const interest = Math.max(balance - P - totalContribs, 0);
     const total = balance || 1;
-    const pPct = (P / total * 100).toFixed(1);
-    const cPct = (totalContribs / total * 100).toFixed(1);
-    const iPct = (Math.max(interest, 0) / total * 100).toFixed(1);
-    document.getElementById('stackBar').innerHTML = `
-      <div style="width:${pPct}%; background:#2a2a2a;" title="Principal: ${fmt(P)}"></div>
-      <div style="width:${cPct}%; background:#555;" title="Contributions: ${fmt(totalContribs)}"></div>
-      <div style="width:${iPct}%; background:var(--gold);" title="Interest: ${fmt(interest)}"></div>
-    `;
 
-    // Year-by-year table
-    const table = document.getElementById('yearTable');
-    table.innerHTML = '<tr><td style="color:#aaa;">Year</td><td style="color:#aaa;">Contributions</td><td style="color:#aaa; text-align:right;">Balance</td></tr>';
-    for (let y = 1; y <= years; y++) {
-      const ny = y * freq;
-      let bal;
-      if (r === 0) {
-        bal = P + add * 12 * y;
-      } else {
-        bal = P * Math.pow(1 + r, ny) + monthlyToFreq * ((Math.pow(1 + r, ny) - 1) / r);
-      }
-      const contribSoFar = P + add * 12 * y;
-      const row = document.createElement('tr');
-      row.innerHTML = `<td>${y}</td><td>${fmt(contribSoFar)}</td><td>${fmt(bal)}</td>`;
-      table.appendChild(row);
+    document.getElementById('ciBalance').textContent = fmtFull(balance);
+    document.getElementById('resultSubtext').textContent =
+      `In ${years} year${years !== 1 ? 's' : ''}, your savings could be worth:`;
+    document.getElementById('ciPrincipal').textContent = fmtFull(P);
+    document.getElementById('ciContributions').textContent = fmtFull(totalContribs);
+    document.getElementById('ciInterest').textContent = fmtFull(interest);
+    document.getElementById('pctPrincipal').textContent = Math.round(P / total * 100) + '% of Total';
+    document.getElementById('pctContribs').textContent = Math.round(totalContribs / total * 100) + '% of Total';
+    document.getElementById('pctInterest').textContent = Math.round(interest / total * 100) + '% of Total';
+
+    buildChart(P, add, annualRate, freq, years);
+  }
+
+  function getBalance(P, addPerPeriod, r, freq, years) {
+    const n = years * freq;
+    if (r === 0) return P + addPerPeriod * (12 / freq) * n / (12 / freq);
+    return P * Math.pow(1 + r, n) + addPerPeriod * ((Math.pow(1 + r, n) - 1) / r);
+  }
+
+  function buildChart(P, add, annualRate, freq, years) {
+    const r = annualRate / 100 / freq;
+    const addPerPeriod = add * (12 / freq);
+    const currentYear = new Date().getFullYear();
+
+    // Sample up to 30 data points
+    const totalBars = Math.min(years, 30);
+    const step = years / totalBars;
+    const dataPoints = [];
+
+    for (let i = 1; i <= totalBars; i++) {
+      const yr = Math.round(i * step);
+      const bal = r === 0
+        ? P + add * 12 * yr
+        : P * Math.pow(1 + r, yr * freq) + addPerPeriod * ((Math.pow(1 + r, yr * freq) - 1) / r);
+      dataPoints.push({ yr, bal, calYear: currentYear + yr });
     }
+
+    const maxBal = Math.max(...dataPoints.map(d => d.bal), 1);
+
+    // Y-axis: 5 nice labels
+    const ySteps = 5;
+    const yMax = Math.ceil(maxBal / Math.pow(10, Math.floor(Math.log10(maxBal)))) * Math.pow(10, Math.floor(Math.log10(maxBal)));
+    const yInterval = yMax / ySteps;
+
+    const yAxisEl = document.getElementById('yAxis');
+    yAxisEl.innerHTML = '';
+    for (let i = 0; i <= ySteps; i++) {
+      const val = i * yInterval;
+      const lbl = document.createElement('div');
+      lbl.className = 'y-label';
+      lbl.textContent = fmtShort(val);
+      yAxisEl.appendChild(lbl);
+    }
+
+    // Bars
+    const barsWrap = document.getElementById('barsWrap');
+    const xAxis = document.getElementById('xAxis');
+    barsWrap.innerHTML = '';
+    xAxis.innerHTML = '';
+
+    // Show x-labels every ~5 bars to avoid crowding
+    const labelEvery = Math.ceil(totalBars / 6);
+
+    dataPoints.forEach((d, i) => {
+      const pct = (d.bal / maxBal) * 100;
+      const isLast = i === dataPoints.length - 1;
+
+      const col = document.createElement('div');
+      col.className = 'bar-col';
+
+      const fill = document.createElement('div');
+      fill.className = 'bar-fill';
+      fill.style.height = pct + '%';
+      fill.style.background = isLast ? 'var(--gold)' : '#d4d4d4';
+      fill.title = `${d.calYear}: ${fmtFull(d.bal)}`;
+      col.appendChild(fill);
+      barsWrap.appendChild(col);
+
+      const xlbl = document.createElement('div');
+      xlbl.className = 'x-label';
+      xlbl.textContent = (i % labelEvery === 0 || isLast) ? String(d.calYear) : '';
+      xAxis.appendChild(xlbl);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', calcCompound);
-  ['principal','addition','ciRate','compoundFreq','ciYears'].forEach(id => {
+  ['principal','addition','ciRate','ciYears'].forEach(id => {
     document.getElementById(id).addEventListener('input', calcCompound);
   });
 </script>
