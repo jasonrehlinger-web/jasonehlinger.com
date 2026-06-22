@@ -9,30 +9,30 @@ import Layout from '../layouts/Layout.astro';
 >
 
   <!-- HERO -->
-  <section class="hero" style="padding:0; overflow:visible;">
-    <div style="display:grid; grid-template-columns:1fr 420px; align-items:stretch; max-width:1200px; margin:0 auto; min-height:600px;">
-      <div class="hero-inner" style="max-width:none; margin:0; padding:6rem 2rem 5rem 3rem;">
-        <span class="section-label">Leadership · Finance · Freedom</span>
-        <h1>Your Team Isn't Broken.<br/><em>Your Leadership System Is.</em></h1>
-        <p>I built a 7-figure company from a card table in our living room — no investors, no trust fund. Now I teach the exact frameworks I used to lead high-performing teams and build lasting wealth.</p>
-        <div class="hero-actions">
-          <a href="#the-forge" class="btn btn-gold">The Forge — Free Course</a>
-          <a href="/about" class="btn btn-outline">My Story</a>
-        </div>
-        <div style="margin-top:2rem; display:flex; align-items:center; flex-wrap:wrap; gap:0.5rem 0.75rem; border-top:1px solid #2a2a2a; padding-top:1.25rem; font-size:0.85rem;">
-          <span style="color:#888; font-weight:600;">💰 Also fixing your finances:</span>
-          <a href="/tools/investment-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Investment Calculator</a>
-          <span style="color:#444;">·</span>
-          <a href="/tools/retirement-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Retirement Calculator</a>
-          <span style="color:#444;">·</span>
-          <a href="/tools/compound-interest-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Compound Interest</a>
-        </div>
+  <section class="hero" style="position:relative; min-height:640px; overflow:hidden; padding:6rem 1.5rem 5rem;">
+    <div class="hero-inner">
+      <span class="section-label">Leadership · Finance · Freedom</span>
+      <h1>Your Team Isn't Broken.<br/><em>Your Leadership System Is.</em></h1>
+      <p>I built a 7-figure company from a card table in our living room — no investors, no trust fund. Now I teach the exact frameworks I used to lead high-performing teams and build lasting wealth.</p>
+      <div class="hero-actions">
+        <a href="#the-forge" class="btn btn-gold">The Forge — Free Course</a>
+        <a href="/about" class="btn btn-outline">My Story</a>
       </div>
-      <div style="display:flex; align-items:flex-end; justify-content:center; overflow:hidden;">
-        <img src="/jason-hero-full.jpg" alt="Jason Ehlinger — Leadership Coach and Personal Finance Expert"
-          style="width:100%; height:100%; object-fit:cover; object-position:top center; display:block;" />
+      <div style="margin-top:2rem; display:flex; align-items:center; flex-wrap:wrap; gap:0.5rem 0.75rem; border-top:1px solid #2a2a2a; padding-top:1.25rem; font-size:0.85rem; max-width:600px;">
+        <span style="color:#888; font-weight:600;">💰 Also fixing your finances:</span>
+        <a href="/tools/investment-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Investment Calculator</a>
+        <span style="color:#444;">·</span>
+        <a href="/tools/retirement-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Retirement Calculator</a>
+        <span style="color:#444;">·</span>
+        <a href="/tools/compound-interest-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Compound Interest</a>
       </div>
     </div>
+    <!-- Hero photo — absolutely positioned right side -->
+    <img
+      src="/jason-hero-full.jpg"
+      alt="Jason Ehlinger"
+      style="position:absolute; right:0; bottom:0; height:100%; width:auto; max-width:45%; object-fit:cover; object-position:top center; display:block;"
+    />
   </section>
 
   <!-- SOCIAL PROOF BAR -->
@@ -250,4 +250,6 @@ import Layout from '../layouts/Layout.astro';
         <span class="section-label">What People Say</span>
         <h2 style="font-size:2rem;">Real Leaders. Real Results.</h2>
       </div>
-      <div class="c
+      <div class="card-grid">
+        <div class="testimonial">
+          <blockquote>"Before I started working with Jason, my life and business felt out of sync with the goals and dreams I had for myself. From the moment I began usi
