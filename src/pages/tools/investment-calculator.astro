@@ -209,5 +209,16 @@ import Layout from '../../layouts/Layout.astro';
     calculate();
 
     document.getElementById('calcBtn').addEventListener('click', calculate);
+    document.querySelectorAll('.quick-add').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var el = document.getElementById('monthly');
+        el.value = Math.max(0, (parseFloat(el.value) || 0) + parseInt(btn.getAttribute('data-amount')));
+        calculate();
+      });
+    });
 
-    document.querySelectorAll('
+    ['initial', 'monthly', 'rate', 'currentAge', 'targetAge'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calculate);
+    });
+  });
+</script>
