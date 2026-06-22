@@ -15,104 +15,136 @@ import Layout from '../../layouts/Layout.astro';
   </section>
 
   <section class="section">
-    <div class="container" style="max-width:960px;">
+    <div class="container" style="max-width:1040px;">
       <div class="calc-grid">
 
-        <!-- INPUTS -->
         <div class="calc-inputs">
-          <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Your Situation</h2>
-
-          <div class="form-group">
-            <label for="currentAge">Current Age</label>
-            <input type="number" id="currentAge" value="35" min="18" max="80" step="1" />
+          <div class="field-group">
+            <label>Enter your current age.</label>
+            <div class="field-wrap">
+              <input type="number" id="currentAge" value="35" min="18" max="80" step="1" />
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="retireAge">Retirement Age</label>
-            <input type="number" id="retireAge" value="67" min="40" max="80" step="1" />
+          <div class="field-group">
+            <label>Enter the age you plan to retire.</label>
+            <div class="field-wrap">
+              <input type="number" id="retireAge" value="67" min="40" max="80" step="1" />
+            </div>
+            <p class="field-hint">If you were born in 1960 or later, 67 is the age for full Social Security benefits.</p>
           </div>
 
-          <div class="form-group">
-            <label for="currentSavings">Current Retirement Savings</label>
-            <div class="input-prefix">
-              <span>$</span>
+          <div class="field-group">
+            <label>About how much money do you currently have in investments?</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
               <input type="number" id="currentSavings" value="25000" min="0" step="1000" />
             </div>
+            <p class="field-hint">Include all investment accounts: 401(k)s, IRAs, mutual funds, etc.</p>
           </div>
 
-          <div class="form-group">
-            <label for="monthlyContrib">Monthly Contribution</label>
-            <div class="input-prefix">
-              <span>$</span>
+          <div class="field-group">
+            <label>How much will you contribute monthly?</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
               <input type="number" id="monthlyContrib" value="500" min="0" step="50" />
             </div>
+            <p class="field-hint">We recommend investing 15% of your paycheck.</p>
           </div>
 
-          <div class="form-group">
-            <label for="retireRate">Expected Annual Return</label>
-            <div class="input-suffix">
+          <div class="field-group">
+            <label>What do you think your annual return will be?</label>
+            <div class="field-wrap">
               <input type="number" id="retireRate" value="10" min="0" max="20" step="0.5" />
-              <span>%</span>
+              <span class="field-symbol right">%</span>
             </div>
+            <p class="field-hint">Historically, the 30-year return of the S&P 500 has been roughly 10-12%.</p>
           </div>
 
-          <div class="form-group">
-            <label for="monthlyNeeded">Monthly Income Needed in Retirement</label>
-            <div class="input-prefix">
-              <span>$</span>
+          <div class="field-group">
+            <label>Monthly Income Needed in Retirement</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
               <input type="number" id="monthlyNeeded" value="5000" min="0" step="100" />
             </div>
-            <small style="color:var(--gray); font-size:0.8rem;">In today's dollars. A common target is 80% of your current income.</small>
+            <p class="field-hint">In today's dollars. A common target is 80% of your current income.</p>
           </div>
 
-          <button class="btn btn-gold" style="width:100%; margin-top:0.5rem;" onclick="calcRetirement()">Calculate</button>
+          <button class="calc-btn" id="calcBtn">Calculate</button>
         </div>
 
-        <!-- RESULTS -->
         <div class="calc-results">
-          <div class="result-hero">
-            <div style="font-size:0.85rem; color:#aaa; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Projected at Retirement</div>
+          <div class="results-header">
+            <div>
+              <p class="result-eyebrow">Estimated Retirement Savings</p>
+              <p class="result-subtext" id="resultSubtext">In 32 years, your investment could be worth:</p>
+            </div>
             <div class="result-number" id="retireBalance">$0</div>
           </div>
 
-          <div class="result-breakdown">
-            <div class="result-row">
-              <span>Years Until Retirement</span>
-              <strong id="yearsLeft">—</strong>
+          <div class="result-stats">
+            <div class="stat-col">
+              <span class="stat-label">Initial Balance</span>
+              <span class="stat-value" id="statInitial">$0</span>
+              <span class="stat-pct" id="pctInitial">0% of Total</span>
             </div>
-            <div class="result-row">
-              <span>Monthly Income (4% Rule)</span>
-              <strong id="monthlyIncome" style="color:var(--gold);">$0</strong>
+            <div class="stat-col">
+              <span class="stat-label">Contributions</span>
+              <span class="stat-value" id="statContribs">$0</span>
+              <span class="stat-pct" id="pctContribs">0% of Total</span>
             </div>
-            <div class="result-row">
-              <span>Monthly Income Goal</span>
-              <strong id="monthlyGoal">$0</strong>
+            <div class="stat-col">
+              <span class="stat-label">Growth</span>
+              <span class="stat-value gold" id="statGrowth">$0</span>
+              <span class="stat-pct" id="pctGrowth">0% of Total</span>
             </div>
           </div>
 
-          <div id="verdict" style="margin-top:1.5rem; padding:1rem; border-radius:4px; font-size:0.9rem; font-weight:600; text-align:center;"></div>
+          <div class="chart-container">
+            <canvas id="retireChart" height="200"></canvas>
+            <div id="xLabels" class="x-labels"></div>
+          </div>
 
-          <!-- PROGRESS BAR -->
-          <div style="margin-top:1.5rem;">
-            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.5rem;">Progress Toward Goal</div>
-            <div style="background:#1a1a1a; border-radius:4px; height:12px; overflow:hidden;">
-              <div id="progressBar" style="height:100%; background:var(--gold); width:0%; transition:width 0.5s; border-radius:4px;"></div>
-            </div>
-            <div id="progressLabel" style="font-size:0.75rem; color:#aaa; margin-top:0.4rem; text-align:right;"></div>
+          <div id="verdict" class="verdict"></div>
+
+          <div class="result-cta">
+            <p>Want to make a plan to meet your retirement goals?</p>
+            <a href="/contact" class="btn btn-gold" style="display:inline-block;margin-top:0.6rem;">Work With Jason</a>
           </div>
         </div>
       </div>
 
-      <!-- EXPLAINER -->
-      <div style="margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:4px;">
-        <h3 style="font-size:1.1rem; margin-bottom:0.75rem;">How the 4% Rule Works</h3>
-        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem;">The 4% rule is a widely-used retirement guideline: if you withdraw 4% of your portfolio in your first year of retirement and adjust for inflation each year after, your money should last 30+ years.</p>
-        <p style="color:var(--gray); font-size:0.95rem;">To find your retirement number: multiply your desired monthly income by 12, then divide by 0.04. For example, $5,000/month = $60,000/year ÷ 0.04 = <strong>$1,500,000 needed</strong>.</p>
+      <div class="whatif-section">
+        <h2 class="text-center" style="font-size:2rem;margin-bottom:0.5rem;">What if I...</h2>
+        <p class="text-center" style="color:var(--gray);margin-bottom:2.5rem;">Small changes compound into massive differences. See what adjusting your habits could do.</p>
+        <div class="whatif-grid">
+          <div class="whatif-card">
+            <div class="whatif-icon">💰</div>
+            <h3 id="wif1-title">Saved an extra $100/month.</h3>
+            <p id="wif1-desc">Adds $100 a month in contributions, but creates</p>
+            <div class="whatif-number" id="wif1-num">$0</div>
+            <p class="whatif-sub">in additional growth</p>
+          </div>
+          <div class="whatif-card">
+            <div class="whatif-icon">☕</div>
+            <h3 id="wif2-title">Gave up daily coffee purchases.</h3>
+            <p id="wif2-desc">Adds ~$128 a month in contributions, but creates</p>
+            <div class="whatif-number" id="wif2-num">$0</div>
+            <p class="whatif-sub">in additional growth</p>
+          </div>
+          <div class="whatif-card">
+            <div class="whatif-icon">🍽️</div>
+            <h3 id="wif3-title">Cut weekly restaurant visits.</h3>
+            <p id="wif3-desc">Adds ~$200 a month in contributions, but creates</p>
+            <div class="whatif-number" id="wif3-num">$0</div>
+            <p class="whatif-sub">in additional growth</p>
+          </div>
+        </div>
       </div>
 
-      <div style="margin-top:2rem; text-align:center;">
-        <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1rem;">Want a real plan — not just a calculator?</p>
-        <a href="/contact" class="btn btn-gold">Work With Jason →</a>
+      <div class="explainer">
+        <h3>How the 4% Rule Works</h3>
+        <p>The 4% rule is a widely-used retirement guideline: if you withdraw 4% of your portfolio in your first year of retirement and adjust for inflation each year after, your money should last 30+ years. To find your retirement number: multiply your desired monthly income by 12, then divide by 0.04.</p>
       </div>
     </div>
   </section>
@@ -120,126 +152,218 @@ import Layout from '../../layouts/Layout.astro';
 </Layout>
 
 <style>
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  .calc-inputs {
-    background: var(--light-gray);
-    padding: 2rem;
-    border-radius: 4px;
-  }
-  .calc-results {
-    background: var(--black);
-    color: var(--white);
-    padding: 2rem;
-    border-radius: 4px;
-  }
-  .result-hero {
-    text-align: center;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #2a2a2a;
-    margin-bottom: 1.5rem;
-  }
-  .result-number {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .result-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    color: #ccc;
-  }
-  .input-prefix, .input-suffix {
-    display: flex;
-    align-items: center;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .input-prefix span, .input-suffix span {
-    padding: 0.65rem 0.75rem;
-    background: #eee;
-    color: var(--gray);
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-  .input-prefix input, .input-suffix input {
-    border: none;
-    flex: 1;
-    padding: 0.65rem 0.75rem;
-    font-size: 1rem;
-  }
-  .input-prefix input:focus, .input-suffix input:focus { outline: none; }
-  @media (max-width: 768px) {
-    .calc-grid { grid-template-columns: 1fr; }
-    .result-number { font-size: 2rem; }
+  .calc-grid { display:grid; grid-template-columns:380px 1fr; gap:2.5rem; align-items:start; }
+  .calc-inputs { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .field-group { margin-bottom:1.4rem; }
+  .field-group label { display:block; font-weight:700; font-size:0.9rem; margin-bottom:0.5rem; color:var(--black); line-height:1.4; }
+  .field-wrap { display:flex; align-items:center; border:2px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa; transition:border-color 0.2s; }
+  .field-wrap:focus-within { border-color:var(--gold); background:#fff; }
+  .field-symbol { padding:0.7rem 0.85rem; font-size:1rem; font-weight:700; color:var(--gray); background:transparent; user-select:none; }
+  .field-symbol.right { border-left:1px solid #e5e5e5; }
+  .field-wrap input { flex:1; border:none; background:transparent; padding:0.7rem 0.5rem; font-size:1.05rem; font-weight:600; color:var(--black); min-width:0; }
+  .field-wrap input:focus { outline:none; }
+  .field-hint { font-size:0.78rem; color:var(--gray); margin-top:0.35rem; line-height:1.4; }
+  .calc-btn { width:100%; padding:0.9rem; background:var(--gold); color:#fff; border:none; border-radius:6px; font-size:1rem; font-weight:800; letter-spacing:0.03em; cursor:pointer; text-transform:uppercase; transition:opacity 0.2s; margin-top:0.25rem; }
+  .calc-btn:hover { opacity:0.88; }
+  .calc-results { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .results-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #eee; gap:1rem; }
+  .result-eyebrow { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:var(--black); margin-bottom:0.3rem; }
+  .result-subtext { font-size:0.85rem; color:var(--gray); }
+  .result-number { font-size:2.2rem; font-weight:900; color:var(--black); white-space:nowrap; }
+  .result-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding-bottom:1.5rem; border-bottom:1px solid #eee; margin-bottom:1.5rem; }
+  .stat-col { display:flex; flex-direction:column; gap:0.2rem; }
+  .stat-label { font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#aaa; }
+  .stat-value { font-size:1.3rem; font-weight:800; color:var(--black); }
+  .stat-value.gold { color:var(--gold); }
+  .stat-pct { font-size:0.75rem; color:var(--gray); }
+  .chart-container { margin-bottom:1.25rem; }
+  canvas { width:100%; display:block; }
+  .x-labels { display:flex; margin-top:4px; }
+  .x-lbl { flex:1; text-align:center; font-size:0.65rem; color:#aaa; overflow:hidden; }
+  .verdict { padding:0.85rem 1rem; border-radius:6px; font-size:0.9rem; font-weight:600; text-align:center; margin-bottom:1.25rem; }
+  .result-cta { border-top:1px solid #eee; padding-top:1.25rem; text-align:center; font-size:0.95rem; color:var(--gray); }
+
+  .whatif-section { margin-top:4rem; }
+  .whatif-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .whatif-card { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .whatif-icon { font-size:2.5rem; margin-bottom:1rem; }
+  .whatif-card h3 { font-size:0.95rem; font-weight:800; text-transform:uppercase; letter-spacing:0.03em; margin-bottom:0.5rem; color:var(--black); }
+  .whatif-card p { font-size:0.85rem; color:var(--gray); margin-bottom:0.5rem; }
+  .whatif-number { font-size:2rem; font-weight:900; color:var(--gold); line-height:1.1; margin:0.5rem 0 0.25rem; }
+  .whatif-sub { font-size:0.8rem; color:var(--gray); }
+
+  .explainer { margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:8px; }
+  .explainer h3 { font-size:1.1rem; margin-bottom:0.75rem; }
+  .explainer p { color:var(--gray); font-size:0.95rem; }
+
+  @media (max-width:860px) {
+    .calc-grid { grid-template-columns:1fr; }
+    .result-number { font-size:1.7rem; }
+    .whatif-grid { grid-template-columns:1fr; }
   }
 </style>
 
 <script>
-  function fmt(n) {
+  function fmtFull(n) {
     return '$' + Math.round(n).toLocaleString('en-US');
   }
 
+  function fmtShort(n) {
+    if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + Math.round(n / 1000) + 'K';
+    return '$' + Math.round(n);
+  }
+
+  function getFV(P, pmt, r, years) {
+    var n = years * 12;
+    if (r === 0) return P + pmt * n;
+    var mr = r / 12;
+    return P * Math.pow(1 + mr, n) + pmt * ((Math.pow(1 + mr, n) - 1) / mr);
+  }
+
   function calcRetirement() {
-    const currentAge = parseInt(document.getElementById('currentAge').value) || 35;
-    const retireAge = parseInt(document.getElementById('retireAge').value) || 67;
-    const P = parseFloat(document.getElementById('currentSavings').value) || 0;
-    const pmt = parseFloat(document.getElementById('monthlyContrib').value) || 0;
-    const annualRate = parseFloat(document.getElementById('retireRate').value) || 0;
-    const monthlyNeeded = parseFloat(document.getElementById('monthlyNeeded').value) || 5000;
+    var currentAge = parseInt(document.getElementById('currentAge').value) || 35;
+    var retireAge = parseInt(document.getElementById('retireAge').value) || 67;
+    var P = parseFloat(document.getElementById('currentSavings').value) || 0;
+    var pmt = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+    var annualRate = parseFloat(document.getElementById('retireRate').value) || 0;
+    var monthlyNeeded = parseFloat(document.getElementById('monthlyNeeded').value) || 5000;
 
-    const years = Math.max(retireAge - currentAge, 1);
-    const r = annualRate / 100 / 12;
-    const n = years * 12;
+    var years = Math.max(retireAge - currentAge, 1);
+    var r = annualRate / 100;
 
-    let finalBalance;
-    if (r === 0) {
-      finalBalance = P + pmt * n;
+    var finalBalance = getFV(P, pmt, r, years);
+    var totalContribs = pmt * 12 * years;
+    var growth = Math.max(finalBalance - P - totalContribs, 0);
+    var total = finalBalance || 1;
+
+    document.getElementById('retireBalance').textContent = fmtFull(finalBalance);
+    document.getElementById('resultSubtext').textContent = 'In ' + years + ' years, your investment could be worth:';
+    document.getElementById('statInitial').textContent = fmtFull(P);
+    document.getElementById('statContribs').textContent = fmtFull(totalContribs);
+    document.getElementById('statGrowth').textContent = fmtFull(growth);
+    document.getElementById('pctInitial').textContent = Math.round(P / total * 100) + '% of Total';
+    document.getElementById('pctContribs').textContent = Math.round(totalContribs / total * 100) + '% of Total';
+    document.getElementById('pctGrowth').textContent = Math.round(growth / total * 100) + '% of Total';
+
+    var monthlyIncome = (finalBalance * 0.04) / 12;
+    var verdictEl = document.getElementById('verdict');
+    if (monthlyIncome >= monthlyNeeded) {
+      verdictEl.style.background = '#e8f5e9';
+      verdictEl.style.color = '#2e7d32';
+      verdictEl.textContent = 'On track — your projected income of ' + fmtFull(monthlyIncome) + '/mo exceeds your goal.';
     } else {
-      finalBalance = P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+      var gap = monthlyNeeded - monthlyIncome;
+      verdictEl.style.background = '#fff3e0';
+      verdictEl.style.color = '#e65100';
+      verdictEl.textContent = 'Gap of ' + fmtFull(gap) + '/mo. Increase contributions or adjust your timeline.';
     }
 
-    const monthlyIncome = (finalBalance * 0.04) / 12;
-    const retirementGoal = (monthlyNeeded * 12) / 0.04;
-    const progress = Math.min((finalBalance / retirementGoal) * 100, 100);
+    buildChart(P, pmt, r, years, currentAge);
+    updateWhatIf(P, pmt, r, years, finalBalance);
+  }
 
-    document.getElementById('retireBalance').textContent = fmt(finalBalance);
-    document.getElementById('yearsLeft').textContent = years + ' years';
-    document.getElementById('monthlyIncome').textContent = fmt(monthlyIncome) + '/mo';
-    document.getElementById('monthlyGoal').textContent = fmt(monthlyNeeded) + '/mo';
+  function buildChart(P, pmt, r, years, startAge) {
+    var canvas = document.getElementById('retireChart');
+    var ctx = canvas.getContext('2d');
+    var currentYear = new Date().getFullYear();
 
-    const bar = document.getElementById('progressBar');
-    bar.style.width = progress.toFixed(0) + '%';
-    document.getElementById('progressLabel').textContent = progress.toFixed(0) + '% of goal';
+    var totalBars = Math.min(years, 30);
+    var step = years / totalBars;
+    var data = [];
+    for (var i = 1; i <= totalBars; i++) {
+      var yr = Math.round(i * step);
+      var bal = getFV(P, pmt, r, yr);
+      data.push({ yr: yr, bal: bal, label: String(currentYear + yr) });
+    }
 
-    const verdictEl = document.getElementById('verdict');
-    if (monthlyIncome >= monthlyNeeded) {
-      verdictEl.style.background = '#1a3a1a';
-      verdictEl.style.color = '#4caf50';
-      verdictEl.textContent = '✓ On track — your projected income exceeds your goal.';
-    } else {
-      const gap = monthlyNeeded - monthlyIncome;
-      verdictEl.style.background = '#2a1a0a';
-      verdictEl.style.color = '#f0a030';
-      verdictEl.textContent = `You have a $${Math.round(gap).toLocaleString()}/mo gap. Increase contributions or adjust your timeline.`;
+    var maxBal = 0;
+    for (var j = 0; j < data.length; j++) {
+      if (data[j].bal > maxBal) maxBal = data[j].bal;
+    }
+    maxBal = maxBal || 1;
+
+    var W = canvas.parentElement.clientWidth || 500;
+    var H = 200;
+    var padLeft = 60;
+    var padTop = 10;
+    var padBottom = 4;
+    var chartH = H - padTop - padBottom;
+    var chartW = W - padLeft;
+
+    canvas.width = W;
+    canvas.height = H;
+    ctx.clearRect(0, 0, W, H);
+
+    var ySteps = 5;
+    ctx.font = '11px Inter, sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.textAlign = 'right';
+    for (var k = 0; k <= ySteps; k++) {
+      var val = (maxBal / ySteps) * k;
+      var y = padTop + chartH - (k / ySteps) * chartH;
+      ctx.fillText(fmtShort(val), padLeft - 6, y + 4);
+      ctx.strokeStyle = '#eee';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padLeft, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+
+    var barGap = 3;
+    var barW = Math.max(2, (chartW / data.length) - barGap);
+    var goldColor = '#C8982A';
+    var grayColor = '#d4d4d4';
+
+    for (var m = 0; m < data.length; m++) {
+      var barH = (data[m].bal / maxBal) * chartH;
+      var x = padLeft + m * (barW + barGap);
+      var y2 = padTop + chartH - barH;
+      ctx.fillStyle = (m === data.length - 1) ? goldColor : grayColor;
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]);
+      } else {
+        ctx.rect(x, y2, barW, barH);
+      }
+      ctx.fill();
+    }
+
+    var labelsEl = document.getElementById('xLabels');
+    labelsEl.innerHTML = '';
+    labelsEl.style.paddingLeft = padLeft + 'px';
+    var labelEvery = Math.ceil(data.length / 6);
+    for (var n = 0; n < data.length; n++) {
+      var lbl = document.createElement('div');
+      lbl.className = 'x-lbl';
+      lbl.textContent = (n % labelEvery === 0 || n === data.length - 1) ? data[n].label : '';
+      labelsEl.appendChild(lbl);
     }
   }
 
-  document.addEventListener('DOMContentLoaded', calcRetirement);
-  ['currentAge','retireAge','currentSavings','monthlyContrib','retireRate','monthlyNeeded'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcRetirement);
+  function updateWhatIf(P, pmt, r, years, baseBalance) {
+    var scenarios = [
+      { extra: 100, titleId: 'wif1-title', descId: 'wif1-desc', numId: 'wif1-num', label: 'Saved an extra $100/month.' },
+      { extra: 128, titleId: 'wif2-title', descId: 'wif2-desc', numId: 'wif2-num', label: 'Gave up daily coffee purchases.' },
+      { extra: 200, titleId: 'wif3-title', descId: 'wif3-desc', numId: 'wif3-num', label: 'Cut weekly restaurant visits.' }
+    ];
+
+    scenarios.forEach(function(s) {
+      var newBalance = getFV(P, pmt + s.extra, r, years);
+      var gain = Math.max(newBalance - baseBalance, 0);
+      document.getElementById(s.titleId).textContent = s.label;
+      document.getElementById(s.descId).textContent = 'Adds $' + s.extra + ' a month in contributions, but creates';
+      document.getElementById(s.numId).textContent = fmtFull(gain);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    calcRetirement();
+    document.getElementById('calcBtn').addEventListener('click', calcRetirement);
+    ['currentAge','retireAge','currentSavings','monthlyContrib','retireRate','monthlyNeeded'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calcRetirement);
+    });
+    window.addEventListener('resize', calcRetirement);
   });
 </script>
