@@ -102,7 +102,7 @@ import Layout from '../../layouts/Layout.astro';
 
           <div class="chart-container">
             <canvas id="retireChart" height="200"></canvas>
-            <div id="xLabels" class="x-labels"></div>
+            
           </div>
 
           <div id="verdict" class="verdict"></div>
@@ -178,8 +178,6 @@ import Layout from '../../layouts/Layout.astro';
   .stat-pct { font-size:0.75rem; color:var(--gray); }
   .chart-container { margin-bottom:1.25rem; }
   canvas { width:100%; display:block; }
-  .x-labels { display:flex; margin-top:4px; }
-  .x-lbl { flex:1; text-align:center; font-size:0.65rem; color:#aaa; overflow:hidden; }
   .verdict { padding:0.85rem 1rem; border-radius:6px; font-size:0.9rem; font-weight:600; text-align:center; margin-bottom:1.25rem; }
   .result-cta { border-top:1px solid #eee; padding-top:1.25rem; text-align:center; font-size:0.95rem; color:var(--gray); }
 
@@ -284,10 +282,10 @@ import Layout from '../../layouts/Layout.astro';
     maxBal = maxBal || 1;
 
     var W = canvas.parentElement.clientWidth || 500;
-    var H = 200;
+    var H = 220;
     var padLeft = 60;
     var padTop = 10;
-    var padBottom = 4;
+    var padBottom = 24;
     var chartH = H - padTop - padBottom;
     var chartW = W - padLeft;
 
@@ -322,23 +320,19 @@ import Layout from '../../layouts/Layout.astro';
       var y2 = padTop + chartH - barH;
       ctx.fillStyle = (m === data.length - 1) ? goldColor : grayColor;
       ctx.beginPath();
-      if (ctx.roundRect) {
-        ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]);
-      } else {
-        ctx.rect(x, y2, barW, barH);
-      }
+      if (ctx.roundRect) { ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]); } else { ctx.rect(x, y2, barW, barH); }
       ctx.fill();
     }
 
-    var labelsEl = document.getElementById('xLabels');
-    labelsEl.innerHTML = '';
-    labelsEl.style.paddingLeft = padLeft + 'px';
     var labelEvery = Math.ceil(data.length / 6);
+    ctx.font = '10px Inter, sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.textAlign = 'center';
     for (var n = 0; n < data.length; n++) {
-      var lbl = document.createElement('div');
-      lbl.className = 'x-lbl';
-      lbl.textContent = (n % labelEvery === 0 || n === data.length - 1) ? data[n].label : '';
-      labelsEl.appendChild(lbl);
+      if (n % labelEvery === 0 || n === data.length - 1) {
+        var cx = padLeft + n * (barW + barGap) + barW / 2;
+        ctx.fillText(data[n].label, cx, H - 6);
+      }
     }
   }
 

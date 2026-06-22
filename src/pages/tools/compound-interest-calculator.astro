@@ -91,7 +91,7 @@ import Layout from '../../layouts/Layout.astro';
 
           <div class="chart-container">
             <canvas id="ciChart" height="200"></canvas>
-            <div id="xLabels" class="x-labels"></div>
+            
           </div>
 
           <div class="result-cta">
@@ -140,8 +140,6 @@ import Layout from '../../layouts/Layout.astro';
   .stat-pct { font-size:0.75rem; color:var(--gray); }
   .chart-container { margin-bottom:1.5rem; }
   canvas { width:100%; display:block; }
-  .x-labels { display:flex; margin-top:4px; }
-  .x-lbl { flex:1; text-align:center; font-size:0.65rem; color:#aaa; overflow:hidden; }
   .result-cta { border-top:1px solid #eee; padding-top:1.25rem; text-align:center; font-size:0.95rem; color:var(--gray); }
   .explainer { margin-top:2.5rem; padding:2rem; background:var(--light-gray); border-radius:8px; }
   .explainer h3 { font-size:1.1rem; margin-bottom:0.75rem; }
@@ -218,10 +216,10 @@ import Layout from '../../layouts/Layout.astro';
 
     // Canvas dimensions
     var W = canvas.parentElement.clientWidth || 500;
-    var H = 200;
+    var H = 220;
     var padLeft = 60;
     var padTop = 10;
-    var padBottom = 4;
+    var padBottom = 24;
     var chartH = H - padTop - padBottom;
     var chartW = W - padLeft;
 
@@ -258,20 +256,20 @@ import Layout from '../../layouts/Layout.astro';
       var y2 = padTop + chartH - barH;
       ctx.fillStyle = (m === data.length - 1) ? goldColor : grayColor;
       ctx.beginPath();
-      ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]);
+      if (ctx.roundRect) { ctx.roundRect(x, y2, barW, barH, [2, 2, 0, 0]); } else { ctx.rect(x, y2, barW, barH); }
       ctx.fill();
     }
 
-    // X-axis labels
-    var labelsEl = document.getElementById('xLabels');
-    labelsEl.innerHTML = '';
-    labelsEl.style.paddingLeft = padLeft + 'px';
+    // X-axis labels drawn on canvas
     var labelEvery = Math.ceil(data.length / 6);
+    ctx.font = '10px Inter, sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.textAlign = 'center';
     for (var n = 0; n < data.length; n++) {
-      var lbl = document.createElement('div');
-      lbl.className = 'x-lbl';
-      lbl.textContent = (n % labelEvery === 0 || n === data.length - 1) ? data[n].label : '';
-      labelsEl.appendChild(lbl);
+      if (n % labelEvery === 0 || n === data.length - 1) {
+        var cx = padLeft + n * (barW + barGap) + barW / 2;
+        ctx.fillText(data[n].label, cx, H - 6);
+      }
     }
   }
 
