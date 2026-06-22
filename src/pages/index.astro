@@ -128,6 +128,38 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- WIN WITH MONEY -->
+  <section class="section" style="background:var(--gold);">
+    <div class="container" style="max-width:1040px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+        <div>
+          <span class="section-label" style="color:#000; opacity:0.6;">Personal Finance</span>
+          <h2 style="font-size:2.4rem; color:#000; margin-bottom:1.25rem; line-height:1.2;">You Work Too Hard<br/>to Stay Broke.</h2>
+          <p style="color:#1a0e00; font-size:1.1rem; margin-bottom:1.5rem; line-height:1.7;">Most people earn good money and still feel behind. The problem isn't your income — it's that nobody taught you the system. I show families how to stop the paycheck-to-paycheck cycle, pay off debt, and build real wealth. No gimmicks. No fluff.</p>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn" style="background:#000; color:var(--gold);">Vision Tribe Money ↗</a>
+            <a href="/tools" class="btn" style="background:transparent; border:2px solid #000; color:#000;">Free Money Tools →</a>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          {[
+            { icon: "💰", text: "Zero-based budgeting that actually works" },
+            { icon: "💍", text: "Money & marriage — get on the same page" },
+            { icon: "📈", text: "Investing basics — start from nothing" },
+            { icon: "🏠", text: "Pay off your house faster than you think" },
+            { icon: "🎙️", text: "Live every Tuesday & Wednesday on YouTube" },
+            { icon: "🧮", text: "Free calculators — see your numbers grow" },
+          ].map(item => (
+            <div style="background:rgba(0,0,0,0.12); border-radius:6px; padding:1rem; font-size:0.88rem; color:#000; font-weight:600; display:flex; flex-direction:column; gap:0.4rem;">
+              <span style="font-size:1.4rem;">{item.icon}</span>
+              {item.text}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FREE LENCIONI COURSE -->
   <section class="section section-gray">
     <div class="container" style="max-width:860px;">
@@ -226,4 +258,3 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 </style>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
