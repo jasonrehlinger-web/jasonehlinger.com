@@ -50,9 +50,17 @@ import Layout from '../../layouts/Layout.astro';
           </div>
 
           <div class="field-group">
-            <label>Years to Invest</label>
+            <label>Current Age</label>
             <div class="field-wrap">
-              <input type="number" id="years" value="30" min="1" max="60" step="1" />
+              <input type="number" id="currentAge" value="30" min="10" max="80" step="1" />
+              <span class="field-symbol right">yrs</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Target Age</label>
+            <div class="field-wrap">
+              <input type="number" id="targetAge" value="60" min="20" max="90" step="1" />
               <span class="field-symbol right">yrs</span>
             </div>
           </div>
@@ -153,7 +161,9 @@ import Layout from '../../layouts/Layout.astro';
     const P = parseFloat(document.getElementById('initial').value) || 0;
     const pmt = parseFloat(document.getElementById('monthly').value) || 0;
     const annualRate = parseFloat(document.getElementById('rate').value) || 0;
-    const years = parseInt(document.getElementById('years').value) || 1;
+    const currentAge = parseInt(document.getElementById('currentAge').value) || 30;
+    const targetAge = parseInt(document.getElementById('targetAge').value) || 60;
+    const years = Math.max(targetAge - currentAge, 1);
     const r = annualRate / 100 / 12;
     const n = years * 12;
     let finalBalance = r === 0 ? P + pmt * n : P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
@@ -200,16 +210,4 @@ import Layout from '../../layouts/Layout.astro';
 
     document.getElementById('calcBtn').addEventListener('click', calculate);
 
-    document.querySelectorAll('.quick-add').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var el = document.getElementById('monthly');
-        el.value = Math.max(0, (parseFloat(el.value) || 0) + parseInt(btn.getAttribute('data-amount')));
-        calculate();
-      });
-    });
-
-    ['initial', 'monthly', 'rate', 'years'].forEach(function(id) {
-      document.getElementById(id).addEventListener('input', calculate);
-    });
-  });
-</script>
+    document.querySelectorAll('

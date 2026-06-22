@@ -53,9 +53,18 @@ import Layout from '../../layouts/Layout.astro';
           </div>
 
           <div class="field-group">
-            <label>Time Period (Years)</label>
+            <label>Current Age</label>
             <div class="field-wrap">
-              <input type="number" id="ciYears" value="30" min="1" max="60" step="1" />
+              <input type="number" id="currentAge" value="30" min="10" max="80" step="1" />
+              <span class="field-symbol right">yrs</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Target Age</label>
+            <div class="field-wrap">
+              <input type="number" id="targetAge" value="60" min="20" max="90" step="1" />
+              <span class="field-symbol right">yrs</span>
             </div>
           </div>
 
@@ -170,7 +179,9 @@ import Layout from '../../layouts/Layout.astro';
     var add = parseFloat(document.getElementById('addition').value) || 0;
     var annualRate = parseFloat(document.getElementById('ciRate').value) || 0;
     var freq = currentFreq;
-    var years = parseInt(document.getElementById('ciYears').value) || 1;
+    var currentAge = parseInt(document.getElementById('currentAge').value) || 30;
+    var targetAge = parseInt(document.getElementById('targetAge').value) || 60;
+    var years = Math.max(targetAge - currentAge, 1);
 
     var r = annualRate / 100 / freq;
     var addPerPeriod = add * 12 / freq;
@@ -279,18 +290,4 @@ import Layout from '../../layouts/Layout.astro';
     document.getElementById('calcBtn').addEventListener('click', calcCompound);
 
     document.querySelectorAll('.freq-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.freq-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        currentFreq = parseInt(btn.getAttribute('data-freq'));
-        calcCompound();
-      });
-    });
-
-    ['principal', 'addition', 'ciRate', 'ciYears'].forEach(function(id) {
-      document.getElementById(id).addEventListener('input', calcCompound);
-    });
-
-    window.addEventListener('resize', calcCompound);
-  });
-</script>
+      btn.addEventListener('c
