@@ -1,0 +1,245 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Retirement Calculator — Are You On Track?"
+  description="Use Jason Ehlinger's free retirement calculator to see if you're on track to retire with enough. Enter your age, savings, and contributions to get your projected retirement number."
+  keywords="retirement calculator, am I saving enough for retirement, retirement savings calculator, how much do I need to retire, retirement planning tool"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Free Tool</span>
+    <h1>Retirement Calculator</h1>
+    <p>Find out if you're on track — and what it takes to get there.</p>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:960px;">
+      <div class="calc-grid">
+
+        <!-- INPUTS -->
+        <div class="calc-inputs">
+          <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Your Situation</h2>
+
+          <div class="form-group">
+            <label for="currentAge">Current Age</label>
+            <input type="number" id="currentAge" value="35" min="18" max="80" step="1" />
+          </div>
+
+          <div class="form-group">
+            <label for="retireAge">Retirement Age</label>
+            <input type="number" id="retireAge" value="67" min="40" max="80" step="1" />
+          </div>
+
+          <div class="form-group">
+            <label for="currentSavings">Current Retirement Savings</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="currentSavings" value="25000" min="0" step="1000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="monthlyContrib">Monthly Contribution</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="monthlyContrib" value="500" min="0" step="50" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="retireRate">Expected Annual Return</label>
+            <div class="input-suffix">
+              <input type="number" id="retireRate" value="10" min="0" max="20" step="0.5" />
+              <span>%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="monthlyNeeded">Monthly Income Needed in Retirement</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="monthlyNeeded" value="5000" min="0" step="100" />
+            </div>
+            <small style="color:var(--gray); font-size:0.8rem;">In today's dollars. A common target is 80% of your current income.</small>
+          </div>
+
+          <button class="btn btn-gold" style="width:100%; margin-top:0.5rem;" onclick="calcRetirement()">Calculate</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-results">
+          <div class="result-hero">
+            <div style="font-size:0.85rem; color:#aaa; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Projected at Retirement</div>
+            <div class="result-number" id="retireBalance">$0</div>
+          </div>
+
+          <div class="result-breakdown">
+            <div class="result-row">
+              <span>Years Until Retirement</span>
+              <strong id="yearsLeft">—</strong>
+            </div>
+            <div class="result-row">
+              <span>Monthly Income (4% Rule)</span>
+              <strong id="monthlyIncome" style="color:var(--gold);">$0</strong>
+            </div>
+            <div class="result-row">
+              <span>Monthly Income Goal</span>
+              <strong id="monthlyGoal">$0</strong>
+            </div>
+          </div>
+
+          <div id="verdict" style="margin-top:1.5rem; padding:1rem; border-radius:4px; font-size:0.9rem; font-weight:600; text-align:center;"></div>
+
+          <!-- PROGRESS BAR -->
+          <div style="margin-top:1.5rem;">
+            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.5rem;">Progress Toward Goal</div>
+            <div style="background:#1a1a1a; border-radius:4px; height:12px; overflow:hidden;">
+              <div id="progressBar" style="height:100%; background:var(--gold); width:0%; transition:width 0.5s; border-radius:4px;"></div>
+            </div>
+            <div id="progressLabel" style="font-size:0.75rem; color:#aaa; margin-top:0.4rem; text-align:right;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPLAINER -->
+      <div style="margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:4px;">
+        <h3 style="font-size:1.1rem; margin-bottom:0.75rem;">How the 4% Rule Works</h3>
+        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem;">The 4% rule is a widely-used retirement guideline: if you withdraw 4% of your portfolio in your first year of retirement and adjust for inflation each year after, your money should last 30+ years.</p>
+        <p style="color:var(--gray); font-size:0.95rem;">To find your retirement number: multiply your desired monthly income by 12, then divide by 0.04. For example, $5,000/month = $60,000/year ÷ 0.04 = <strong>$1,500,000 needed</strong>.</p>
+      </div>
+
+      <div style="margin-top:2rem; text-align:center;">
+        <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1rem;">Want a real plan — not just a calculator?</p>
+        <a href="/contact" class="btn btn-gold">Work With Jason →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .calc-inputs {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .calc-results {
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .result-hero {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 1.5rem;
+  }
+  .result-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .result-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+  .input-prefix, .input-suffix {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .input-prefix span, .input-suffix span {
+    padding: 0.65rem 0.75rem;
+    background: #eee;
+    color: var(--gray);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .input-prefix input, .input-suffix input {
+    border: none;
+    flex: 1;
+    padding: 0.65rem 0.75rem;
+    font-size: 1rem;
+  }
+  .input-prefix input:focus, .input-suffix input:focus { outline: none; }
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .result-number { font-size: 2rem; }
+  }
+</style>
+
+<script>
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calcRetirement() {
+    const currentAge = parseInt(document.getElementById('currentAge').value) || 35;
+    const retireAge = parseInt(document.getElementById('retireAge').value) || 67;
+    const P = parseFloat(document.getElementById('currentSavings').value) || 0;
+    const pmt = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+    const annualRate = parseFloat(document.getElementById('retireRate').value) || 0;
+    const monthlyNeeded = parseFloat(document.getElementById('monthlyNeeded').value) || 5000;
+
+    const years = Math.max(retireAge - currentAge, 1);
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+
+    let finalBalance;
+    if (r === 0) {
+      finalBalance = P + pmt * n;
+    } else {
+      finalBalance = P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+    }
+
+    const monthlyIncome = (finalBalance * 0.04) / 12;
+    const retirementGoal = (monthlyNeeded * 12) / 0.04;
+    const progress = Math.min((finalBalance / retirementGoal) * 100, 100);
+
+    document.getElementById('retireBalance').textContent = fmt(finalBalance);
+    document.getElementById('yearsLeft').textContent = years + ' years';
+    document.getElementById('monthlyIncome').textContent = fmt(monthlyIncome) + '/mo';
+    document.getElementById('monthlyGoal').textContent = fmt(monthlyNeeded) + '/mo';
+
+    const bar = document.getElementById('progressBar');
+    bar.style.width = progress.toFixed(0) + '%';
+    document.getElementById('progressLabel').textContent = progress.toFixed(0) + '% of goal';
+
+    const verdictEl = document.getElementById('verdict');
+    if (monthlyIncome >= monthlyNeeded) {
+      verdictEl.style.background = '#1a3a1a';
+      verdictEl.style.color = '#4caf50';
+      verdictEl.textContent = '✓ On track — your projected income exceeds your goal.';
+    } else {
+      const gap = monthlyNeeded - monthlyIncome;
+      verdictEl.style.background = '#2a1a0a';
+      verdictEl.style.color = '#f0a030';
+      verdictEl.textContent = `You have a $${Math.round(gap).toLocaleString()}/mo gap. Increase contributions or adjust your timeline.`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', calcRetirement);
+  ['currentAge','retireAge','currentSavings','monthlyContrib','retireRate','monthlyNeeded'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calcRetirement);
+  });
+</script>

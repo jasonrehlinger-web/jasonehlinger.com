@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Compound Interest Calculator — Watch Your Money Multiply"
+  description="Use Jason Ehlinger's free compound interest calculator to see how interest compounds over time. The eighth wonder of the world — visualized."
+  keywords="compound interest calculator, compound interest formula, how compound interest works, compound growth calculator, interest calculator"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Free Tool</span>
+    <h1>Compound Interest Calculator</h1>
+    <p>"Compound interest is the eighth wonder of the world. He who understands it, earns it. He who doesn't, pays it." — Albert Einstein</p>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:960px;">
+      <div class="calc-grid">
+
+        <!-- INPUTS -->
+        <div class="calc-inputs">
+          <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Your Numbers</h2>
+
+          <div class="form-group">
+            <label for="principal">Starting Amount</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="principal" value="5000" min="0" step="500" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addition">Monthly Addition</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="addition" value="200" min="0" step="50" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ciRate">Annual Interest Rate</label>
+            <div class="input-suffix">
+              <input type="number" id="ciRate" value="8" min="0" max="30" step="0.5" />
+              <span>%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="compoundFreq">Compound Frequency</label>
+            <select id="compoundFreq">
+              <option value="365">Daily</option>
+              <option value="12" selected>Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="2">Semi-Annually</option>
+              <option value="1">Annually</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ciYears">Time Period (Years)</label>
+            <input type="number" id="ciYears" value="20" min="1" max="60" step="1" />
+          </div>
+
+          <button class="btn btn-gold" style="width:100%; margin-top:0.5rem;" onclick="calcCompound()">Calculate</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-results">
+          <div class="result-hero">
+            <div style="font-size:0.85rem; color:#aaa; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Final Balance</div>
+            <div class="result-number" id="ciBalance">$0</div>
+          </div>
+
+          <div class="result-breakdown">
+            <div class="result-row">
+              <span>Starting Amount</span>
+              <strong id="ciPrincipal">$0</strong>
+            </div>
+            <div class="result-row">
+              <span>Total Contributions</span>
+              <strong id="ciContributions">$0</strong>
+            </div>
+            <div class="result-row">
+              <span>Interest Earned</span>
+              <strong id="ciInterest" style="color:var(--gold);">$0</strong>
+            </div>
+          </div>
+
+          <!-- DONUT-STYLE BREAKDOWN -->
+          <div style="margin-top:2rem;">
+            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.75rem;">Where Your Balance Comes From</div>
+            <div id="stackBar" style="display:flex; border-radius:4px; overflow:hidden; height:20px;"></div>
+            <div style="display:flex; gap:1rem; margin-top:0.5rem;">
+              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
+                <div style="width:10px; height:10px; background:#2a2a2a; border-radius:2px;"></div> Principal
+              </div>
+              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
+                <div style="width:10px; height:10px; background:#555; border-radius:2px;"></div> Contributions
+              </div>
+              <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:#aaa;">
+                <div style="width:10px; height:10px; background:var(--gold); border-radius:2px;"></div> Interest
+              </div>
+            </div>
+          </div>
+
+          <!-- YEAR-BY-YEAR TABLE -->
+          <div style="margin-top:2rem; max-height:200px; overflow-y:auto;">
+            <div style="font-size:0.8rem; color:#aaa; margin-bottom:0.5rem;">Year-by-Year Breakdown</div>
+            <table id="yearTable" style="width:100%; font-size:0.8rem; border-collapse:collapse;"></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPLAINER -->
+      <div style="margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:4px;">
+        <h3 style="font-size:1.1rem; margin-bottom:0.75rem;">Why Compound Interest Changes Everything</h3>
+        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem;">With simple interest, you only earn interest on your original principal. With compound interest, you earn interest on your interest — and over time, that difference becomes massive.</p>
+        <p style="color:var(--gray); font-size:0.95rem;">The earlier you start, the more time your money has to compound. A 25-year-old investing $200/month will typically end up with significantly more at retirement than a 35-year-old investing twice as much — because of compounding's exponential nature.</p>
+      </div>
+
+      <div style="margin-top:2rem; text-align:center;">
+        <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1rem;">Ready to put compound interest to work for your family?</p>
+        <a href="/contact" class="btn btn-gold">Work With Jason →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .calc-inputs {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .calc-results {
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .result-hero {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 1.5rem;
+  }
+  .result-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .result-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+  .input-prefix, .input-suffix {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .input-prefix span, .input-suffix span {
+    padding: 0.65rem 0.75rem;
+    background: #eee;
+    color: var(--gray);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .input-prefix input, .input-suffix input {
+    border: none;
+    flex: 1;
+    padding: 0.65rem 0.75rem;
+    font-size: 1rem;
+  }
+  .input-prefix input:focus, .input-suffix input:focus { outline: none; }
+  #yearTable tr { border-bottom: 1px solid #1a1a1a; }
+  #yearTable td { padding: 0.4rem 0.5rem; color: #ccc; }
+  #yearTable td:last-child { color: var(--gold); text-align: right; }
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .result-number { font-size: 2rem; }
+  }
+</style>
+
+<script>
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calcCompound() {
+    const P = parseFloat(document.getElementById('principal').value) || 0;
+    const add = parseFloat(document.getElementById('addition').value) || 0;
+    const annualRate = parseFloat(document.getElementById('ciRate').value) || 0;
+    const freq = parseInt(document.getElementById('compoundFreq').value) || 12;
+    const years = parseInt(document.getElementById('ciYears').value) || 1;
+
+    const r = annualRate / 100 / freq;
+    const n = years * freq;
+    const monthlyToFreq = add * (12 / freq);
+
+    let balance;
+    if (r === 0) {
+      balance = P + add * 12 * years;
+    } else {
+      balance = P * Math.pow(1 + r, n) + monthlyToFreq * ((Math.pow(1 + r, n) - 1) / r);
+    }
+
+    const totalContribs = add * 12 * years;
+    const interest = balance - P - totalContribs;
+
+    document.getElementById('ciBalance').textContent = fmt(balance);
+    document.getElementById('ciPrincipal').textContent = fmt(P);
+    document.getElementById('ciContributions').textContent = fmt(totalContribs);
+    document.getElementById('ciInterest').textContent = fmt(Math.max(interest, 0));
+
+    // Stack bar
+    const total = balance || 1;
+    const pPct = (P / total * 100).toFixed(1);
+    const cPct = (totalContribs / total * 100).toFixed(1);
+    const iPct = (Math.max(interest, 0) / total * 100).toFixed(1);
+    document.getElementById('stackBar').innerHTML = `
+      <div style="width:${pPct}%; background:#2a2a2a;" title="Principal: ${fmt(P)}"></div>
+      <div style="width:${cPct}%; background:#555;" title="Contributions: ${fmt(totalContribs)}"></div>
+      <div style="width:${iPct}%; background:var(--gold);" title="Interest: ${fmt(interest)}"></div>
+    `;
+
+    // Year-by-year table
+    const table = document.getElementById('yearTable');
+    table.innerHTML = '<tr><td style="color:#aaa;">Year</td><td style="color:#aaa;">Contributions</td><td style="color:#aaa; text-align:right;">Balance</td></tr>';
+    for (let y = 1; y <= years; y++) {
+      const ny = y * freq;
+      let bal;
+      if (r === 0) {
+        bal = P + add * 12 * y;
+      } else {
+        bal = P * Math.pow(1 + r, ny) + monthlyToFreq * ((Math.pow(1 + r, ny) - 1) / r);
+      }
+      const contribSoFar = P + add * 12 * y;
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${y}</td><td>${fmt(contribSoFar)}</td><td>${fmt(bal)}</td>`;
+      table.appendChild(row);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', calcCompound);
+  ['principal','addition','ciRate','compoundFreq','ciYears'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calcCompound);
+  });
+</script>

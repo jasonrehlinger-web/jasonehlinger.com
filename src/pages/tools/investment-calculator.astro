@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Investment Calculator — Grow Your Wealth"
+  description="Use Jason Ehlinger's free investment calculator to see how your money grows over time with compound interest. Enter your initial investment, monthly contribution, and expected return."
+  keywords="investment calculator, compound growth calculator, wealth building calculator, how much will my investment grow, retirement investment calculator"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Free Tool</span>
+    <h1>Investment Calculator</h1>
+    <p>See exactly how your money grows over time. Adjust your inputs and watch wealth build.</p>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:960px;">
+      <div class="calc-grid">
+
+        <!-- INPUTS -->
+        <div class="calc-inputs">
+          <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Your Numbers</h2>
+
+          <div class="form-group">
+            <label for="initial">Initial Investment</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="initial" value="10000" min="0" step="100" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="monthly">Monthly Contribution</label>
+            <div class="input-prefix">
+              <span>$</span>
+              <input type="number" id="monthly" value="500" min="0" step="50" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="rate">Expected Annual Return</label>
+            <div class="input-suffix">
+              <input type="number" id="rate" value="10" min="0" max="30" step="0.5" />
+              <span>%</span>
+            </div>
+            <small style="color:var(--gray); font-size:0.8rem;">The S&P 500 has averaged ~10% annually over the long term.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="years">Years to Invest</label>
+            <input type="number" id="years" value="30" min="1" max="60" step="1" />
+          </div>
+
+          <button class="btn btn-gold" style="width:100%; margin-top:0.5rem;" onclick="calculate()">Calculate</button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calc-results">
+          <div class="result-hero">
+            <div style="font-size:0.85rem; color:#aaa; margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Final Balance</div>
+            <div class="result-number" id="finalBalance">$0</div>
+          </div>
+
+          <div class="result-breakdown">
+            <div class="result-row">
+              <span>Total Contributions</span>
+              <strong id="totalContributions">$0</strong>
+            </div>
+            <div class="result-row">
+              <span>Interest Earned</span>
+              <strong id="interestEarned" style="color:var(--gold);">$0</strong>
+            </div>
+          </div>
+
+          <!-- BAR CHART -->
+          <div style="margin-top:2rem;">
+            <div style="font-size:0.85rem; color:var(--gray); margin-bottom:0.75rem;">Growth Over Time</div>
+            <div id="chartBars" style="display:flex; align-items:flex-end; gap:4px; height:140px;"></div>
+            <div id="chartLabels" style="display:flex; gap:4px; margin-top:4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPLAINER -->
+      <div style="margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:4px;">
+        <h3 style="font-size:1.1rem; margin-bottom:0.75rem;">How This Calculator Works</h3>
+        <p style="color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem;">This calculator uses the future value of an annuity formula, compounded monthly. It assumes your monthly contribution is made at the beginning of each month and your initial lump sum earns interest from day one.</p>
+        <p style="color:var(--gray); font-size:0.95rem;">The default 10% return reflects the historical long-term average of the S&amp;P 500 before inflation. Past performance doesn't guarantee future results — this is for planning purposes only.</p>
+      </div>
+
+      <div style="margin-top:2rem; text-align:center;">
+        <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1rem;">Want a personalized plan to hit these numbers?</p>
+        <a href="/contact" class="btn btn-gold">Work With Jason →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .calc-inputs {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .calc-results {
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 4px;
+  }
+  .result-hero {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 1.5rem;
+  }
+  .result-number {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .result-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+  .input-prefix, .input-suffix {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .input-prefix span, .input-suffix span {
+    padding: 0.65rem 0.75rem;
+    background: #eee;
+    color: var(--gray);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .input-prefix input, .input-suffix input {
+    border: none;
+    flex: 1;
+    padding: 0.65rem 0.75rem;
+    font-size: 1rem;
+  }
+  .input-prefix input:focus, .input-suffix input:focus {
+    outline: none;
+  }
+  @media (max-width: 768px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .result-number { font-size: 2rem; }
+  }
+</style>
+
+<script>
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function calculate() {
+    const P = parseFloat(document.getElementById('initial').value) || 0;
+    const pmt = parseFloat(document.getElementById('monthly').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+    const years = parseInt(document.getElementById('years').value) || 1;
+
+    const r = annualRate / 100 / 12;
+    const n = years * 12;
+
+    let finalBalance;
+    if (r === 0) {
+      finalBalance = P + pmt * n;
+    } else {
+      finalBalance = P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+    }
+
+    const totalContributions = P + pmt * n;
+    const interestEarned = finalBalance - totalContributions;
+
+    document.getElementById('finalBalance').textContent = fmt(finalBalance);
+    document.getElementById('totalContributions').textContent = fmt(totalContributions);
+    document.getElementById('interestEarned').textContent = fmt(interestEarned);
+
+    buildChart(P, pmt, r, years);
+  }
+
+  function buildChart(P, pmt, r, years) {
+    const steps = Math.min(years, 10);
+    const step = Math.floor(years / steps);
+    const balances = [];
+    const labels = [];
+
+    for (let i = 1; i <= steps; i++) {
+      const yr = i * step;
+      const n = yr * 12;
+      let bal;
+      if (r === 0) {
+        bal = P + pmt * n;
+      } else {
+        bal = P * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+      }
+      balances.push(bal);
+      labels.push('Yr ' + yr);
+    }
+
+    const max = Math.max(...balances);
+    const barsEl = document.getElementById('chartBars');
+    const labelsEl = document.getElementById('chartLabels');
+    barsEl.innerHTML = '';
+    labelsEl.innerHTML = '';
+
+    balances.forEach((val, i) => {
+      const pct = max > 0 ? (val / max) * 100 : 0;
+      const bar = document.createElement('div');
+      bar.style.cssText = `flex:1; background:var(--gold); height:${pct}%; border-radius:2px 2px 0 0; min-height:2px; transition:height 0.3s;`;
+      bar.title = fmt(val);
+      barsEl.appendChild(bar);
+
+      const lbl = document.createElement('div');
+      lbl.textContent = labels[i];
+      lbl.style.cssText = 'flex:1; text-align:center; font-size:0.65rem; color:#aaa;';
+      labelsEl.appendChild(lbl);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', calculate);
+  ['initial','monthly','rate','years'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calculate);
+  });
+</script>
