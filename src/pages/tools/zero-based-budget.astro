@@ -339,8 +339,8 @@ import Layout from '../../layouts/Layout.astro';
             <div class="zero-sub" id="zeroSub">Goal: Income − Expenses = $0</div>
           </div>
 
-          <div class="sidebar-card" style="background:var(--black);color:var(--white);">
-            <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Jason's 5-Step Plan</div>
+          <div class="sidebar-card hope-plan-card">
+            <div class="hope-plan-label">Jason's 5-Step Financial Hope Plan</div>
             <div class="steps-mini">
               <div class="sm-step"><span class="sm-num">1</span><span>$1,500 starter emergency fund</span></div>
               <div class="sm-step"><span class="sm-num">2</span><span>Pay off ALL consumer debt</span></div>
@@ -348,7 +348,7 @@ import Layout from '../../layouts/Layout.astro';
               <div class="sm-step"><span class="sm-num">4</span><span>Pay off home early + 15% to retirement</span></div>
               <div class="sm-step"><span class="sm-num">5</span><span>Build legacy wealth that lives &amp; gives</span></div>
             </div>
-            <a href="/contact" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1rem;display:block;text-align:center;margin-top:1rem;">Get Your Custom Plan →</a>
+            <a href="/contact" class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1rem;display:block;text-align:center;margin-top:1.25rem;">Get Your Custom Plan →</a>
           </div>
 
           <div class="sidebar-card">
@@ -521,4 +521,8 @@ import Layout from '../../layouts/Layout.astro';
   .add-row-btn:hover { border-color: var(--gold); color: var(--gold); background: #fffbf0; }
 
   /* Field group */
-  .field-group label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--black
+  .field-group label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--black); }
+
+  /* ---- Sidebar ---- */
+  .bud-sidebar { position: sticky; top: 80px; }
+  .sidebar-card { background: #fff; border
