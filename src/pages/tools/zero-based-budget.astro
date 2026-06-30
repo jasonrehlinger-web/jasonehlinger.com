@@ -500,10 +500,10 @@ import Layout from '../../layouts/Layout.astro';
   .li-label:focus { outline: none; background: #fff; border-bottom: 1px solid var(--gold); color: #222; }
 
   /* Dollar input */
-  .li-input { display: flex; align-items: center; border: 2px solid #e5e5e5; border-radius: 6px; overflow: hidden; background: #fafafa; transition: border-color 0.2s; width: 120px; flex-shrink: 0; }
+  .li-input { display: flex; align-items: center; border: 2px solid #e5e5e5; border-radius: 6px; background: #fafafa; transition: border-color 0.2s; width: 120px; flex-shrink: 0; position: relative; }
   .li-input:focus-within { border-color: var(--gold); background: #fff; }
-  .li-input span { padding: 0.45rem 0.55rem; font-size: 0.88rem; font-weight: 700; color: #aaa; }
-  .li-input input { border: none; background: transparent; padding: 0.45rem 0.35rem; font-size: 0.92rem; font-weight: 600; width: 100%; min-width: 0; font-family: inherit; }
+  .li-input span { padding: 0.45rem 0.55rem; font-size: 0.88rem; font-weight: 700; color: #aaa; flex-shrink: 0; }
+  .li-input input { border: none; background: transparent; padding: 0.45rem 0.35rem 0.45rem 0; font-size: 0.92rem; font-weight: 600; width: 0; flex: 1; min-width: 0; font-family: inherit; position: relative; z-index: 1; }
   .li-input input:focus { outline: none; }
   .li-input input::placeholder { color: #ccc; }
 
@@ -524,5 +524,4 @@ import Layout from '../../layouts/Layout.astro';
   .field-group label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--black); }
 
   /* ---- Sidebar ---- */
-  .bud-sidebar { position: sticky; top: 80px; }
-  .sidebar-card { background: #fff; border
+  .bud-sidebar { positio
