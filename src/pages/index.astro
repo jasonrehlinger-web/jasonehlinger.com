@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="hero-inner">
       <span class="section-label">Leadership · Finance · Freedom</span>
       <h1>Your Team Isn't Broken.<br/><em>Your Leadership System Is.</em></h1>
-      <p>I built a 7-figure company from a card table in our living room — no investors, no trust fund. Now I teach the exact frameworks I used to lead high-performing teams and build lasting wealth.</p>
+      <p>You're already putting in the work. What most leaders and families are missing isn't effort — it's the right system. Built from a card table with no investors and no safety net, these are the proven frameworks for leading high-performing teams and building lasting wealth. They're yours to use.</p>
       <div class="hero-actions">
         <a href="#the-forge" class="btn btn-gold">The Forge — Free Course</a>
         <a href="/about" class="btn btn-outline">My Story</a>
@@ -106,7 +106,7 @@ import Layout from '../layouts/Layout.astro';
         <div style="background:var(--black); color:var(--white); border-radius:4px; padding:2.5rem;">
           <span class="section-label">Leadership</span>
           <h3 style="font-size:1.6rem; margin-bottom:1rem; color:var(--white);">The Leadership Operating System</h3>
-          <p style="color:#aaa; margin-bottom:1.5rem;">Stop working <em>in</em> your business. Start working <em>on</em> it. I'll give you the exact frameworks I used to build a high-performing, mission-driven team at Taika Translations.</p>
+          <p style="color:#aaa; margin-bottom:1.5rem;">Stop working <em>in</em> your business. Start working <em>on</em> it. You'll have the exact frameworks to build a high-performing, mission-driven team — proven at Taika Translations.</p>
           <ul class="checklist" style="border-color:#2a2a2a;">
             <li style="color:#ccc; border-color:#2a2a2a;">Build a high-accountability team</li>
             <li style="color:#ccc; border-color:#2a2a2a;">Make decisions without second-guessing</li>
@@ -237,7 +237,7 @@ import Layout from '../layouts/Layout.astro';
         <span class="section-label">My Story</span>
         <h2 style="font-size:2rem; margin-bottom:1.25rem;">I Don't Teach Theory. I Teach What I Lived.</h2>
         <p style="color:#ccc; margin-bottom:1rem; font-size:1.05rem;">I'm the CEO of <a href="https://www.taikatranslations.com" target="_blank" style="color:var(--gold);">Taika Translations</a>, a veteran-owned multimillion-dollar language services company built from scratch. U.S. Air Force veteran. Husband. Father of 8.</p>
-        <p style="color:#ccc; margin-bottom:2rem;">Every framework I teach came from painful, real-world experience — not a business school textbook.</p>
+        <p style="color:#ccc; margin-bottom:2rem;">Every framework here came from painful, real-world experience — not a business school textbook. If you're ready to lead differently and build real wealth, you're in the right place.</p>
         <a href="/about" class="btn btn-gold">Read My Full Story</a>
       </div>
     </div>
@@ -252,4 +252,75 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="card-grid">
         <div class="testimonial">
-          <blockquote>"Before I started working with Jason, my life and business felt out of sync with the goals and dreams I had for myself. From the moment I began usi
+          <blockquote>"Before I started working with Jason, my life and business felt out of sync with the goals and dreams I had for myself. From the moment I began using the strategies Jason shared, everything started to change."</blockquote>
+          <cite>Jake Gardner</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>"Working with Jason has completely changed how I see leadership. He doesn't just give orders — he listens, challenges us, and makes sure we understand the bigger mission. I've grown more in the past year than in all my previous experiences combined."</blockquote>
+          <cite>Karina Romano</cite>
+        </div>
+        <div class="testimonial">
+          <blockquote>"Jason has a way of making you feel both supported and accountable at the same time. He pushes you to think bigger, trusts you with real responsibility, and is always ready to jump in when needed."</blockquote>
+          <cite>João Vitor</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MASTERCLASS CTA -->
+  <section class="section" style="background:var(--black); text-align:center;">
+    <div class="container" style="max-width:680px;">
+      <span class="section-label">Free Masterclasses · Every Wednesday</span>
+      <h2 style="font-size:2.2rem; color:var(--white); margin-bottom:1rem;">Want to Build an Unbreakable Life?</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">Join our free weekly live masterclasses on leadership, finance, mindset, and building a life on your own terms.</p>
+      <form name="masterclass" method="POST" data-netlify="true"
+        style="display:flex; gap:0.75rem; max-width:460px; margin:0 auto; flex-wrap:wrap;">
+        <input type="hidden" name="form-name" value="masterclass" />
+        <input type="email" name="email" placeholder="Your email address" required
+          style="flex:1; padding:0.85rem 1rem; border:none; border-radius:2px; font-size:1rem; min-width:200px;" />
+        <button type="submit" class="btn btn-gold">Register Free</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section" style="text-align:center;">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Ready to Start?</span>
+      <h2 style="font-size:2rem; margin-bottom:1rem;">Stop Operating. Start Leading.</h2>
+      <p style="color:var(--gray); margin-bottom:2rem;">Whether it's leadership, personal finance, or a full life overhaul — let's figure out where you are and build a plan to get you there.</p>
+      <a href="/contact" class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Schedule a Free Assessment</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 860px) {
+    .hero img[alt="Jason Ehlinger"] { display: none !important; }
+  }
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 2rem 1.75rem;
+    text-decoration: none;
+    color: var(--black);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .tool-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .tool-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+  .tool-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .tool-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; flex: 1; margin-bottom: 1.25rem; }
+  .tool-link { font-size: 0.85rem; font-weight: 800; color: var(--gold); letter-spacing: 0.03em; }
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns:auto 1fr"],
+    div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
