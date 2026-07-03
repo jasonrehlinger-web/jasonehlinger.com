@@ -3,13 +3,12 @@ title: "How We Saved $100k on a Military Salary (And What We Did With It)"
 description: "It's not about earning more. It's about building a system. Here's exactly how a military family built real wealth starting from almost nothing."
 date: 2024-08-15
 author: Jason Ehlinger
+category: Finance
 ---
 
-People hear "saved $100k on a military salary" and they assume we had some secret advantage. We didn't.
+<p class="lede">People hear "saved $100k on a military salary" and they assume we had some secret advantage. We didn't. We had a modest income, a growing family, and a lot of pressure. What we also had — eventually — was a system.</p>
 
-We had a modest income, a growing family, and a lot of pressure. What we also had — eventually — was a system.
-
-Here's what nobody tells you about building wealth when your income feels too small: **the income is rarely the problem.** The system is.
+Here's what nobody tells you about building wealth when your income feels too small: the income is rarely the problem. The system is.
 
 ## The Mindset Problem Most Military Families Have
 
@@ -19,6 +18,12 @@ But I noticed something: some families — same income, same base, same circumst
 
 The difference wasn't income. It was intention.
 
+<div class="stat-row">
+  <div class="stat"><strong>$0</strong><span>Where we started</span></div>
+  <div class="stat"><strong>3</strong><span>Systems we built</span></div>
+  <div class="stat"><strong>$100k</strong><span>Saved on a military salary</span></div>
+</div>
+
 ## The System We Built
 
 We built our financial life around three things: a zero-based budget, an offense-defense framework, and what I call the "non-negotiables list."
@@ -27,7 +32,7 @@ We built our financial life around three things: a zero-based budget, an offense
 
 Every dollar has a job before the month starts. Not after. Before.
 
-We sat down at the beginning of each month and allocated every dollar of expected income: fixed expenses, savings, debt payoff, groceries, and everything else — down to zero. If there was money left over at the end of the allocation, we gave it a job too (usually extra debt payoff or investments).
+We sat down at the beginning of each month and allocated every dollar of expected income: fixed expenses, savings, debt payoff, groceries, and everything else — down to zero. If there was money left over at the end of the allocation, we gave it a job too, usually extra debt payoff or investments.
 
 This sounds restricting. It's actually the opposite. When every dollar has a job, you stop wondering where your money went. You told it where to go.
 
@@ -43,9 +48,16 @@ Most financial advice is all defense. You can't save your way to wealth forever 
 
 We decided early on what we would not sacrifice — and what everything else was fair game.
 
-For us, the non-negotiables were: savings (first, before anything), church giving, and one date night per month. Everything else — entertainment, eating out, clothing, extras — was negotiable.
+For us, the non-negotiables were: savings first, before anything, church giving, and one date night per month. Everything else — entertainment, eating out, clothing, extras — was negotiable.
 
 This prevented the most common budget fight: someone feels like life has no joy, so they blow the budget. When you protect what matters most, it's easier to sacrifice everything else.
+
+<div class="article-cta">
+  <span class="cta-label">Build Your Own System</span>
+  <h3>Try the Same Budget Framework We Used</h3>
+  <p>You don't need a military salary or a perfect month to start. Our free zero-based budget tool walks you through the exact structure — line by line.</p>
+  <a href="/tools/zero-based-budget/" class="btn btn-gold">Try the Free Budget Tool</a>
+</div>
 
 ## What Made It Hard
 
@@ -57,11 +69,11 @@ The mistake we used to make was treating setbacks as evidence that the system di
 
 Every time we got knocked back, we rebuilt. The system was the constant.
 
+<div class="pull-quote">The $100k wasn't the destination. It was the launchpad.</div>
+
 ## What We Did With It
 
 When we hit that $100k milestone, we didn't blow it. We used it as the foundation for the next phase — starting Taika Translations, buying assets, building toward a business that didn't require my labor to run.
-
-The $100k wasn't the destination. It was the launchpad.
 
 That's the real point of building savings: not to sit on a number, but to buy options. Options to take a risk. Options to invest. Options to build something bigger.
 
@@ -74,7 +86,3 @@ Write down every dollar you spent last month. Not what you think you spent. What
 Then ask: is that how I would have chosen to spend that money if I'd decided in advance?
 
 That gap — between what you chose and what happened — is your starting point.
-
----
-
-*Jason Ehlinger is a U.S. Air Force veteran and CEO of Taika Translations. He and his wife share their personal finance journey on the [Vision Tribe Money YouTube channel](https://www.youtube.com/@Visiontribemoney).*
