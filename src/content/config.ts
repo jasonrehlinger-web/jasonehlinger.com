@@ -7,6 +7,7 @@ const blog = defineCollection({
     description: z.string(),
     date: z.date(),
     author: z.string().default('Jason Ehlinger'),
+    category: z.enum(['Leadership', 'Finance']).default('Finance'),
     image: z.string().optional(),
   }),
 });
