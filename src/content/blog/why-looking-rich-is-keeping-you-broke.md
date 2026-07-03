@@ -3,12 +3,11 @@ title: "Why Looking Rich Is Keeping You Broke"
 description: "The car, the house, the vacations — none of it means anything on a balance sheet. Here's the difference between looking wealthy and building wealth, and how to tell which one you're actually doing."
 date: 2026-07-03
 author: Jason Ehlinger
+category: Finance
 keywords: "looking rich vs being rich, building wealth, net worth vs income, lifestyle inflation, financial discipline, how to build wealth"
 ---
 
-I know people who drive nicer cars than me, live in bigger houses than me, and have less than $500 to their name if the car breaks down tomorrow.
-
-I also know people who drive a ten-year-old truck, haven't upgraded their house in a decade, and could write a check to buy that same house in cash.
+<p class="lede">I know people who drive nicer cars than me, live in bigger houses than me, and have less than $500 to their name if the car breaks down tomorrow. I also know people who drive a ten-year-old truck, haven't upgraded their house in a decade, and could write a check to buy that same house in cash.</p>
 
 From the outside, you'd guess wrong every time about which family is actually wealthy. That's not an accident. It's the whole game.
 
@@ -38,11 +37,26 @@ This is lifestyle creep, and it's the single biggest reason high earners still e
 
 **Get comfortable being underestimated.** This is the part that trips people up. Building real wealth often means driving something unremarkable, living somewhere modest, and letting people assume less about you than is true. That's not a sacrifice — it's a strategy. The people who need everyone to know they're doing well are usually the ones with the least room to fall.
 
+<div class="article-cta">
+  <span class="cta-label">See Your Own Numbers</span>
+  <h3>What Would Redirecting Your Spending Actually Build?</h3>
+  <p>Run your own version of the math below with the free compound interest calculator — plug in a real number and watch what changes.</p>
+  <a href="/tools/compound-interest-calculator/" class="btn btn-gold">Try the Free Calculator</a>
+</div>
+
 ## The Math That Makes This Undeniable
 
 Say two people earn the same $80,000 a year for 20 years. One spends it all maintaining an image — nice car, upgraded house, the works — and ends those 20 years with a pile of depreciated stuff and no investments. The other invests just $500 a month into the market instead of financing the image, averaging a 9% return.
 
-That second person ends up with roughly $330,000 that the first person will never have — from the exact same income. Run your own version of this with the [compound interest calculator](/tools/compound-interest-calculator/) and watch what changes when you redirect even a small slice of income from appearance to ownership.
+<div class="stat-row">
+  <div class="stat"><strong>$80k</strong><span>Same starting income, both people</span></div>
+  <div class="stat"><strong>$500/mo</strong><span>Redirected from image to investing</span></div>
+  <div class="stat"><strong>$330k</strong><span>Difference after 20 years</span></div>
+</div>
+
+That second person ends up with roughly $330,000 that the first person will never have — from the exact same income.
+
+<div class="pull-quote">The goal was never to look like you've made it. The goal is to actually get there.</div>
 
 ## Where to Start
 
@@ -50,8 +64,4 @@ Pull up your last twelve months of major purchases — the car, the vacations, t
 
 You don't have to answer for the past. You just need that answer to change going forward.
 
-The goal was never to look like you've made it. The goal is to actually get there — even if nobody else notices until you already have.
-
----
-
-*Jason Ehlinger is a U.S. Air Force veteran and CEO of Taika Translations. He and his wife share their personal finance journey — including how they saved $100k on a military salary — on the [Vision Tribe Money YouTube channel](https://www.youtube.com/@Visiontribemoney). Watch live every Tuesday and Wednesday. Or [work directly with Jason](/contact/) to build a plan around your specific situation.*
+Even if nobody else notices until you already have.
