@@ -16,13 +16,22 @@ const { Content } = await post.render();
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
+
+const wordCount = post.body.split(/\s+/).filter(Boolean).length;
+const readTime = Math.max(1, Math.round(wordCount / 200));
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
 
-  <section class="page-hero">
-    <span class="section-label">{formatDate(post.data.date)}</span>
-    <h1 style="max-width:700px; margin:0 auto;">{post.data.title}</h1>
+  <section class="page-hero post-hero">
+    <div class="post-meta-row">
+      <span class="post-tag">{post.data.category}</span>
+      <span class="post-dot">•</span>
+      <span class="post-date">{formatDate(post.data.date)}</span>
+      <span class="post-dot">•</span>
+      <span class="post-readtime">{readTime} min read</span>
+    </div>
+    <h1 style="max-width:760px; margin:0 auto;">{post.data.title}</h1>
     <p>{post.data.description}</p>
   </section>
 
@@ -30,16 +39,32 @@ function formatDate(date: Date) {
     <div class="prose">
       <Content />
     </div>
+
+    <div class="author-box">
+      <img src="/jason-headshot.jpg" alt="Jason Ehlinger" />
+      <div>
+        <span class="author-name">Written By</span>
+        <h4>Jason Ehlinger</h4>
+        <p>U.S. Air Force veteran and CEO of Taika Translations. He and his wife share their finance and leadership journey every week on the <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener">Vision Tribe Money YouTube channel</a>.</p>
+      </div>
+    </div>
   </section>
 
   <section class="section section-gray text-center">
-    <div class="container" style="max-width:560px;">
-      <span class="section-label">Keep Reading</span>
-      <h2 style="font-size:1.6rem; margin-bottom:1rem;">More From Jason</h2>
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="/blog" class="btn btn-dark">All Articles</a>
-        <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-gold">Vision Tribe Money ↗</a>
+    <div class="container" style="max-width:640px;">
+      <span class="section-label">Your Next Step</span>
+      <h2 style="font-size:1.9rem; margin-bottom:0.85rem;">Ready to Put This Into Practice?</h2>
+      <p style="color:var(--gray); max-width:520px; margin:0 auto 2rem;">
+        Reading about it is step one. Building a plan around your specific situation is step two —
+        and that's where most people get stuck without a guide. Let's talk it through.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem;">
+        <a href="/contact" class="btn btn-gold">Book a Free Clarity Call</a>
+        <a href="/blog" class="btn btn-dark">Read More Articles</a>
       </div>
+      <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" style="font-size:0.9rem; font-weight:600; color:var(--gray);">
+        Or watch 777+ free videos on Vision Tribe Money ↗
+      </a>
     </div>
   </section>
 
