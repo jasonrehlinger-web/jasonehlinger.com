@@ -92,7 +92,7 @@ import Layout from '../../layouts/Layout.astro';
           <div class="bsb-track"><div class="bsb-fill" id="bsbFill" style="width:0%"></div></div>
           <span class="bsb-status" id="bsbStatus">Enter your income to get started</span>
         </div>
-        <button class="btn btn-gold bsb-dl" id="dlBtn">&#x2B07; Download PDF</button>
+        <button class="btn btn-gold bsb-dl" id="dlBtn">⬇ Download PDF</button>
       </div>
 
       <!-- MAIN LAYOUT -->
@@ -118,16 +118,16 @@ import Layout from '../../layouts/Layout.astro';
           <!-- INCOME -->
           <div class="bud-card" id="cat-income">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F4B5;</span>
+              <span class="cat-icon">💵</span>
               <h3>Monthly Income</h3>
               <span class="cat-ttl" id="ttl-income">$0</span>
             </div>
             <div class="line-items" id="li-income">
-              <div class="li-row"><input type="text" class="li-label" value="Primary Job / Salary" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Spouse / Partner Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Side Hustle / Freelance" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Rental Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Other Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Primary Job / Salary" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Spouse / Partner Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Side Hustle / Freelance" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Rental Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Other Income" /><div class="li-input"><span>$</span><input type="number" class="income-input" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-income" data-type="income">+ Add Income Source</button>
           </div>
@@ -135,17 +135,17 @@ import Layout from '../../layouts/Layout.astro';
           <!-- SAVING & INVESTING -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F4C8;</span>
+              <span class="cat-icon">📈</span>
               <h3>Saving &amp; Investing</h3>
               <span class="cat-ttl" id="ttl-saving">$0</span>
             </div>
             <p class="cat-tip">Step 1, 3 &amp; 4 — Pay yourself first, before expenses.</p>
             <div class="line-items" id="li-saving">
-              <div class="li-row"><input type="text" class="li-label" value="Emergency Fund (Step 1 to $1,500)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Retirement - 401k / IRA (Step 4 - 15%)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Fully Funded Emergency Fund (Step 3)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Other Investments (Step 5)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Sinking Funds (car, vacation, repairs)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Emergency Fund (Step 1 → $1,500)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Retirement — 401k / IRA (Step 4 → 15%)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Fully Funded Emergency Fund (Step 3)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Other Investments (Step 5)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Sinking Funds (car, vacation, repairs…)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="saving" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-saving" data-type="exp" data-cat="saving">+ Add Item</button>
           </div>
@@ -153,13 +153,13 @@ import Layout from '../../layouts/Layout.astro';
           <!-- GIVING -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F91D;</span>
+              <span class="cat-icon">🤝</span>
               <h3>Giving</h3>
               <span class="cat-ttl" id="ttl-giving">$0</span>
             </div>
             <div class="line-items" id="li-giving">
-              <div class="li-row"><input type="text" class="li-label" value="Tithes / Offering" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="giving" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Charity / Donations" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="giving" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Tithes / Offering" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="giving" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Charity / Donations" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="giving" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-giving" data-type="exp" data-cat="giving">+ Add Item</button>
           </div>
@@ -167,18 +167,18 @@ import Layout from '../../layouts/Layout.astro';
           <!-- DEBT PAYMENTS -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F4B3;</span>
+              <span class="cat-icon">💳</span>
               <h3>Debt Payments</h3>
               <span class="cat-ttl" id="ttl-debt">$0</span>
             </div>
             <p class="cat-tip">Step 2 — List every debt. Attack the smallest balance first.</p>
             <div class="line-items" id="li-debt">
-              <div class="li-row"><input type="text" class="li-label" value="Credit Card 1" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Credit Card 2" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Car Payment" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Student Loans" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Medical Debt" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Other Debt" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Credit Card 1" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Credit Card 2" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Car Payment" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Student Loans" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Medical Debt" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Other Debt" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="debt" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-debt" data-type="exp" data-cat="debt">+ Add Debt</button>
           </div>
@@ -186,17 +186,17 @@ import Layout from '../../layouts/Layout.astro';
           <!-- HOUSING -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F3E0;</span>
+              <span class="cat-icon">🏠</span>
               <h3>Housing</h3>
               <span class="cat-ttl" id="ttl-housing">$0</span>
             </div>
             <div class="line-items" id="li-housing">
-              <div class="li-row"><input type="text" class="li-label" value="Mortgage / Rent" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Extra Mortgage Payment (Step 4)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Property Taxes" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Homeowner's / Renter's Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="HOA Dues" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Home Repairs / Maintenance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Mortgage / Rent" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Extra Mortgage Payment (Step 4)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="50" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Property Taxes" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Homeowner's / Renter's Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="HOA Dues" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Home Repairs / Maintenance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="housing" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-housing" data-type="exp" data-cat="housing">+ Add Item</button>
           </div>
@@ -204,15 +204,15 @@ import Layout from '../../layouts/Layout.astro';
           <!-- TRANSPORTATION -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F697;</span>
+              <span class="cat-icon">🚗</span>
               <h3>Transportation</h3>
               <span class="cat-ttl" id="ttl-transport">$0</span>
             </div>
             <div class="line-items" id="li-transport">
-              <div class="li-row"><input type="text" class="li-label" value="Car Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Gas" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Car Maintenance / Registration" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Parking / Tolls / Rideshare" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Car Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Gas" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Car Maintenance / Registration" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Parking / Tolls / Rideshare" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="transport" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-transport" data-type="exp" data-cat="transport">+ Add Item</button>
           </div>
@@ -220,15 +220,15 @@ import Layout from '../../layouts/Layout.astro';
           <!-- FOOD -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F6D2;</span>
+              <span class="cat-icon">🛒</span>
               <h3>Food</h3>
               <span class="cat-ttl" id="ttl-food">$0</span>
             </div>
             <div class="line-items" id="li-food">
-              <div class="li-row"><input type="text" class="li-label" value="Groceries" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Dining Out / Restaurants" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Coffee / Drinks" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Work Lunches" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Groceries" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Dining Out / Restaurants" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Coffee / Drinks" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Work Lunches" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="food" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-food" data-type="exp" data-cat="food">+ Add Item</button>
           </div>
@@ -236,17 +236,17 @@ import Layout from '../../layouts/Layout.astro';
           <!-- UTILITIES -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F4A1;</span>
+              <span class="cat-icon">💡</span>
               <h3>Utilities</h3>
               <span class="cat-ttl" id="ttl-util">$0</span>
             </div>
             <div class="line-items" id="li-util">
-              <div class="li-row"><input type="text" class="li-label" value="Electric" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Gas / Heat" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Water / Sewer / Trash" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Internet" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Cell Phone(s)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Streaming and Subscriptions" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Electric" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Gas / Heat" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Water / Sewer / Trash" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Internet" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Cell Phone(s)" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Streaming &amp; Subscriptions" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="util" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-util" data-type="exp" data-cat="util">+ Add Item</button>
           </div>
@@ -254,15 +254,15 @@ import Layout from '../../layouts/Layout.astro';
           <!-- HEALTH & MEDICAL -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F3E5;</span>
+              <span class="cat-icon">🏥</span>
               <h3>Health &amp; Medical</h3>
               <span class="cat-ttl" id="ttl-health">$0</span>
             </div>
             <div class="line-items" id="li-health">
-              <div class="li-row"><input type="text" class="li-label" value="Health Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Dental / Vision Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Prescriptions / Copays" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Gym / Fitness" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Health Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Dental / Vision Insurance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Prescriptions / Copays" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Gym / Fitness" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="health" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-health" data-type="exp" data-cat="health">+ Add Item</button>
           </div>
@@ -270,15 +270,15 @@ import Layout from '../../layouts/Layout.astro';
           <!-- CHILDREN -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F467;</span>
+              <span class="cat-icon">👧</span>
               <h3>Children</h3>
               <span class="cat-ttl" id="ttl-children">$0</span>
             </div>
             <div class="line-items" id="li-children">
-              <div class="li-row"><input type="text" class="li-label" value="Childcare / Daycare" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="School / Tuition / Supplies" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Activities / Sports / Clubs" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Allowance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Childcare / Daycare" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="School / Tuition / Supplies" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Activities / Sports / Clubs" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Allowance" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="children" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-children" data-type="exp" data-cat="children">+ Add Item</button>
           </div>
@@ -286,14 +286,14 @@ import Layout from '../../layouts/Layout.astro';
           <!-- PERSONAL -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F9F4;</span>
+              <span class="cat-icon">🧴</span>
               <h3>Personal</h3>
               <span class="cat-ttl" id="ttl-personal">$0</span>
             </div>
             <div class="line-items" id="li-personal">
-              <div class="li-row"><input type="text" class="li-label" value="Clothing / Shoes" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Personal Care / Haircuts" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Cosmetics / Toiletries" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Clothing / Shoes" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Personal Care / Haircuts" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Cosmetics / Toiletries" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="personal" min="0" step="5" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-personal" data-type="exp" data-cat="personal">+ Add Item</button>
           </div>
@@ -301,14 +301,14 @@ import Layout from '../../layouts/Layout.astro';
           <!-- ENTERTAINMENT -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F389;</span>
+              <span class="cat-icon">🎉</span>
               <h3>Entertainment &amp; Fun</h3>
               <span class="cat-ttl" id="ttl-entertain">$0</span>
             </div>
             <div class="line-items" id="li-entertain">
-              <div class="li-row"><input type="text" class="li-label" value="Fun Money / Entertainment" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Hobbies" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Vacation / Travel Savings" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Fun Money / Entertainment" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Hobbies" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Vacation / Travel Savings" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="entertain" min="0" step="25" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-entertain" data-type="exp" data-cat="entertain">+ Add Item</button>
           </div>
@@ -316,14 +316,14 @@ import Layout from '../../layouts/Layout.astro';
           <!-- MISCELLANEOUS -->
           <div class="bud-card">
             <div class="cat-hdr">
-              <span class="cat-icon">&#x1F4E6;</span>
+              <span class="cat-icon">📦</span>
               <h3>Miscellaneous</h3>
               <span class="cat-ttl" id="ttl-misc">$0</span>
             </div>
             <div class="line-items" id="li-misc">
-              <div class="li-row"><input type="text" class="li-label" value="Pet Care" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Gifts / Occasions" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
-              <div class="li-row"><input type="text" class="li-label" value="Miscellaneous / Buffer" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">&#xD7;</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Pet Care" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Gifts / Occasions" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
+              <div class="li-row"><input type="text" class="li-label" value="Miscellaneous / Buffer" /><div class="li-input"><span>$</span><input type="number" class="exp-input" data-cat="misc" min="0" step="10" placeholder="0" /></div><button class="li-del" title="Remove row">×</button></div>
             </div>
             <button class="add-row-btn" data-target="li-misc" data-type="exp" data-cat="misc">+ Add Item</button>
           </div>
@@ -334,9 +334,9 @@ import Layout from '../../layouts/Layout.astro';
         <div class="bud-sidebar">
 
           <div class="sidebar-card zero-card" id="zeroCard">
-            <div class="zero-icon" id="zeroIcon">&#x1F3AF;</div>
+            <div class="zero-icon" id="zeroIcon">🎯</div>
             <div class="zero-label" id="zeroLabel">Every Dollar Needs a Job</div>
-            <div class="zero-sub" id="zeroSub">Goal: Income minus Expenses = $0</div>
+            <div class="zero-sub" id="zeroSub">Goal: Income − Expenses = $0</div>
           </div>
 
           <div class="sidebar-card hope-plan-card">
@@ -344,37 +344,37 @@ import Layout from '../../layouts/Layout.astro';
             <div class="steps-mini">
               <div class="sm-step"><span class="sm-num">1</span><span>$1,500 starter emergency fund</span></div>
               <div class="sm-step"><span class="sm-num">2</span><span>Pay off ALL consumer debt</span></div>
-              <div class="sm-step"><span class="sm-num">3</span><span>3-6 month emergency fund</span></div>
+              <div class="sm-step"><span class="sm-num">3</span><span>3–6 month emergency fund</span></div>
               <div class="sm-step"><span class="sm-num">4</span><span>Pay off home early + 15% to retirement</span></div>
-              <div class="sm-step"><span class="sm-num">5</span><span>Build legacy wealth that lives and gives</span></div>
+              <div class="sm-step"><span class="sm-num">5</span><span>Build legacy wealth that lives &amp; gives</span></div>
             </div>
-            <a href="/contact" class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1rem;display:block;text-align:center;margin-top:1.25rem;">Get Your Custom Plan</a>
+            <a href="/contact" class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1rem;display:block;text-align:center;margin-top:1.25rem;">Get Your Custom Plan →</a>
           </div>
 
           <div class="sidebar-card">
             <h4 style="font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;color:var(--gray);">Category Breakdown</h4>
             <div class="cat-list">
-              <div class="cl-row"><span>Income</span><span class="cl-val" id="cl-income">$0</span></div>
-              <div class="cl-row gold-row"><span>Saving &amp; Investing</span><span class="cl-val" id="cl-saving">$0</span></div>
-              <div class="cl-row"><span>Giving</span><span class="cl-val" id="cl-giving">$0</span></div>
-              <div class="cl-row"><span>Debt Payments</span><span class="cl-val" id="cl-debt">$0</span></div>
-              <div class="cl-row"><span>Housing</span><span class="cl-val" id="cl-housing">$0</span></div>
-              <div class="cl-row"><span>Transportation</span><span class="cl-val" id="cl-transport">$0</span></div>
-              <div class="cl-row"><span>Food</span><span class="cl-val" id="cl-food">$0</span></div>
-              <div class="cl-row"><span>Utilities</span><span class="cl-val" id="cl-util">$0</span></div>
-              <div class="cl-row"><span>Health</span><span class="cl-val" id="cl-health">$0</span></div>
-              <div class="cl-row"><span>Children</span><span class="cl-val" id="cl-children">$0</span></div>
-              <div class="cl-row"><span>Personal</span><span class="cl-val" id="cl-personal">$0</span></div>
-              <div class="cl-row"><span>Entertainment</span><span class="cl-val" id="cl-entertain">$0</span></div>
-              <div class="cl-row"><span>Misc</span><span class="cl-val" id="cl-misc">$0</span></div>
+              <div class="cl-row"><span>💵 Income</span><span class="cl-val" id="cl-income">$0</span></div>
+              <div class="cl-row gold-row"><span>📈 Saving &amp; Investing</span><span class="cl-val" id="cl-saving">$0</span></div>
+              <div class="cl-row"><span>🤝 Giving</span><span class="cl-val" id="cl-giving">$0</span></div>
+              <div class="cl-row"><span>💳 Debt Payments</span><span class="cl-val" id="cl-debt">$0</span></div>
+              <div class="cl-row"><span>🏠 Housing</span><span class="cl-val" id="cl-housing">$0</span></div>
+              <div class="cl-row"><span>🚗 Transportation</span><span class="cl-val" id="cl-transport">$0</span></div>
+              <div class="cl-row"><span>🛒 Food</span><span class="cl-val" id="cl-food">$0</span></div>
+              <div class="cl-row"><span>💡 Utilities</span><span class="cl-val" id="cl-util">$0</span></div>
+              <div class="cl-row"><span>🏥 Health</span><span class="cl-val" id="cl-health">$0</span></div>
+              <div class="cl-row"><span>👧 Children</span><span class="cl-val" id="cl-children">$0</span></div>
+              <div class="cl-row"><span>🧴 Personal</span><span class="cl-val" id="cl-personal">$0</span></div>
+              <div class="cl-row"><span>🎉 Entertainment</span><span class="cl-val" id="cl-entertain">$0</span></div>
+              <div class="cl-row"><span>📦 Misc</span><span class="cl-val" id="cl-misc">$0</span></div>
             </div>
           </div>
 
           <div class="sidebar-card" style="border:2px solid var(--gold);">
-            <div style="font-size:1.4rem;margin-bottom:0.5rem;">&#x1F399;&#xFE0F;</div>
+            <div style="font-size:1.4rem;margin-bottom:0.5rem;">🎙️</div>
             <h4 style="font-size:0.95rem;font-weight:800;margin-bottom:0.5rem;">More Free Help</h4>
             <p style="font-size:0.82rem;color:var(--gray);margin-bottom:1rem;">777+ free videos on budgeting, wealth building, and money in marriage on Jason's YouTube channel.</p>
-            <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-dark" style="font-size:0.82rem;padding:0.6rem 1rem;display:block;text-align:center;">Watch on YouTube</a>
+            <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-dark" style="font-size:0.82rem;padding:0.6rem 1rem;display:block;text-align:center;">Watch on YouTube ↗</a>
           </div>
 
         </div><!-- /bud-sidebar -->
@@ -500,10 +500,10 @@ import Layout from '../../layouts/Layout.astro';
   .li-label:focus { outline: none; background: #fff; border-bottom: 1px solid var(--gold); color: #222; }
 
   /* Dollar input */
-  .li-input { display: flex; align-items: center; border: 2px solid #e5e5e5; border-radius: 6px; background: #fafafa; transition: border-color 0.2s; width: 120px; flex-shrink: 0; }
+  .li-input { display: flex; align-items: center; border: 2px solid #e5e5e5; border-radius: 6px; background: #fafafa; transition: border-color 0.2s; width: 120px; flex-shrink: 0; position: relative; }
   .li-input:focus-within { border-color: var(--gold); background: #fff; }
   .li-input span { padding: 0.45rem 0.55rem; font-size: 0.88rem; font-weight: 700; color: #aaa; flex-shrink: 0; }
-  .li-input input { border: none; background: transparent; padding: 0.45rem 0.35rem 0.45rem 0; font-size: 0.92rem; font-weight: 600; width: 0; flex: 1; min-width: 0; font-family: inherit; }
+  .li-input input { border: none; background: transparent; padding: 0.45rem 0.35rem 0.45rem 0; font-size: 0.92rem; font-weight: 600; width: 0; flex: 1; min-width: 0; font-family: inherit; position: relative; z-index: 1; }
   .li-input input:focus { outline: none; }
   .li-input input::placeholder { color: #ccc; }
 
@@ -570,7 +570,6 @@ import Layout from '../../layouts/Layout.astro';
 </style>
 
 <script is:inline>
-(function() {
   function fmt(n) {
     return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
@@ -600,35 +599,27 @@ import Layout from '../../layouts/Layout.astro';
     setText('bsbBudgeted', fmt(totalExp));
 
     var remEl = document.getElementById('bsbRemaining');
-    if (remEl) {
-      if (remaining < 0) { remEl.textContent = '-' + fmt(remaining); remEl.style.color = '#e55'; }
-      else { remEl.textContent = fmt(remaining); remEl.style.color = remaining === 0 ? '#4caf50' : 'var(--gold)'; }
-    }
+    if (remaining < 0) { remEl.textContent = '-' + fmt(remaining); remEl.style.color = '#e55'; }
+    else { remEl.textContent = fmt(remaining); remEl.style.color = remaining === 0 ? '#4caf50' : 'var(--gold)'; }
 
     var fill = document.getElementById('bsbFill');
-    if (fill) {
-      fill.style.width = pct + '%';
-      fill.style.background = remaining < 0 ? '#e55' : remaining === 0 ? '#4caf50' : 'var(--gold)';
-    }
+    fill.style.width = pct + '%';
+    fill.style.background = remaining < 0 ? '#e55' : remaining === 0 ? '#4caf50' : 'var(--gold)';
 
     var status = document.getElementById('bsbStatus');
-    if (status) {
-      if (income === 0) { status.textContent = 'Enter your income to get started'; status.style.color = '#888'; }
-      else if (remaining === 0) { status.textContent = 'Perfectly zeroed out - every dollar has a job!'; status.style.color = '#4caf50'; }
-      else if (remaining < 0) { status.textContent = 'Over budget by ' + fmt(remaining) + ' - find where to cut'; status.style.color = '#e55'; }
-      else { status.textContent = fmt(remaining) + ' still needs a job - keep going'; status.style.color = '#888'; }
-    }
+    if (income === 0) { status.textContent = 'Enter your income to get started'; status.style.color = '#888'; }
+    else if (remaining === 0) { status.textContent = '✓ Perfectly zeroed out — every dollar has a job!'; status.style.color = '#4caf50'; }
+    else if (remaining < 0) { status.textContent = 'Over budget by ' + fmt(remaining) + ' — find where to cut'; status.style.color = '#e55'; }
+    else { status.textContent = fmt(remaining) + ' still needs a job — keep going'; status.style.color = '#888'; }
 
     var zc = document.getElementById('zeroCard');
     var zi = document.getElementById('zeroIcon');
     var zl = document.getElementById('zeroLabel');
     var zs = document.getElementById('zeroSub');
-    if (zc && zi && zl && zs) {
-      if (income === 0) { zi.textContent='Target'; zl.textContent='Every Dollar Needs a Job'; zs.textContent='Goal: Income minus Expenses = $0'; zc.style.background=''; zc.style.borderColor='var(--gold)'; }
-      else if (remaining === 0) { zi.textContent='Done!'; zl.textContent='Budget Complete!'; zs.textContent='Every dollar is working for you.'; zc.style.background='#f0fff4'; zc.style.borderColor='#4caf50'; }
-      else if (remaining < 0) { zi.textContent='!'; zl.textContent='Over Budget'; zs.textContent='Cut ' + fmt(remaining) + ' from expenses.'; zc.style.background='#fff5f5'; zc.style.borderColor='#e55'; }
-      else { zi.textContent='$'; zl.textContent=fmt(remaining)+' Left to Assign'; zs.textContent='Keep going until it hits $0.'; zc.style.background=''; zc.style.borderColor='var(--gold)'; }
-    }
+    if (income === 0) { zi.textContent='🎯'; zl.textContent='Every Dollar Needs a Job'; zs.textContent='Goal: Income − Expenses = $0'; zc.style.background=''; zc.style.borderColor='var(--gold)'; }
+    else if (remaining === 0) { zi.textContent='✅'; zl.textContent='Budget Complete!'; zs.textContent='Every dollar is working for you.'; zc.style.background='#f0fff4'; zc.style.borderColor='#4caf50'; }
+    else if (remaining < 0) { zi.textContent='⚠️'; zl.textContent='Over Budget'; zs.textContent='Cut ' + fmt(remaining) + ' from expenses.'; zc.style.background='#fff5f5'; zc.style.borderColor='#e55'; }
+    else { zi.textContent='🎯'; zl.textContent=fmt(remaining)+' Left to Assign'; zs.textContent='Keep going until it hits $0.'; zc.style.background=''; zc.style.borderColor='var(--gold)'; }
   }
 
   function makeRow(labelText, inputClass, dataCat) {
@@ -655,7 +646,7 @@ import Layout from '../../layouts/Layout.astro';
     var del = document.createElement('button');
     del.className = 'li-del';
     del.title = 'Remove row';
-    del.textContent = 'x';
+    del.textContent = '×';
     del.addEventListener('click', function() { row.remove(); update(); });
     row.appendChild(labelInput);
     row.appendChild(wrap);
@@ -680,18 +671,18 @@ import Layout from '../../layouts/Layout.astro';
 
     var income = sumInputs('.income-input');
     var cats = [
-      {id:'saving',label:'Saving and Investing',icon:'Saving'},
-      {id:'giving',label:'Giving',icon:'Giving'},
-      {id:'debt',label:'Debt Payments',icon:'Debt'},
-      {id:'housing',label:'Housing',icon:'Housing'},
-      {id:'transport',label:'Transportation',icon:'Transport'},
-      {id:'food',label:'Food',icon:'Food'},
-      {id:'util',label:'Utilities',icon:'Utilities'},
-      {id:'health',label:'Health and Medical',icon:'Health'},
-      {id:'children',label:'Children',icon:'Children'},
-      {id:'personal',label:'Personal',icon:'Personal'},
-      {id:'entertain',label:'Entertainment',icon:'Entertainment'},
-      {id:'misc',label:'Miscellaneous',icon:'Misc'}
+      {id:'saving',label:'Saving & Investing',icon:'📈'},
+      {id:'giving',label:'Giving',icon:'🤝'},
+      {id:'debt',label:'Debt Payments',icon:'💳'},
+      {id:'housing',label:'Housing',icon:'🏠'},
+      {id:'transport',label:'Transportation',icon:'🚗'},
+      {id:'food',label:'Food',icon:'🛒'},
+      {id:'util',label:'Utilities',icon:'💡'},
+      {id:'health',label:'Health & Medical',icon:'🏥'},
+      {id:'children',label:'Children',icon:'👧'},
+      {id:'personal',label:'Personal',icon:'🧴'},
+      {id:'entertain',label:'Entertainment',icon:'🎉'},
+      {id:'misc',label:'Miscellaneous',icon:'📦'}
     ];
 
     var totalExp = 0;
@@ -702,7 +693,7 @@ import Layout from '../../layouts/Layout.astro';
       if (t === 0) return;
       totalExp += t;
       var rowsHTML = rows.map(function(r){return '<tr><td style="padding:2px 8px;font-size:10.5px;color:#444;">'+r.label+'</td><td style="padding:2px 8px;text-align:right;font-size:10.5px;font-weight:600;">'+fmt(r.val)+'</td></tr>';}).join('');
-      catsHTML += '<div style="break-inside:avoid;margin-bottom:10px;"><div style="background:#1a1a1a;color:#fff;padding:5px 10px;border-radius:3px 3px 0 0;display:flex;justify-content:space-between;"><span style="font-size:11px;font-weight:700;">'+cat.label+'</span><span style="font-size:11px;font-weight:800;color:#c8982a;">'+fmt(t)+'</span></div><table style="width:100%;border-collapse:collapse;background:#fafafa;">'+rowsHTML+'</table></div>';
+      catsHTML += '<div style="break-inside:avoid;margin-bottom:10px;"><div style="background:#1a1a1a;color:#fff;padding:5px 10px;border-radius:3px 3px 0 0;display:flex;justify-content:space-between;"><span style="font-size:11px;font-weight:700;">'+cat.icon+' '+cat.label+'</span><span style="font-size:11px;font-weight:800;color:#c8982a;">'+fmt(t)+'</span></div><table style="width:100%;border-collapse:collapse;background:#fafafa;">'+rowsHTML+'</table></div>';
     });
 
     var incomeRows = '';
@@ -715,21 +706,21 @@ import Layout from '../../layouts/Layout.astro';
 
     var remaining = income - totalExp;
     var remColor = remaining < 0 ? '#cc2222' : remaining === 0 ? '#2a8a2a' : '#c8982a';
-    var remLabel = remaining < 0 ? 'Over Budget by '+fmt(remaining) : remaining === 0 ? 'Zeroed Out - Every Dollar Has a Job!' : fmt(remaining)+' Left to Assign';
+    var remLabel = remaining < 0 ? 'Over Budget by '+fmt(remaining) : remaining === 0 ? '✓ Zeroed Out — Every Dollar Has a Job!' : fmt(remaining)+' Left to Assign';
 
-    var stepsHTML = '<div style="margin-top:14px;padding:10px 14px;background:#f9f9f9;border-radius:4px;border-left:3px solid #c8982a;"><div style="font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#c8982a;margin-bottom:6px;">Jason\'s 5-Step Financial Hope Plan</div><div style="display:flex;gap:6px;flex-wrap:wrap;">'
-      + ['$1,500 Emergency Fund','Pay Off ALL Debt','3-6 Month Emergency Fund','Pay Off Home + 15% Retirement','Build Legacy Wealth'].map(function(s,i){return '<span style="background:#1a1a1a;color:#fff;padding:3px 8px;border-radius:12px;font-size:9px;font-weight:700;"><span style="color:#c8982a;">'+(i+1)+'.</span> '+s+'</span>';}).join('')
+    var stepsHTML = '<div style="margin-top:14px;padding:10px 14px;background:#f9f9f9;border-radius:4px;border-left:3px solid #c8982a;"><div style="font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#c8982a;margin-bottom:6px;">Jason\'s 5-Step Wealth Plan</div><div style="display:flex;gap:6px;flex-wrap:wrap;">'
+      + ['$1,500 Emergency Fund','Pay Off ALL Debt','3–6 Month Emergency Fund','Pay Off Home + 15% Retirement','Build Legacy Wealth'].map(function(s,i){return '<span style="background:#1a1a1a;color:#fff;padding:3px 8px;border-radius:12px;font-size:9px;font-weight:700;"><span style="color:#c8982a;">'+(i+1)+'.</span> '+s+'</span>';}).join('')
       + '</div></div>';
 
     var html = '<div style="max-width:780px;margin:0 auto;font-family:Arial,sans-serif;padding:20px;">'
       + '<div style="background:#111;color:#fff;padding:18px 22px;border-radius:6px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">'
-      + '<div><div style="color:#c8982a;font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;">Jason Ehlinger - Personal Finance</div>'
+      + '<div><div style="color:#c8982a;font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;">Jason Ehlinger · Personal Finance</div>'
       + '<div style="font-size:20px;font-weight:900;">Monthly Zero-Based Budget</div>'
-      + '<div style="color:#aaa;font-size:11px;margin-top:3px;">'+name+' - '+month+'</div></div>'
+      + '<div style="color:#aaa;font-size:11px;margin-top:3px;">'+name+' &nbsp;·&nbsp; '+month+'</div></div>'
       + '<div style="text-align:right;"><div style="color:#c8982a;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;">Every Dollar Has a Job</div>'
       + '<div style="color:#888;font-size:9px;margin-top:3px;">jasonehlinger.com</div></div></div>'
       + '<div style="margin-bottom:14px;"><div style="background:#c8982a;color:#fff;padding:5px 10px;border-radius:3px 3px 0 0;display:flex;justify-content:space-between;">'
-      + '<span style="font-size:11px;font-weight:700;">Monthly Income</span><span style="font-size:11px;font-weight:800;">'+fmt(income)+'</span></div>'
+      + '<span style="font-size:11px;font-weight:700;">💵 Monthly Income</span><span style="font-size:11px;font-weight:800;">'+fmt(income)+'</span></div>'
       + '<table style="width:100%;border-collapse:collapse;background:#fafafa;">'+incomeRows+'</table></div>'
       + '<div style="columns:2;column-gap:14px;margin-bottom:14px;">'+catsHTML+'</div>'
       + '<div style="background:#f5f5f5;border-radius:4px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border:2px solid #ddd;">'
@@ -738,45 +729,47 @@ import Layout from '../../layouts/Layout.astro';
       + '<div style="text-align:right;"><div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.06em;">Balance</div>'
       + '<div style="font-size:16px;font-weight:900;color:'+remColor+';">'+remLabel+'</div></div></div>'
       + stepsHTML
-      + '<div style="text-align:center;margin-top:14px;color:#aaa;font-size:9px;">jasonehlinger.com - Personal finance coaching and free tools - For planning purposes only.</div>'
+      + '<div style="text-align:center;margin-top:14px;color:#aaa;font-size:9px;">jasonehlinger.com · Personal finance coaching & free tools · For planning purposes only.</div>'
       + '</div>';
 
     var pv = document.getElementById('printView');
     pv.innerHTML = html;
     pv.style.display = 'block';
     window.print();
-    setTimeout(function(){ pv.style.display = 'none'; }, 1000);
+    setTimeout(function(){ pv.style.display = 'none'; }, 500);
   }
 
-  function setup() {
-    document.querySelectorAll('.income-input, .exp-input').forEach(function(el){
-      el.addEventListener('input', update);
-    });
-    document.querySelectorAll('.li-del').forEach(function(btn){
-      btn.addEventListener('click', function(){ btn.closest('.li-row').remove(); update(); });
-    });
-    document.querySelectorAll('.add-row-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var targetId = btn.getAttribute('data-target');
-        var type = btn.getAttribute('data-type');
-        var cat = btn.getAttribute('data-cat');
-        var inputClass = type === 'income' ? 'income-input' : 'exp-input';
-        var row = makeRow('New Item', inputClass, cat);
-        document.getElementById(targetId).appendChild(row);
-        row.querySelector('.li-label').focus();
-        row.querySelector('.li-label').select();
-        update();
-      });
-    });
-    var dlBtn = document.getElementById('dlBtn');
-    if (dlBtn) dlBtn.addEventListener('click', downloadPDF);
-    update();
-  }
+  // Script is inline at bottom of page — DOM is already ready, run setup directly
+  document.querySelectorAll('.income-input, .exp-input').forEach(function(el){
+    el.addEventListener('input', update);
+  });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setup);
-  } else {
-    setup();
-  }
-})();
+  document.querySelectorAll('.li-del').forEach(function(btn){
+    btn.addEventListener('click', function(){ btn.closest('.li-row').remove(); update(); });
+  });
+
+  document.querySelectorAll('.add-row-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var targetId = btn.getAttribute('data-target');
+      var type = btn.getAttribute('data-type');
+      var cat = btn.getAttribute('data-cat');
+      var inputClass = type === 'income' ? 'income-input' : 'exp-input';
+      var row = makeRow('New Item', inputClass, cat);
+      document.getElementById(targetId).appendChild(row);
+      row.querySelector('.li-label').focus();
+      row.querySelector('.li-label').select();
+      update();
+    });
+  });
+
+  document.getElementById('dlBtn').addEventListener('click', downloadPDF);
+  update();
+
+  // Safety net: some browsers restore previously-typed form values on reload
+  // or back/forward navigation WITHOUT firing an 'input' event, which leaves
+  // the summary bar showing stale $0s even though the fields have values.
+  // Re-run the calculation on load and on pageshow (covers bfcache restores)
+  // to make sure the summary always matches what's actually in the fields.
+  window.addEventListener('pageshow', update);
+  window.addEventListener('load', function () { setTimeout(update, 250); });
 </script>
