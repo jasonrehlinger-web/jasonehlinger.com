@@ -1,0 +1,287 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Mortgage Calculator — The 15-Year, 25% Rule"
+  description="Use Jason Ehlinger's mortgage calculator to see how much house you can afford on a 15-year fixed mortgage with a payment no more than 25% of your monthly take-home pay."
+  keywords="mortgage calculator, 15 year fixed mortgage calculator, 25 percent of take home pay, how much house can I afford, manual underwriting, Churchill Mortgage"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Free Tool</span>
+    <h1>Mortgage Calculator</h1>
+    <p>The right amount of house is one you can pay off fast without becoming house-poor. This tool builds around one rule: a 15-year fixed mortgage with a payment no more than 25% of your monthly take-home pay.</p>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:960px;">
+      <div class="calc-grid">
+
+        <div class="calc-inputs">
+          <div class="field-group">
+            <label>Monthly Take-Home Pay</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
+              <input type="number" id="takeHome" value="6000" min="0" step="100" />
+            </div>
+            <p class="field-hint">Your actual after-tax pay that hits your bank account each month.</p>
+          </div>
+
+          <div class="field-group">
+            <label>Down Payment</label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
+              <input type="number" id="down" value="40000" min="0" step="1000" />
+            </div>
+            <p class="field-hint">A 20% down payment lets you skip PMI. More down means more house within the rule.</p>
+          </div>
+
+          <div class="field-group">
+            <label>Loan Term</label>
+            <div class="term-lock">
+              <span class="term-value">15-Year Fixed</span>
+              <span class="term-note">🔒 The whole strategy</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Interest Rate</label>
+            <div class="field-wrap">
+              <input type="number" id="rate" value="6" min="0" max="20" step="0.125" />
+              <span class="field-symbol right">%</span>
+            </div>
+            <p class="field-hint">15-year fixed rates are typically lower than 30-year rates. Use a quote from your lender.</p>
+          </div>
+
+          <div class="field-group">
+            <label>Property Tax Rate <span class="field-sub">(annual)</span></label>
+            <div class="field-wrap">
+              <input type="number" id="taxRate" value="1.1" min="0" max="5" step="0.05" />
+              <span class="field-symbol right">%</span>
+            </div>
+            <p class="field-hint">The national average is around 1.1% of home value per year.</p>
+          </div>
+
+          <div class="field-group">
+            <label>Home Insurance <span class="field-sub">(annual)</span></label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
+              <input type="number" id="insurance" value="1800" min="0" step="100" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>HOA Dues <span class="field-sub">(monthly)</span></label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
+              <input type="number" id="hoa" value="0" min="0" step="25" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>A Home You're Considering <span class="field-sub">(optional)</span></label>
+            <div class="field-wrap">
+              <span class="field-symbol">$</span>
+              <input type="number" id="targetPrice" value="" min="0" step="5000" placeholder="e.g. 350000" />
+            </div>
+            <p class="field-hint">Enter a price to check it against your 25% rule.</p>
+          </div>
+
+          <button class="calc-btn" id="calcBtn">Run the Numbers</button>
+        </div>
+
+        <div class="calc-results">
+          <p class="result-label">On a 15-year fixed, you can afford up to</p>
+          <div class="result-hero">
+            <div class="result-ring">
+              <span id="maxPrice">$0</span>
+            </div>
+          </div>
+
+          <div class="result-stats">
+            <div class="stat-item">
+              <span class="stat-label">Loan Amount</span>
+              <span class="stat-value" id="loanAmount">$0</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-label">Monthly Payment</span>
+              <span class="stat-value gold" id="maxPayment">$0</span>
+            </div>
+          </div>
+
+          <div class="piti-wrap">
+            <p class="chart-label">Where That Payment Goes</p>
+            <div class="piti-row"><span>Principal &amp; Interest</span><span id="pitiPI">$0</span></div>
+            <div class="piti-row"><span>Property Tax</span><span id="pitiTax">$0</span></div>
+            <div class="piti-row"><span>Home Insurance</span><span id="pitiIns">$0</span></div>
+            <div class="piti-row" id="hoaRow"><span>HOA Dues</span><span id="pitiHOA">$0</span></div>
+            <div class="piti-row total"><span>Total Monthly (PITI)</span><span id="pitiTotal">$0</span></div>
+            <p class="piti-note">That's <strong id="pctOfPay">25%</strong> of your take-home pay — right at the limit.</p>
+          </div>
+
+          <div id="checkBanner" class="check-banner" style="display:none;"></div>
+
+          <div class="result-cta">
+            <p>The numbers point to a price.<br/><strong>A real plan gets you the house — debt-free.</strong></p>
+            <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.75rem;">Work With Jason</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="explainer">
+        <h3>Why 15 Years and 25%?</h3>
+        <p>A 15-year fixed-rate mortgage costs you far less in total interest than a 30-year loan and forces the discipline of paying the home off in half the time. Keeping the payment — including taxes and insurance — at or below 25% of your monthly take-home pay is what keeps you from becoming "house-poor," where the mortgage eats every dollar and leaves nothing for investing, giving, or living.</p>
+        <p>This calculator solves for the most expensive home whose full monthly payment (principal, interest, property tax, home insurance, and any HOA dues) lands at 25% of the take-home pay you entered. Lower your price below that number and you buy yourself even more breathing room. These figures are estimates for planning only — your lender's quote is the real number.</p>
+
+        <h3 style="margin-top:1.75rem;">Consider Manual Underwriting</h3>
+        <p>If you have little or no credit score because you've avoided debt, most automated systems will turn you away — not because you can't pay, but because you don't fit the algorithm. <strong>Manual underwriting</strong> is a process where a real underwriter reviews your actual history: your rent payments, utility payments, income stability, and savings. It rewards responsible behavior instead of penalizing you for not carrying debt.</p>
+        <p>Lenders like <a href="https://www.churchillmortgage.com/" target="_blank" rel="noopener">Churchill Mortgage</a> specialize in manual underwriting for exactly this kind of borrower, and other banks and credit unions offer it as well. If a lender tells you that you "need" a credit score to buy a home, that's a signal to ask specifically about manual underwriting — or find one who does it.</p>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start; }
+  .calc-inputs { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:2rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+  .field-group { margin-bottom:1.35rem; }
+  .field-group label { display:block; font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; color:var(--black); }
+  .field-sub { font-weight:500; color:var(--gray); font-size:0.82rem; }
+  .field-wrap { display:flex; align-items:center; border:2px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa; transition:border-color 0.2s; }
+  .field-wrap:focus-within { border-color:var(--gold); background:#fff; }
+  .field-symbol { padding:0.75rem 0.85rem; font-size:1rem; font-weight:700; color:var(--gray); background:transparent; user-select:none; }
+  .field-symbol.right { border-left:1px solid #e5e5e5; }
+  .field-wrap input { flex:1; border:none; background:transparent; padding:0.75rem 0.5rem; font-size:1.1rem; font-weight:600; color:var(--black); min-width:0; }
+  .field-wrap input:focus { outline:none; }
+  .field-hint { font-size:0.8rem; color:var(--gray); margin-top:0.4rem; }
+  .term-lock { display:flex; align-items:center; justify-content:space-between; border:2px solid var(--gold); border-radius:6px; padding:0.7rem 0.9rem; background:rgba(200,152,42,0.08); }
+  .term-value { font-size:1.05rem; font-weight:800; color:var(--black); }
+  .term-note { font-size:0.78rem; font-weight:600; color:var(--gold-dark); }
+  .calc-btn { width:100%; padding:0.9rem; background:var(--gold); color:#fff; border:none; border-radius:6px; font-size:1rem; font-weight:800; letter-spacing:0.03em; cursor:pointer; text-transform:uppercase; transition:opacity 0.2s; margin-top:0.5rem; }
+  .calc-btn:hover { opacity:0.88; }
+  .calc-results { background:var(--black); border-radius:8px; padding:2.5rem 2rem; text-align:center; color:var(--white); }
+  .result-label { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:#aaa; margin-bottom:1rem; }
+  .result-hero { display:flex; justify-content:center; margin-bottom:1.5rem; }
+  .result-ring { border:4px solid var(--gold); border-radius:50%; width:200px; height:200px; display:flex; align-items:center; justify-content:center; box-shadow:0 0 0 8px rgba(200,152,42,0.12); }
+  .result-ring span { font-size:1.9rem; font-weight:900; color:var(--gold); line-height:1.1; }
+  .result-stats { display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:1.5rem; border-top:1px solid #222; padding-top:1.5rem; }
+  .stat-item { display:flex; flex-direction:column; gap:0.25rem; }
+  .stat-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:#888; }
+  .stat-value { font-size:1.3rem; font-weight:800; color:#fff; }
+  .stat-value.gold { color:var(--gold); }
+  .stat-divider { width:1px; height:40px; background:#333; }
+  .piti-wrap { border-top:1px solid #222; padding-top:1.25rem; margin-bottom:1.5rem; text-align:left; }
+  .chart-label { font-size:0.75rem; color:#888; margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .piti-row { display:flex; justify-content:space-between; font-size:0.9rem; color:#ccc; padding:0.4rem 0; border-bottom:1px solid #1c1c1c; }
+  .piti-row span:last-child { font-weight:700; color:#fff; }
+  .piti-row.total { border-bottom:none; border-top:1px solid #333; margin-top:0.35rem; padding-top:0.7rem; font-size:1rem; color:#fff; }
+  .piti-row.total span { color:var(--gold); }
+  .piti-note { font-size:0.82rem; color:#999; margin-top:0.75rem; text-align:center; }
+  .piti-note strong { color:var(--gold); }
+  .check-banner { border-radius:6px; padding:1rem 1.15rem; font-size:0.92rem; font-weight:600; margin-bottom:1.5rem; line-height:1.45; }
+  .check-banner.good { background:rgba(46,160,67,0.15); border:1px solid #2ea043; color:#7ee787; }
+  .check-banner.bad { background:rgba(200,60,40,0.15); border:1px solid #c8392c; color:#ff8a7a; }
+  .result-cta { border-top:1px solid #222; padding-top:1.5rem; font-size:0.95rem; color:#bbb; line-height:1.5; }
+  .result-cta strong { color:#fff; }
+  .explainer { margin-top:3rem; padding:2rem; background:var(--light-gray); border-radius:8px; }
+  .explainer h3 { font-size:1.1rem; margin-bottom:0.75rem; }
+  .explainer p { color:var(--gray); font-size:0.95rem; margin-bottom:0.75rem; }
+  .explainer a { color:var(--gold-dark); font-weight:700; }
+  @media (max-width:768px) { .calc-grid { grid-template-columns:1fr; } .result-ring { width:170px; height:170px; } .result-ring span { font-size:1.55rem; } }
+</style>
+
+<script>
+  const TERM_MONTHS = 180; // 15-year fixed
+  const RULE_PCT = 0.25;   // 25% of take-home pay
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  // Monthly payment per $1 of loan for the given monthly rate and term.
+  function pmtFactor(r, n) {
+    if (r === 0) return 1 / n;
+    return (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  }
+
+  function calculate() {
+    const takeHome = parseFloat(document.getElementById('takeHome').value) || 0;
+    const down = parseFloat(document.getElementById('down').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+    const taxRate = (parseFloat(document.getElementById('taxRate').value) || 0) / 100;
+    const annualIns = parseFloat(document.getElementById('insurance').value) || 0;
+    const hoa = parseFloat(document.getElementById('hoa').value) || 0;
+
+    const r = annualRate / 100 / 12;
+    const factor = pmtFactor(r, TERM_MONTHS);
+    const monthlyIns = annualIns / 12;
+
+    // Max total monthly payment allowed by the rule.
+    const maxPayment = takeHome * RULE_PCT;
+
+    // Solve for max home price so that PITI == maxPayment.
+    // maxPayment = (price - down)*factor + price*taxRate/12 + monthlyIns + hoa
+    let maxPrice = (maxPayment - monthlyIns - hoa + down * factor) / (factor + taxRate / 12);
+    if (!isFinite(maxPrice) || maxPrice < down) maxPrice = down; // guard: can't afford beyond the cash down
+
+    const loan = Math.max(maxPrice - down, 0);
+    const monthlyPI = loan * factor;
+    const monthlyTax = maxPrice * taxRate / 12;
+    const total = monthlyPI + monthlyTax + monthlyIns + hoa;
+
+    document.getElementById('maxPrice').textContent = fmt(maxPrice);
+    document.getElementById('loanAmount').textContent = fmt(loan);
+    document.getElementById('maxPayment').textContent = fmt(total);
+    document.getElementById('pitiPI').textContent = fmt(monthlyPI);
+    document.getElementById('pitiTax').textContent = fmt(monthlyTax);
+    document.getElementById('pitiIns').textContent = fmt(monthlyIns);
+    document.getElementById('pitiHOA').textContent = fmt(hoa);
+    document.getElementById('pitiTotal').textContent = fmt(total);
+
+    const hoaRow = document.getElementById('hoaRow');
+    hoaRow.style.display = hoa > 0 ? 'flex' : 'none';
+
+    const pct = takeHome > 0 ? (total / takeHome) * 100 : 0;
+    document.getElementById('pctOfPay').textContent = Math.round(pct) + '%';
+
+    checkTarget(takeHome, down, factor, taxRate, monthlyIns, hoa, maxPayment);
+  }
+
+  function checkTarget(takeHome, down, factor, taxRate, monthlyIns, hoa, maxPayment) {
+    const banner = document.getElementById('checkBanner');
+    const target = parseFloat(document.getElementById('targetPrice').value);
+
+    if (!target || target <= 0 || takeHome <= 0) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    const loan = Math.max(target - down, 0);
+    const payment = loan * factor + target * taxRate / 12 + monthlyIns + hoa;
+    const pct = (payment / takeHome) * 100;
+    banner.style.display = 'block';
+
+    if (payment <= maxPayment + 0.5) {
+      banner.className = 'check-banner good';
+      banner.innerHTML = '✓ A ' + fmt(target) + ' home fits your rule. Payment is ' +
+        fmt(payment) + '/mo (' + Math.round(pct) + '% of take-home).';
+    } else {
+      const over = payment - maxPayment;
+      banner.className = 'check-banner bad';
+      banner.innerHTML = '✗ A ' + fmt(target) + ' home is over budget. Payment is ' +
+        fmt(payment) + '/mo (' + Math.round(pct) + '% of take-home) — about ' +
+        fmt(over) + '/mo above the 25% limit.';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    calculate();
+    document.getElementById('calcBtn').addEventListener('click', calculate);
+    ['takeHome', 'down', 'rate', 'taxRate', 'insurance', 'hoa', 'targetPrice'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', calculate);
+    });
+  });
+</script>
