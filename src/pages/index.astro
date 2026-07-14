@@ -12,19 +12,19 @@ import Layout from '../layouts/Layout.astro';
   <section class="hero" style="position:relative; min-height:640px; overflow:hidden; padding:6rem 1.5rem 5rem;">
     <div class="hero-inner">
       <span class="section-label">Leadership · Finance · Freedom</span>
-      <h1>Your Team Isn't Broken.<br/><em>Your Leadership System Is.</em></h1>
-      <p>You're already putting in the work. What most leaders and families are missing isn't effort — it's the right system. Built from a card table with no investors and no safety net, these are the proven frameworks for leading high-performing teams and building lasting wealth. They're yours to use.</p>
+      <h1>Lead a Stronger Team. Build Lasting Wealth. <em>Without Doing It Alone.</em></h1>
+      <p>You're already working hard — for your team and for your family. What's missing usually isn't effort; it's a proven system. I built a 7-figure company from a card table with no investors, and I'll help you put the same frameworks to work: leading people well and building real wealth. It starts with a free assessment — one honest conversation to map your next step.</p>
       <div class="hero-actions">
-        <a href="#the-forge" class="btn btn-gold">The Forge — Free Course</a>
-        <a href="/about" class="btn btn-outline">My Story</a>
+        <a href="/contact" class="btn btn-gold">Schedule a Free Assessment</a>
+        <a href="#the-forge" class="btn btn-outline">Start The Forge — Free</a>
       </div>
       <div style="margin-top:2rem; display:flex; align-items:center; flex-wrap:wrap; gap:0.5rem 0.75rem; border-top:1px solid #2a2a2a; padding-top:1.25rem; font-size:0.85rem; max-width:600px;">
-        <span style="color:#888; font-weight:600;">💰 Also fixing your finances:</span>
+        <span style="color:#888; font-weight:600;">💰 Free money tools to run your numbers:</span>
+        <a href="/tools/mortgage-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Mortgage Calculator</a>
+        <span style="color:#444;">·</span>
         <a href="/tools/investment-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Investment Calculator</a>
         <span style="color:#444;">·</span>
         <a href="/tools/retirement-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Retirement Calculator</a>
-        <span style="color:#444;">·</span>
-        <a href="/tools/compound-interest-calculator" style="color:var(--gold); font-weight:700; text-decoration:none;">Compound Interest</a>
       </div>
     </div>
     <!-- Hero photo — absolutely positioned right side -->
@@ -148,8 +148,8 @@ import Layout from '../layouts/Layout.astro';
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
         <div>
           <span class="section-label" style="color:#000; opacity:0.6;">Personal Finance</span>
-          <h2 style="font-size:2.4rem; color:#000; margin-bottom:1.25rem; line-height:1.2;">You Work Too Hard<br/>to Stay Broke.</h2>
-          <p style="color:#1a0e00; font-size:1.1rem; margin-bottom:1.5rem; line-height:1.7;">Most people earn good money and still feel behind. The problem isn't your income — it's that nobody taught you the system. I show families how to stop the paycheck-to-paycheck cycle, pay off debt, and build real wealth. No gimmicks. No fluff.</p>
+          <h2 style="font-size:2.4rem; color:#000; margin-bottom:1.25rem; line-height:1.2;">Make Your Money Work<br/>as Hard as You Do.</h2>
+          <p style="color:#1a0e00; font-size:1.1rem; margin-bottom:1.5rem; line-height:1.7;">You earn a good income — but building real wealth takes more than a paycheck. Nobody hands you the playbook, so I teach it: how to break the paycheck-to-paycheck cycle, pay off debt, and build wealth that lasts. No gimmicks, no shame — just a plan that works.</p>
           <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
             <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn" style="background:#000; color:var(--gold);">Vision Tribe Money ↗</a>
             <a href="/tools" class="btn" style="background:transparent; border:2px solid #000; color:#000;">Free Money Tools →</a>
@@ -182,7 +182,13 @@ import Layout from '../layouts/Layout.astro';
         <h2 style="font-size:2rem;">Run Your Numbers Right Now</h2>
         <p style="color:var(--gray); margin-top:0.5rem;">No sign-up. No fluff. Just your numbers.</p>
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:1.5rem;">
+        <a href="/tools/mortgage-calculator" class="tool-card">
+          <div class="tool-icon">🏠</div>
+          <h3>Mortgage Calculator</h3>
+          <p>See how much house fits a 15-year loan at no more than 25% of your take-home pay.</p>
+          <span class="tool-link">Calculate Now →</span>
+        </a>
         <a href="/tools/investment-calculator" class="tool-card">
           <div class="tool-icon">📈</div>
           <h3>Investment Calculator</h3>
@@ -313,14 +319,4 @@ import Layout from '../layouts/Layout.astro';
   }
   .tool-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   .tool-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-  .tool-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.6rem; }
-  .tool-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; flex: 1; margin-bottom: 1.25rem; }
-  .tool-link { font-size: 0.85rem; font-weight: 800; color: var(--gold); letter-spacing: 0.03em; }
-  @media (max-width: 768px) {
-    div[style*="grid-template-columns:1fr 1fr"],
-    div[style*="grid-template-columns:auto 1fr"],
-    div[style*="grid-template-columns:repeat(3,1fr)"] {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
+  .tool-card h3 { font-size: 1.1rem; font-weight: 800; margi
