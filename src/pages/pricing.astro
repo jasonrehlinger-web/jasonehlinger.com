@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ============================================================
+//  BOOKING & PAYMENT LINKS  —  paste your real URLs here.
+//  Leave any blank ("") and that button safely falls back to
+//  the /contact form, so the site is never broken while you
+//  finish setup. See booking-and-payment-setup.md for how to
+//  create each of these.
+// ============================================================
+const booking = {
+  introCall:   "https://calendly.com/ceo-taikatranslations/30min", // Calendly — FREE 30-min intro call
+  finIntake:   "https://calendly.com/ceo-taikatranslations/financial-coaching-intake-session", // Calendly — Financial intake session ($150, pay at booking)
+  finFollowup: "https://calendly.com/ceo-taikatranslations/financial-coaching-follow-up-session", // Calendly — Financial follow-up session ($100, pay at booking)
+  finPackage:  "", // Calendly/PayPal payment link — Financial 6-session package ($550) — NOT set yet
+  leadSession: "https://calendly.com/ceo-taikatranslations/leadership-coaching-session", // Calendly — Leadership single session ($175, pay at booking)
+  leadPackage: "", // Calendly/PayPal payment link — Leadership 6-session package ($900) — NOT set yet
+};
+
+// Helper: real link if set, otherwise fall back to the contact page.
+const link = (u) => (u && u.trim()) ? u : "/contact";
+---
+
+<Layout
+  title="Coaching Pricing & Packages"
+  description="Simple, transparent pricing for 1-on-1 financial and leadership coaching with Jason Ehlinger. Every engagement starts with a free 30-minute intro call. Single sessions and discounted 6-session packages available."
+  keywords="financial coaching pricing, leadership coaching cost, personal finance coach rates, executive coaching packages, coaching session price, 1-on-1 coaching Jason Ehlinger"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Pricing</span>
+    <h1>Simple, Honest Pricing.</h1>
+    <p>You bring the drive. I bring the frameworks I've actually lived. Every engagement starts with a free 30-minute intro call — no pitch, just an honest look at where you are and whether working together makes sense.</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.75rem; justify-content:center;">
+      <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold">Book Your Free Intro Call</a>
+      <a href="#packages" class="btn btn-outline">See Packages</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container" style="max-width:900px;">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label">How It Works</span>
+        <h2 style="font-size:2rem;">A Simple Path — Starting Free</h2>
+        <p style="color:var(--gray); max-width:560px; margin:0.75rem auto 0;">No pressure and no guesswork. Three steps from where you are now to a plan you can actually run.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Book Your Free Intro Call</h3>
+          <p>A no-cost 30-minute conversation. We look at where you are and whether working together makes sense — no pitch, no obligation.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Get a Clear Plan</h3>
+          <p>In your first session we dig into your specific numbers or your team, and build a plan around your real goals.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Execute With Support</h3>
+          <p>Book follow-ups or a package as you put the plan to work — with a guide who has built and scaled it before.</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-dark">Book Your Free Intro Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section section-gray" id="packages">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <span class="section-label">Coaching Options</span>
+        <h2 style="font-size:2rem;">Two Ways to Work Together</h2>
+        <p style="color:var(--gray); max-width:560px; margin:0.75rem auto 0;">Choose the area you want to grow in. Every session is 1-on-1 and focused entirely on your specific situation.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:stretch;">
+
+        <!-- FINANCIAL COACHING -->
+        <div style="background:var(--white); border:2px solid #e8e8e8; border-radius:6px; padding:2.5rem; display:flex; flex-direction:column;">
+          <span class="section-label">Financial Coaching</span>
+          <h3 style="font-size:1.6rem; margin-bottom:0.5rem;">Build Wealth From Zero</h3>
+          <p style="color:var(--gray); margin-bottom:1.75rem; font-size:0.98rem;">Your numbers, your goals, a real plan — budgeting, getting unstuck, and building wealth for the long haul.</p>
+
+          <div style="border-top:1px solid #eee; padding:1.1rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
+            <div>
+              <strong style="display:block; font-size:1rem;">Intake Session</strong>
+              <span style="color:var(--gray); font-size:0.88rem;">First 45-min session · deep dive + plan</span>
+            </div>
+            <span style="font-size:1.5rem; font-weight:800; color:var(--gold-dark); white-space:nowrap;">$150</span>
+          </div>
+
+          <div style="border-top:1px solid #eee; padding:1.1rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
+            <div>
+              <strong style="display:block; font-size:1rem;">Follow-Up Session</strong>
+              <span style="color:var(--gray); font-size:0.88rem;">Each 45-min session after intake</span>
+            </div>
+            <span style="font-size:1.5rem; font-weight:800; color:var(--gold-dark); white-space:nowrap;">$100</span>
+          </div>
+
+          <div style="border-top:1px solid #eee; border-bottom:1px solid #eee; padding:1.1rem 0; margin-bottom:1.75rem; display:flex; justify-content:space-between; align-items:baseline; gap:1rem; background:rgba(200,152,42,0.06);">
+            <div>
+              <strong style="display:block; font-size:1rem;">6-Session Package <span style="color:var(--gold-dark); font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">· Save $100</span></strong>
+              <span style="color:var(--gray); font-size:0.88rem;">Intake + 5 follow-ups</span>
+            </div>
+            <span style="font-size:1.5rem; font-weight:800; color:var(--gold-dark); white-space:nowrap;">$550</span>
+          </div>
+
+          <div style="margin-top:auto; display:flex; flex-direction:column; gap:0.6rem;">
+            <a href={link(booking.finIntake)} data-book={booking.finIntake} class="btn btn-dark">Book Intake Session</a>
+            <a href={link(booking.finPackage)} data-book={booking.finPackage} data-pay class="btn btn-outline-dark">Buy 6-Session Package</a>
+            <a href={link(booking.finFollowup)} data-book={booking.finFollowup} style="text-align:center; font-size:0.85rem; color:var(--gold-dark); font-weight:600; margin-top:0.15rem;">Returning client? Book a follow-up →</a>
+          </div>
+        </div>
+
+        <!-- LEADERSHIP COACHING -->
+        <div style="background:var(--black); color:var(--white); border:2px solid var(--black); border-radius:6px; padding:2.5rem; display:flex; flex-direction:column;">
+          <span class="section-label">Leadership Coaching</span>
+          <h3 style="font-size:1.6rem; color:var(--white); margin-bottom:0.5rem;">From Manager to Leader</h3>
+          <p style="color:#aaa; margin-bottom:1.75rem; font-size:0.98rem;">Apply proven frameworks to your team, your culture, your goals — with someone who's built and scaled it before.</p>
+
+          <div style="border-top:1px solid #2a2a2a; padding:1.1rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
+            <div>
+              <strong style="display:block; font-size:1rem; color:var(--white);">Single Session</strong>
+              <span style="color:#999; font-size:0.88rem;">Per 90-min session · pay as you go</span>
+            </div>
+            <span style="font-size:1.5rem; font-weight:800; color:var(--gold); white-space:nowrap;">$175</span>
+          </div>
+
+          <div style="border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:1.1rem 0; margin-bottom:1.75rem; display:flex; justify-content:space-between; align-items:baseline; gap:1rem; background:rgba(200,152,42,0.10);">
+            <div>
+              <strong style="display:block; font-size:1rem; color:var(--white);">6-Session Package <span style="color:var(--gold); font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">· Save $150</span></strong>
+              <span style="color:#999; font-size:0.88rem;">$150/session · where real change happens</span>
+            </div>
+            <span style="font-size:1.5rem; font-weight:800; color:var(--gold); white-space:nowrap;">$900</span>
+          </div>
+
+          <div style="margin-top:auto; display:flex; flex-direction:column; gap:0.6rem;">
+            <a href={link(booking.leadSession)} data-book={booking.leadSession} class="btn btn-gold">Book a Session</a>
+            <a href={link(booking.leadPackage)} data-book={booking.leadPackage} data-pay class="btn btn-outline">Buy 6-Session Package</a>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center; color:var(--gray); font-size:0.9rem; margin-top:2rem;">Financial sessions are 45 minutes; leadership sessions are 90 minutes. All are 1-on-1 and held remotely. Not sure which is right? Start with the <a href={link(booking.introCall)} data-book={booking.introCall} style="color:var(--gold-dark); font-weight:600;">free intro call</a>.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S FREE FIRST -->
+  <section class="section text-center">
+    <div class="container" style="max-width:640px;">
+      <span class="section-label">Before You Pay a Dollar</span>
+      <h2 style="font-size:1.8rem; margin-bottom:1rem;">There's a Lot for Free</h2>
+      <p style="color:var(--gray); margin-bottom:2rem;">Two full leadership courses and 777+ personal-finance videos are already free — no email, no paywall. Coaching is for when you want it applied directly to your situation.</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+        <a href="/services" class="btn btn-dark">Explore the Free Courses</a>
+        <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold">Book Your Free Intro Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section-dark text-center">
+    <div class="container" style="max-width:600px;">
+      <span class="section-label">Ready When You Are</span>
+      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Let's Talk First — Free.</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">No pressure and no pitch. Just an honest conversation about where you want to go and the clearest way to get there.</p>
+      <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Book Your Free Intro Call</a>
+    </div>
+  </section>
+
+  <!-- Calendly popup widget assets -->
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- Button wiring: Calendly links open as a popup; payment links open in a new tab -->
+  <script is:inline>
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-book]');
+      if (!el) return;
+      var url = el.getAttribute('data-book');
+      if (!url) return; // blank → let the default /contact href handle it
+
+      if (url.indexOf('calendly.com') !== -1) {
+        e.preventDefault();
+        if (window.Calendly && Calendly.initPopupWidget) {
+          Calendly.initPopupWidget({ url: url });
+        } else {
+          window.open(url, '_blank', 'noopener');
+        }
+      } else {
+        // Payment link (PayPal/Stripe) or any other → open in a new tab
+        e.preventDefault();
+        window.open(url, '_blank', 'noopener');
+      }
+    });
+  </script>
+
+</Layout>
+
+<style>
+  /* Outline buttons used for the "Buy package" secondary action */
+  .btn-outline-dark {
+    background: transparent;
+    color: var(--black);
+    border: 2px solid var(--black);
+  }
+  .btn-outline-dark:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* How It Works steps */
+  .step-card {
+    background: var(--white);
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 2rem 1.75rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+  .step-card p { color: var(--gray); font-size: 0.92rem; line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
