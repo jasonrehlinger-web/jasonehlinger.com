@@ -7,7 +7,7 @@ category: Finance
 keywords: "how much emergency fund do I need, how to build an emergency fund, emergency fund self-employed, 3 to 6 months of expenses, emergency fund calculator, high-yield savings account, emergency savings, how much should I have in savings, emergency fund for entrepreneurs"
 ---
 
-<p class="lede">You've heard the rule a hundred times: "Keep three to six months of expenses in an emergency fund." It sounds authoritative. It's also close to useless — because it never tells you which number is *yours*, or what to do if saving even one month feels impossible right now.</p>
+<p class="lede">You've heard the rule a hundred times: "Keep three to six months of expenses in an emergency fund." It sounds authoritative. It's also close to useless — because it never tells you which number is <em>yours</em>, or what to do if saving even one month feels impossible right now.</p>
 
 Here's the truth most articles skip: the right emergency fund isn't a slogan, it's a calculation based on your income stability, your dependents, and how fast you could replace your paycheck. Get that number right and a job loss or a blown transmission becomes an inconvenience instead of a catastrophe. Get it wrong and you're one bad month away from the credit card spiral you've been trying to escape.
 
