@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
     <img
       src="/jason-hero-full.jpg"
       alt="Jason Ehlinger"
-      style="position:absolute; right:0; bottom:0; height:100%; width:auto; max-width:45%; object-fit:cover; object-position:top center; display:block;"
+      style="position:absolute; right:0; bottom:0; height:100%; width:auto; max-width:42%; object-fit:cover; object-position:top center; display:block;"
     />
   </section>
 
@@ -302,8 +302,15 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+  /* Desktop: reserve the right side for the hero photo so text never runs under it */
+  @media (min-width: 861px) {
+    .hero .hero-inner { padding-right: 46%; }
+    .hero .hero-inner h1,
+    .hero .hero-inner p { max-width: 100%; }
+  }
   @media (max-width: 860px) {
     .hero img[alt="Jason Ehlinger"] { display: none !important; }
+    .hero .hero-inner { padding-right: 0; }
   }
   .tool-card {
     display: flex;
@@ -319,4 +326,14 @@ import Layout from '../layouts/Layout.astro';
   }
   .tool-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   .tool-icon { font-size: 2.4rem; margin-bottom: 1rem; }
-  .tool-card h3 { font-size: 1.1rem; font-weight: 800; margi
+  .tool-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.6rem; }
+  .tool-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; flex: 1; margin-bottom: 1.25rem; }
+  .tool-link { font-size: 0.85rem; font-weight: 800; color: var(--gold); letter-spacing: 0.03em; }
+  @media (max-width: 768px) {
+    div[style*="grid-template-columns:1fr 1fr"],
+    div[style*="grid-template-columns:auto 1fr"],
+    div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
