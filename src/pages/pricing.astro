@@ -2,19 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 
 // ============================================================
-//  BOOKING & PAYMENT LINKS  —  paste your real URLs here.
+//  BOOKING & PAYMENT LINKS: paste your real URLs here.
 //  Leave any blank ("") and that button safely falls back to
 //  the /contact form, so the site is never broken while you
 //  finish setup. See booking-and-payment-setup.md for how to
 //  create each of these.
 // ============================================================
 const booking = {
-  introCall:   "https://calendly.com/ceo-taikatranslations/30min", // Calendly — FREE 30-min intro call
-  finIntake:   "https://calendly.com/ceo-taikatranslations/financial-coaching-intake-session", // Calendly — Financial intake session ($150, pay at booking)
-  finFollowup: "https://calendly.com/ceo-taikatranslations/financial-coaching-follow-up-session", // Calendly — Financial follow-up session ($100, pay at booking)
-  finPackage:  "", // Calendly/PayPal payment link — Financial 6-session package ($550) — NOT set yet
-  leadSession: "https://calendly.com/ceo-taikatranslations/leadership-coaching-session", // Calendly — Leadership single session ($175, pay at booking)
-  leadPackage: "", // Calendly/PayPal payment link — Leadership 6-session package ($900) — NOT set yet
+  introCall:   "https://calendly.com/ceo-taikatranslations/30min", // Calendly: FREE 30-min intro call
+  finIntake:   "https://calendly.com/ceo-taikatranslations/financial-coaching-intake-session", // Calendly: Financial intake session ($150, pay at booking)
+  finFollowup: "https://calendly.com/ceo-taikatranslations/financial-coaching-follow-up-session", // Calendly: Financial follow-up session ($100, pay at booking)
+  finPackage:  "", // Calendly/PayPal payment link: Financial 6-session package ($550), NOT set yet
+  leadSession: "https://calendly.com/ceo-taikatranslations/leadership-coaching-session", // Calendly: Leadership single session ($175, pay at booking)
+  leadPackage: "", // Calendly/PayPal payment link: Leadership 6-session package ($900), NOT set yet
 };
 
 // Helper: real link if set, otherwise fall back to the contact page.
@@ -30,7 +30,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
   <section class="page-hero">
     <span class="section-label">Pricing</span>
     <h1>Simple, Honest Pricing.</h1>
-    <p>You bring the drive. I bring the frameworks I've actually lived. Every engagement starts with a free 30-minute intro call — no pitch, just an honest look at where you are and whether working together makes sense.</p>
+    <p>You bring the drive. I bring the frameworks I've actually lived. Every engagement starts with a free 30-minute intro call: no pitch, just an honest look at where you are and whether working together makes sense.</p>
     <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.75rem; justify-content:center;">
       <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold">Book Your Free Intro Call</a>
       <a href="#packages" class="btn btn-outline">See Packages</a>
@@ -42,14 +42,14 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
     <div class="container" style="max-width:900px;">
       <div class="text-center" style="margin-bottom:3rem;">
         <span class="section-label">How It Works</span>
-        <h2 style="font-size:2rem;">A Simple Path — Starting Free</h2>
+        <h2 style="font-size:2rem;">A Simple Path: Starting Free</h2>
         <p style="color:var(--gray); max-width:560px; margin:0.75rem auto 0;">No pressure and no guesswork. Three steps from where you are now to a plan you can actually run.</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;">
         <div class="step-card">
           <div class="step-num">1</div>
           <h3>Book Your Free Intro Call</h3>
-          <p>A no-cost 30-minute conversation. We look at where you are and whether working together makes sense — no pitch, no obligation.</p>
+          <p>A no-cost 30-minute conversation. We look at where you are and whether working together makes sense. No pitch, no obligation.</p>
         </div>
         <div class="step-card">
           <div class="step-num">2</div>
@@ -59,7 +59,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
         <div class="step-card">
           <div class="step-num">3</div>
           <h3>Execute With Support</h3>
-          <p>Book follow-ups or a package as you put the plan to work — with a guide who has built and scaled it before.</p>
+          <p>Book follow-ups or a package as you put the plan to work, with a guide who has built and scaled it before.</p>
         </div>
       </div>
       <div class="text-center" style="margin-top:2.5rem;">
@@ -83,7 +83,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
         <div style="background:var(--white); border:2px solid #e8e8e8; border-radius:6px; padding:2.5rem; display:flex; flex-direction:column;">
           <span class="section-label">Financial Coaching</span>
           <h3 style="font-size:1.6rem; margin-bottom:0.5rem;">Build Wealth From Zero</h3>
-          <p style="color:var(--gray); margin-bottom:1.75rem; font-size:0.98rem;">Your numbers, your goals, a real plan — budgeting, getting unstuck, and building wealth for the long haul.</p>
+          <p style="color:var(--gray); margin-bottom:1.75rem; font-size:0.98rem;">Your numbers, your goals, a real plan: budgeting, getting unstuck, and building wealth for the long haul.</p>
 
           <div style="border-top:1px solid #eee; padding:1.1rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
             <div>
@@ -120,7 +120,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
         <div style="background:var(--black); color:var(--white); border:2px solid var(--black); border-radius:6px; padding:2.5rem; display:flex; flex-direction:column;">
           <span class="section-label">Leadership Coaching</span>
           <h3 style="font-size:1.6rem; color:var(--white); margin-bottom:0.5rem;">From Manager to Leader</h3>
-          <p style="color:#aaa; margin-bottom:1.75rem; font-size:0.98rem;">Apply proven frameworks to your team, your culture, your goals — with someone who's built and scaled it before.</p>
+          <p style="color:#aaa; margin-bottom:1.75rem; font-size:0.98rem;">Apply proven frameworks to your team, your culture, your goals, with someone who's built and scaled it before.</p>
 
           <div style="border-top:1px solid #2a2a2a; padding:1.1rem 0; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;">
             <div>
@@ -155,7 +155,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
     <div class="container" style="max-width:640px;">
       <span class="section-label">Before You Pay a Dollar</span>
       <h2 style="font-size:1.8rem; margin-bottom:1rem;">There's a Lot for Free</h2>
-      <p style="color:var(--gray); margin-bottom:2rem;">Two full leadership courses and 777+ personal-finance videos are already free — no email, no paywall. Coaching is for when you want it applied directly to your situation.</p>
+      <p style="color:var(--gray); margin-bottom:2rem;">Two full leadership courses and 777+ personal-finance videos are already free: no email, no paywall. Coaching is for when you want it applied directly to your situation.</p>
       <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
         <a href="/services" class="btn btn-dark">Explore the Free Courses</a>
         <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold">Book Your Free Intro Call</a>
@@ -167,7 +167,7 @@ const link = (u) => (u && u.trim()) ? u : "/contact";
   <section class="section section-dark text-center">
     <div class="container" style="max-width:600px;">
       <span class="section-label">Ready When You Are</span>
-      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Let's Talk First — Free.</h2>
+      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Let's Talk First. Free.</h2>
       <p style="color:#ccc; margin-bottom:2rem;">No pressure and no pitch. Just an honest conversation about where you want to go and the clearest way to get there.</p>
       <a href={link(booking.introCall)} data-book={booking.introCall} class="btn btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Book Your Free Intro Call</a>
     </div>

@@ -1,4 +1,4 @@
-# Jason Ehlinger — Personal Website
+# Jason Ehlinger: Personal Website
 
 Built with [Astro](https://astro.build) and deployed via [Netlify](https://netlify.com).
 
@@ -63,7 +63,7 @@ Your post content in Markdown goes here...
 ```
 
 3. Write your post in Markdown below the frontmatter
-4. Commit and push to GitHub — Netlify deploys automatically
+4. Commit and push to GitHub. Netlify deploys automatically
 
 ---
 
@@ -94,6 +94,6 @@ src/
 
 ## Forms (Netlify Forms)
 
-The contact and masterclass signup forms use [Netlify Forms](https://docs.netlify.com/forms/setup/) — they work automatically once deployed to Netlify. Submissions appear in your Netlify dashboard under **Forms**.
+The contact and masterclass signup forms use [Netlify Forms](https://docs.netlify.com/forms/setup/). They work automatically once deployed to Netlify. Submissions appear in your Netlify dashboard under **Forms**.
 
 No backend or third-party service needed.

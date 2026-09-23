@@ -7,5 +7,5 @@ export default defineConfig({
     mdx(),
     sitemap({ filter: (page) => !page.includes('/404') }),
   ],
-  site: 'https://www.jasonehlinger.com',
+  site: 'https://jasonehlinger.com',
 });

@@ -502,7 +502,7 @@ h1, h2, h3, h4 {
   border-radius: 0 4px 4px 0;
 }
 
-/* Lede — larger opening paragraph */
+/* Lede: larger opening paragraph */
 .prose .lede {
   font-size: 1.3rem;
   color: var(--dark);
@@ -510,7 +510,7 @@ h1, h2, h3, h4 {
   margin-bottom: 2rem;
 }
 
-/* Pull quote — big serif statement, used to break up long sections */
+/* Pull quote: big serif statement, used to break up long sections */
 .pull-quote {
   font-family: var(--font-serif);
   font-size: 1.65rem;
@@ -534,7 +534,7 @@ h1, h2, h3, h4 {
   margin-bottom: 0.1rem;
 }
 
-/* Stat row — highlight the numbers inside a post */
+/* Stat row: highlight the numbers inside a post */
 .stat-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -563,7 +563,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0.01em;
 }
 
-/* In-article CTA box — the StoryBrand "direct call to action" */
+/* In-article CTA box: the StoryBrand "direct call to action" */
 .article-cta {
   max-width: 680px;
   margin: 3rem auto;

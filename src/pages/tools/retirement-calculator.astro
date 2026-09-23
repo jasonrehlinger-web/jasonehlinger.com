@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Retirement Calculator — Are You On Track?"
+  title="Retirement Calculator: Are You On Track?"
   description="Use Jason Ehlinger's free retirement calculator to see if you're on track to retire with enough. Enter your age, savings, and contributions to get your projected retirement number."
   keywords="retirement calculator, am I saving enough for retirement, retirement savings calculator, how much do I need to retire, retirement planning tool"
 >
@@ -11,7 +11,7 @@ import Layout from '../../layouts/Layout.astro';
   <section class="page-hero">
     <span class="section-label">Free Tool</span>
     <h1>Retirement Calculator</h1>
-    <p>Find out if you're on track — and what it takes to get there.</p>
+    <p>Find out if you're on track, and what it takes to get there.</p>
   </section>
 
   <section class="section">
@@ -255,7 +255,7 @@ import Layout from '../../layouts/Layout.astro';
     if (monthlyIncome >= monthlyNeeded) {
       verdictEl.style.background = '#e8f5e9';
       verdictEl.style.color = '#2e7d32';
-      verdictEl.textContent = 'On track — your projected income of ' + fmtFull(monthlyIncome) + '/mo exceeds your goal.';
+      verdictEl.textContent = 'On track: your projected income of ' + fmtFull(monthlyIncome) + '/mo exceeds your goal.';
     } else {
       var gap = monthlyNeeded - monthlyIncome;
       verdictEl.style.background = '#fff3e0';

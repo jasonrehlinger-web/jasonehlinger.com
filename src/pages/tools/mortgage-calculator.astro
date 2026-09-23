@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Mortgage Calculator — The 15-Year, 25% Rule"
+  title="Mortgage Calculator: The 15-Year, 25% Rule"
   description="Use Jason Ehlinger's mortgage calculator to see how much house you can afford on a 15-year fixed mortgage with a payment no more than 25% of your monthly take-home pay."
   keywords="mortgage calculator, 15 year fixed mortgage calculator, 25 percent of take home pay, how much house can I afford, manual underwriting, Churchill Mortgage"
 >
@@ -118,13 +118,13 @@ import Layout from '../../layouts/Layout.astro';
             <div class="piti-row"><span>Home Insurance</span><span id="pitiIns">$0</span></div>
             <div class="piti-row" id="hoaRow"><span>HOA Dues</span><span id="pitiHOA">$0</span></div>
             <div class="piti-row total"><span>Total Monthly (PITI)</span><span id="pitiTotal">$0</span></div>
-            <p class="piti-note">That's <strong id="pctOfPay">25%</strong> of your take-home pay — right at the limit.</p>
+            <p class="piti-note">That's <strong id="pctOfPay">25%</strong> of your take-home pay, right at the limit.</p>
           </div>
 
           <div id="checkBanner" class="check-banner" style="display:none;"></div>
 
           <div class="result-cta">
-            <p>The numbers point to a price.<br/><strong>A real plan gets you the house — debt-free.</strong></p>
+            <p>The numbers point to a price.<br/><strong>A real plan gets you the house, debt-free.</strong></p>
             <a href="/contact" class="btn btn-gold" style="display:inline-block; margin-top:0.75rem;">Work With Jason</a>
           </div>
         </div>
@@ -132,12 +132,12 @@ import Layout from '../../layouts/Layout.astro';
 
       <div class="explainer">
         <h3>Why 15 Years and 25%?</h3>
-        <p>A 15-year fixed-rate mortgage costs you far less in total interest than a 30-year loan and forces the discipline of paying the home off in half the time. Keeping the payment — including taxes and insurance — at or below 25% of your monthly take-home pay is what keeps you from becoming "house-poor," where the mortgage eats every dollar and leaves nothing for investing, giving, or living.</p>
-        <p>This calculator solves for the most expensive home whose full monthly payment (principal, interest, property tax, home insurance, and any HOA dues) lands at 25% of the take-home pay you entered. Lower your price below that number and you buy yourself even more breathing room. These figures are estimates for planning only — your lender's quote is the real number.</p>
+        <p>A 15-year fixed-rate mortgage costs you far less in total interest than a 30-year loan and forces the discipline of paying the home off in half the time. Keeping the payment (including taxes and insurance) at or below 25% of your monthly take-home pay is what keeps you from becoming "house-poor," where the mortgage eats every dollar and leaves nothing for investing, giving, or living.</p>
+        <p>This calculator solves for the most expensive home whose full monthly payment (principal, interest, property tax, home insurance, and any HOA dues) lands at 25% of the take-home pay you entered. Lower your price below that number and you buy yourself even more breathing room. These figures are estimates for planning only. Your lender's quote is the real number.</p>
 
         <h3 style="margin-top:1.75rem;">Consider Manual Underwriting</h3>
-        <p>If you have little or no credit score because you've avoided debt, most automated systems will turn you away — not because you can't pay, but because you don't fit the algorithm. <strong>Manual underwriting</strong> is a process where a real underwriter reviews your actual history: your rent payments, utility payments, income stability, and savings. It rewards responsible behavior instead of penalizing you for not carrying debt.</p>
-        <p>Lenders like <a href="https://www.churchillmortgage.com/" target="_blank" rel="noopener">Churchill Mortgage</a> specialize in manual underwriting for exactly this kind of borrower, and other banks and credit unions offer it as well. If a lender tells you that you "need" a credit score to buy a home, that's a signal to ask specifically about manual underwriting — or find one who does it.</p>
+        <p>If you have little or no credit score because you've avoided debt, most automated systems will turn you away, not because you can't pay, but because you don't fit the algorithm. <strong>Manual underwriting</strong> is a process where a real underwriter reviews your actual history: your rent payments, utility payments, income stability, and savings. It rewards responsible behavior instead of penalizing you for not carrying debt.</p>
+        <p>Lenders like <a href="https://www.churchillmortgage.com/" target="_blank" rel="noopener">Churchill Mortgage</a> specialize in manual underwriting for exactly this kind of borrower, and other banks and credit unions offer it as well. If a lender tells you that you "need" a credit score to buy a home, that's a signal to ask specifically about manual underwriting, or find one who does it.</p>
       </div>
     </div>
   </section>
@@ -272,7 +272,7 @@ import Layout from '../../layouts/Layout.astro';
       const over = payment - maxPayment;
       banner.className = 'check-banner bad';
       banner.innerHTML = '✗ A ' + fmt(target) + ' home is over budget. Payment is ' +
-        fmt(payment) + '/mo (' + Math.round(pct) + '% of take-home) — about ' +
+        fmt(payment) + '/mo (' + Math.round(pct) + '% of take-home), about ' +
         fmt(over) + '/mo above the 25% limit.';
     }
   }

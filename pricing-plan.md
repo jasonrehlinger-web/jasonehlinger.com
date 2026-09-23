@@ -1,4 +1,4 @@
-# Coaching Pricing Plan — jasonehlinger.com
+# Coaching Pricing Plan: jasonehlinger.com
 
 Individuals only · 45-minute sessions · free 30-minute intro call for everyone
 
@@ -8,14 +8,14 @@ This is the plan for review. Once you approve (or tweak the numbers), it's live 
 
 ## The starting point (free, for everyone)
 
-**Free 30-Minute Intro Call — $0**
+**Free 30-Minute Intro Call: $0**
 An honest look at where you are, what's in the way, and whether working together makes sense. No pitch. Everything below starts here.
 
 ---
 
 ## Financial Coaching
 
-Positioned as accessible — lower first-session cost, then an easy per-session rate for people who keep going.
+Positioned as accessible: lower first-session cost, then an easy per-session rate for people who keep going.
 
 | Offering | Price | Notes |
 |---|---|---|
@@ -42,22 +42,22 @@ Priced slightly above finance to reflect executive positioning, per your call.
 
 ---
 
-## Quick reference — everything on one screen
+## Quick reference: everything on one screen
 
-- Free intro call — **$0** (30 min)
-- Financial intake — **$150**
-- Financial follow-up — **$100**
-- Financial 6-pack — **$550**
-- Leadership session — **$175**
-- Leadership 6-pack — **$900**
+- Free intro call: **$0** (30 min)
+- Financial intake: **$150**
+- Financial follow-up: **$100**
+- Financial 6-pack: **$550**
+- Leadership session: **$175**
+- Leadership 6-pack: **$900**
 
 ---
 
 ## Notes & open decisions
 
 - **Booking / payment:** the page currently routes every "book" button to your existing **/contact** free-assessment flow, to stay consistent with the rest of the site. When you're ready, we can wire in Calendly (scheduling) and Stripe (payment) so people can book and pay directly. Say the word and I'll add it.
-- **No retainer or workshops** included — you narrowed to intro call + single session + bundle. Easy to add later.
-- **Package expiry:** consider stating that package sessions should be used within, say, 6 months, so they don't sit open indefinitely. Not on the page yet — tell me if you want it.
+- **No retainer or workshops** included: you narrowed to intro call + single session + bundle. Easy to add later.
+- **Package expiry:** consider stating that package sessions should be used within, say, 6 months, so they don't sit open indefinitely. Not on the page yet. Tell me if you want it.
 - **Refunds/cancellation:** no policy shown yet. A one-line "24-hour cancellation" note is common. Optional.
 
 Tell me any number you want changed and I'll update both this doc and the live page.

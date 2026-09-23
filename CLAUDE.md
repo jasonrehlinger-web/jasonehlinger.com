@@ -11,7 +11,7 @@ Last updated: 2026-09-23
 Personal consulting site for **Jason Ehlinger**: leadership coaching and personal finance coaching. It replaces the old site at https://www.jasonehlinger.com/. It must stay easy to update through **GitHub + Netlify** (push to `main`, Netlify builds and deploys).
 
 - **GitHub repo:** `jasonrehlinger-web/jasonehlinger.com`, branch `main`
-- **Live URL:** https://www.jasonehlinger.com
+- **Live URL:** https://jasonehlinger.com (www redirects here)
 - **Hosting:** Netlify, auto-deploys on every push to `main` (about 1 to 2 minutes)
 - **Old static HTML version:** `jasonrehlinger-web/jason-ehlinger-site` (do not edit, reference only)
 
@@ -31,7 +31,7 @@ The working folder this came from ("Jason Ehlinger website") has a **broken `.gi
 ## Stack
 
 - **Astro 4** (`astro ^4.15.0`) + `@astrojs/mdx ^3.1.0`
-- `astro.config.mjs`: `site: 'https://www.jasonehlinger.com'`, mdx integration
+- `astro.config.mjs`: `site: 'https://jasonehlinger.com'`, mdx + sitemap integrations
 - `netlify.toml`: build `npm run build`, publish `dist`, `NODE_VERSION = "20"`, 404 redirect to `/404`
 - Forms: **Netlify Forms** (`data-netlify="true"`), forms named `contact` (contact page) and `masterclass` (home + services). Submissions show in the Netlify dashboard.
 - No backend, no database.

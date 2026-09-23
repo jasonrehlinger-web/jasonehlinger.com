@@ -1,4 +1,4 @@
-# Jason Ehlinger — jasonehlinger.com
+# Jason Ehlinger: jasonehlinger.com
 # Allow all crawlers including AI bots
 
 User-agent: *
@@ -63,4 +63,4 @@ User-agent: ia_archiver
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.jasonehlinger.com/sitemap-index.xml
+Sitemap: https://jasonehlinger.com/sitemap-index.xml
