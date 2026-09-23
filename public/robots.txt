@@ -63,4 +63,4 @@ User-agent: ia_archiver
 Allow: /
 
 # Sitemap location
-Sitemap: https://www.jasonehlinger.com/sitemap.xml
+Sitemap: https://www.jasonehlinger.com/sitemap-index.xml
