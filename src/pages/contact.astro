@@ -107,4 +107,10 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  @media (max-widt
+  @media (max-width: 768px) {
+    section > .container[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 2.5rem !important;
+    }
+  }
+</style>

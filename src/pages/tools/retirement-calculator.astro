@@ -199,6 +199,12 @@ import Layout from '../../layouts/Layout.astro';
     .result-number { font-size:1.7rem; }
     .whatif-grid { grid-template-columns:1fr; }
   }
+  @media (max-width:480px) {
+    .result-stats { grid-template-columns:1fr 1fr; gap:0.85rem; }
+    .stat-value { font-size:1.1rem; }
+    .result-number { font-size:1.5rem; white-space:normal; }
+    .results-header { flex-wrap:wrap; }
+  }
 </style>
 
 <script>
