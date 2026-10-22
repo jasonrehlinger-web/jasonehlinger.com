@@ -30,9 +30,9 @@ The working folder this came from ("Jason Ehlinger website") has a **broken `.gi
 
 ## Stack
 
-- **Astro 4** (`astro ^4.15.0`) + `@astrojs/mdx ^3.1.0`
+- **Astro 7** (`astro 7.4.2`) + `@astrojs/mdx 8.1.1` + `@astrojs/sitemap 3.7.4` (upgraded from Astro 4 on 2026-10-22). `compressHTML: true` is set on purpose: Astro 7's default strips spaces between inline elements.
 - `astro.config.mjs`: `site: 'https://jasonehlinger.com'`, mdx + sitemap integrations
-- `netlify.toml`: build `npm run build`, publish `dist`, `NODE_VERSION = "20"`, 404 redirect to `/404`
+- `netlify.toml`: build `npm run build`, publish `dist`, `NODE_VERSION = "24"` (Astro 7 needs Node 22.23.4+), 404 redirect to `/404`
 - Forms: **Netlify Forms** (`data-netlify="true"`), forms named `contact` (contact page) and `masterclass` (home + services). Submissions show in the Netlify dashboard.
 - No backend, no database.
 
@@ -55,7 +55,7 @@ src/
   components/Footer.astro     footer "Navigate" links (includes Pricing)
   layouts/Layout.astro        base HTML layout
   styles/global.css           ALL site styles + design tokens
-  content/config.ts           blog collection schema
+  content.config.ts           blog collection schema + glob loader (src/content.config.ts, not src/content/)
   content/blog/*.md           blog posts (25 as of 2026-09-22)
   pages/
     index.astro               home (has masterclass signup form)
@@ -97,7 +97,7 @@ Defined in `src/styles/global.css`:
 
 ## Blog
 
-Schema (`src/content/config.ts`):
+Schema (`src/content.config.ts`, glob loader over `src/content/blog`):
 
 ```ts
 title: string, description: string, date: date,
