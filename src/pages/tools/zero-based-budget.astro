@@ -564,9 +564,14 @@ import Layout from '../../layouts/Layout.astro';
     .steps-grid { grid-template-columns: 1fr; }
   }
 
-  /* ---- Print ---- */
+</style>
+
+<style is:global>
+  /* ---- Print ----
+     Must be global: scoped selectors never match the layout's header and
+     footer, which then print into the PDF. */
   @media print {
-    header, footer, nav, .bsb, .bud-layout, section, .page-hero, style + section { display: none !important; }
+    body > *:not(main), main > *:not(#printView) { display: none !important; }
     #printView { display: block !important; }
     body { margin: 0; font-family: Arial, sans-serif; color: #000; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }

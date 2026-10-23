@@ -315,8 +315,18 @@ const companyExamples = [
     .msm-frame-line { line-height: 2.2; }
   }
 
+  /* Keep a focused field clear of the sticky site header + progress bar */
+  .msm-step textarea, .msm-meta input, .msm-frame input { scroll-margin-top: 170px; }
+  @media (max-width: 640px) {
+    .msm-step textarea, .msm-meta input, .msm-frame input { scroll-margin-top: 150px; }
+  }
+</style>
+
+<style is:global>
+  /* Print rules must be global: scoped selectors would never match the
+     layout's header and footer, and they would print into the PDF. */
   @media print {
-    header, footer, nav, section, .page-hero { display: none !important; }
+    body > *:not(main), main > *:not(#printView) { display: none !important; }
     #printView { display: block !important; }
     body { margin: 0; font-family: Arial, sans-serif; color: #000; background: #fff; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -421,7 +431,11 @@ const companyExamples = [
     });
 
     // ---- PDF (print view) ----
-    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/\n/g, '<br>'); }
+    // Escape user text, then turn blank lines into paragraph breaks and single line breaks into <br>
+    function esc(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+        .replace(/\r/g, '').replace(/\n\s*\n+/g, '<span style="display:block;height:0.45em;"></span>').replace(/\n/g, '<br>');
+    }
     function val(id) { return document.getElementById(id).value.trim(); }
     function block(label, id) {
       var v = val(id);
@@ -431,7 +445,7 @@ const companyExamples = [
     }
     function section(title, inner) {
       if (!inner) return '';
-      return '<div style="margin:0 0 16px;"><div style="font-family:Georgia,serif;font-size:14px;font-weight:700;color:#0a0a0a;border-bottom:2px solid #c8982a;padding-bottom:3px;margin-bottom:8px;">' + title + '</div>' + inner + '</div>';
+      return '<div style="margin:0 0 16px;"><div style="font-family:Georgia,serif;font-size:14px;font-weight:700;color:#0a0a0a;border-bottom:2px solid #c8982a;padding-bottom:3px;margin-bottom:8px;break-after:avoid;page-break-after:avoid;">' + title + '</div>' + inner + '</div>';
     }
     function downloadPDF() {
       var name = val('name'), dateVal = val('date');
@@ -459,9 +473,11 @@ const companyExamples = [
         + (name || dateText ? '<div style="color:#bbb;font-size:11px;margin-top:4px;">' + esc([name, dateText].filter(Boolean).join('  ·  ')) + '</div>' : '') + '</div>'
         + '<div style="color:#888;font-size:9px;text-align:right;">jasonehlinger.com</div></div>'
         + hero + company + work
-        + '<div style="margin-top:18px;padding:10px 14px;background:#f9f9f9;border-left:3px solid #c8982a;font-size:10px;color:#444;break-inside:avoid;"><strong style="color:#a87d20;">Live it:</strong> read it before big decisions, share it with one person who will hold you to it, and revisit it once a year.</div>'
-        + '<div style="text-align:center;margin-top:14px;color:#aaa;font-size:9px;">jasonehlinger.com · Leadership and personal finance coaching · Free tools at jasonehlinger.com/tools</div>'
-        + '</div>';
+        // "Live it" and the credit line stay together so the credit never lands alone on a new page
+        + '<div style="break-inside:avoid;page-break-inside:avoid;margin-top:18px;">'
+        + '<div style="padding:10px 14px;background:#f9f9f9;border-left:3px solid #c8982a;font-size:10px;color:#444;"><strong style="color:#a87d20;">Live it:</strong> read it before big decisions, share it with one person who will hold you to it, and revisit it once a year.</div>'
+        + '<div style="text-align:center;margin-top:10px;color:#aaa;font-size:9px;">jasonehlinger.com · Leadership and personal finance coaching · Free tools at jasonehlinger.com/tools</div>'
+        + '</div></div>';
       var pv = document.getElementById('printView');
       pv.innerHTML = html;
       pv.style.display = 'block';
