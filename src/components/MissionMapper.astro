@@ -290,7 +290,7 @@ const companyExamples = [
           <strong>Your PDF is ready.</strong> Want help turning your mission into a plan you can actually run?
           <a href="/contact">Book a free intro call →</a>
         </div>
-        <p class="msm-privacy">Your answers stay private in this browser on this device. Only your name, email, and how far you have gotten are sent to Jason, so he can follow up.</p>
+        <p class="msm-privacy">Your answers stay private in this browser on this device. Only your name, email, how far you have gotten, and the mission statement in your PDF are sent to Jason, so he can follow up. The rest of your answers are never sent.</p>
       </form>
 
       <!-- Netlify Forms registers this form at build time; the page submits to it with fetch(). -->
@@ -300,6 +300,7 @@ const companyExamples = [
         <input type="text" name="stage" />
         <input type="text" name="answered" />
         <input type="text" name="tool" />
+        <textarea name="mission"></textarea>
         <input type="text" name="bot-field" />
       </form>
     </div>
@@ -490,7 +491,7 @@ const companyExamples = [
       answerFields.forEach(function (el) { if (el.value.trim() && STEP_OF[el.id] > max) max = STEP_OF[el.id]; });
       return max;
     }
-    function notify(milestone, label) {
+    function notify(milestone, label, extra) {
       var email = emailEl.value.trim();
       if (!validEmail(email)) return Promise.resolve(false);
       var key = milestone + '|' + email.toLowerCase();
@@ -504,6 +505,8 @@ const companyExamples = [
         stage: label + (step ? ' (furthest: Step ' + step + ' of ' + TOTAL_STEPS + ')' : ''),
         answered: answeredCount() + ' of ' + answerFields.length + ' questions answered',
         tool: TOOL,
+        // Only the download milestone carries their mission statement (see the privacy note on the page)
+        mission: (extra && extra.mission) || '',
         'bot-field': '',
       });
       return fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
@@ -626,7 +629,8 @@ const companyExamples = [
         setTimeout(function () { emailEl.focus({ preventScroll: true }); }, 400);
         return;
       }
-      notify('download', 'Downloaded their PDF');
+      var missionForEmail = (val('s7') ? val('s7') : val('s5') ? '(first draft) ' + val('s5') : '').replace(/[<>]/g, '').slice(0, 3000);
+      notify('download', 'Downloaded their PDF', { mission: missionForEmail });
       var cta = '<div style="break-inside:avoid;page-break-inside:avoid;margin-top:18px;background:#0a0a0a;color:#fff;padding:16px 20px;border-top:3px solid #c8982a;">'
         + '<div style="color:#c8982a;font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:5px;">Your Next Step</div>'
         + '<div style="font-family:Georgia,serif;font-size:16px;font-weight:700;margin-bottom:6px;">Want help putting your mission to work?</div>'
