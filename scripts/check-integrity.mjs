@@ -61,10 +61,26 @@ function check(path) {
     balanced(file, text, /<div[\s>]/g, /<\/div>/g, '<div> tags');
     balanced(file, text, /<p[\s>]/g, /<\/p>/g, '<p> tags');
     balanced(file, text, /<a\s/g, /<\/a>/g, '<a> tags');
+
+    // Posts are written by an automated task and uploaded through GitHub.
+    // If that pipeline were ever compromised, it must not be able to put
+    // running code on the site. Block anything that can execute or exfiltrate.
+    const dangerous = [
+      [/<\s*(script|iframe|object|embed|form|base|meta|link|svg|math)\b/i, 'contains a disallowed HTML tag'],
+      [/\son[a-z]+\s*=\s*["'{]/i, 'contains an inline event handler (onclick=, onerror=, ...)'],
+      [/(href|src|action)\s*=\s*["']?\s*(javascript|vbscript|data):/i, 'contains a javascript:/data: link'],
+      [/\]\(\s*(javascript|vbscript|data):/i, 'contains a javascript:/data: Markdown link'],
+      [/style\s*=\s*["'][^"']*(expression\s*\(|url\s*\(\s*["']?\s*javascript:)/i, 'contains a script in a style attribute'],
+    ];
+    for (const [re, why] of dangerous) {
+      const m = text.match(re);
+      if (m) errors.push(`${file}: ${why}: "${m[0].slice(0, 60)}"`);
+    }
   }
 
-  if (text.includes('—')) {
-    warnings.push(`${file}: has ${count(text, /—/g)} em-dash(es); house style is no em-dashes`);
+  const EM_DASH = String.fromCharCode(0x2014);
+  if (text.includes(EM_DASH)) {
+    warnings.push(`${file}: has ${count(text, new RegExp(EM_DASH, 'g'))} em-dash(es); house style is no em-dashes`);
   }
 }
 
