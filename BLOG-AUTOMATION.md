@@ -47,6 +47,7 @@ Markdown with inline HTML. Follow this shape:
 ### Jason's voice
 Direct, warm, no-nonsense, veteran/operator pragmatism. Uses concrete examples (military, running a 7-figure company, coaching real people). Short sentences. Reassures without coddling: "You're not lazy / weak. You're running a system that was never designed to work." Never corporate-jargon-y.
 - **Never use em-dashes (U+2014) or en-dashes (U+2013) as sentence punctuation. Use commas, periods, colons, or parentheses instead.** This applies to the post body, frontmatter (title, description), and CTA copy. En-dashes in number ranges (e.g. 800–1,300) are fine.
+- **No scripts or embeds in posts.** Do not use `<script>`, `<iframe>`, `<form>`, `<svg>`, `<object>`, `<embed>`, inline event handlers (`onclick=` and similar), or `javascript:` / `data:` links. The build rejects any post that contains them, and the post will not go live. Plain HTML like the `.lede`, `.stat-row`, `.pull-quote`, and `.article-cta` blocks is fine.
 
 ## StoryBrand framework (every post follows this)
 - **The reader is the hero**, not Jason. Jason is the guide.

@@ -121,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
         <div>
           <span class="section-label">Personal Finance</span>
           <h2 style="font-size:2rem; margin-bottom:1.25rem;">Building Wealth From Zero</h2>
-          <p style="color:var(--gray); margin-bottom:1.25rem; font-size:1.05rem;">777+ free videos on the <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" style="color:var(--gold);">Vision Tribe Money</a> channel, covering everything from zero-based budgeting to building wealth when you feel stuck.</p>
+          <p style="color:var(--gray); margin-bottom:1.25rem; font-size:1.05rem;">777+ free videos on the <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">Vision Tribe Money</a> channel, covering everything from zero-based budgeting to building wealth when you feel stuck.</p>
           <p style="color:var(--gray); margin-bottom:2rem;">For those who want to go deeper, I offer private finance coaching, looking at your specific numbers, situation, and goals and building a real plan.</p>
           <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
             <a href="https://www.youtube.com/@Visiontribemoney" target="_blank" rel="noopener" class="btn btn-gold">Watch Free ↗</a>
@@ -167,10 +167,11 @@ import Layout from '../layouts/Layout.astro';
       <span class="section-label">Free · Every Wednesday</span>
       <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Weekly Live Masterclasses</h2>
       <p style="color:#ccc; margin-bottom:2rem;">Join live every Wednesday for sessions on leadership, money, mindset, and building an unbreakable life. Free, always.</p>
-      <form name="masterclass" method="POST" data-netlify="true"
+      <form name="masterclass" method="POST" data-netlify="true" netlify-honeypot="bot-field"
         style="display:flex; gap:0.75rem; max-width:440px; margin:0 auto; flex-wrap:wrap;">
         <input type="hidden" name="form-name" value="masterclass" />
-        <input type="email" name="email" placeholder="Your email address" required
+        <p hidden><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <input type="email" name="email" placeholder="Your email address" maxlength="254" required
           style="flex:1; padding:0.85rem 1rem; border:none; border-radius:2px; font-size:1rem; min-width:180px;" />
         <button type="submit" class="btn btn-gold">Register Free</button>
       </form>

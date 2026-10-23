@@ -579,6 +579,10 @@ import Layout from '../../layouts/Layout.astro';
 </style>
 
 <script is:inline>
+  // Escape anything a visitor typed before it goes into the PDF's HTML
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
   function fmt(n) {
     return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
@@ -701,7 +705,7 @@ import Layout from '../../layouts/Layout.astro';
       var t = rows.reduce(function(s,r){return s+r.val;},0);
       if (t === 0) return;
       totalExp += t;
-      var rowsHTML = rows.map(function(r){return '<tr><td style="padding:2px 8px;font-size:10.5px;color:#444;">'+r.label+'</td><td style="padding:2px 8px;text-align:right;font-size:10.5px;font-weight:600;">'+fmt(r.val)+'</td></tr>';}).join('');
+      var rowsHTML = rows.map(function(r){return '<tr><td style="padding:2px 8px;font-size:10.5px;color:#444;">'+esc(r.label)+'</td><td style="padding:2px 8px;text-align:right;font-size:10.5px;font-weight:600;">'+fmt(r.val)+'</td></tr>';}).join('');
       catsHTML += '<div style="break-inside:avoid;margin-bottom:10px;"><div style="background:#1a1a1a;color:#fff;padding:5px 10px;border-radius:3px 3px 0 0;display:flex;justify-content:space-between;"><span style="font-size:11px;font-weight:700;">'+cat.icon+' '+cat.label+'</span><span style="font-size:11px;font-weight:800;color:#c8982a;">'+fmt(t)+'</span></div><table style="width:100%;border-collapse:collapse;background:#fafafa;">'+rowsHTML+'</table></div>';
     });
 
@@ -710,7 +714,7 @@ import Layout from '../../layouts/Layout.astro';
       var labelEl = row.querySelector('.li-label');
       var numEl = row.querySelector('input[type="number"]');
       var val = parseFloat(numEl.value)||0;
-      if (val > 0) incomeRows += '<tr><td style="padding:2px 8px;font-size:10.5px;color:#444;">'+(labelEl.value||'Income')+'</td><td style="padding:2px 8px;text-align:right;font-size:10.5px;font-weight:600;">'+fmt(val)+'</td></tr>';
+      if (val > 0) incomeRows += '<tr><td style="padding:2px 8px;font-size:10.5px;color:#444;">'+esc(labelEl.value||'Income')+'</td><td style="padding:2px 8px;text-align:right;font-size:10.5px;font-weight:600;">'+fmt(val)+'</td></tr>';
     });
 
     var remaining = income - totalExp;
@@ -725,7 +729,7 @@ import Layout from '../../layouts/Layout.astro';
       + '<div style="background:#111;color:#fff;padding:18px 22px;border-radius:6px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">'
       + '<div><div style="color:#c8982a;font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;">Jason Ehlinger · Personal Finance</div>'
       + '<div style="font-size:20px;font-weight:900;">Monthly Zero-Based Budget</div>'
-      + '<div style="color:#aaa;font-size:11px;margin-top:3px;">'+name+' &nbsp;·&nbsp; '+month+'</div></div>'
+      + '<div style="color:#aaa;font-size:11px;margin-top:3px;">'+esc(name)+' &nbsp;·&nbsp; '+esc(month)+'</div></div>'
       + '<div style="text-align:right;"><div style="color:#c8982a;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;">Every Dollar Has a Job</div>'
       + '<div style="color:#888;font-size:9px;margin-top:3px;">jasonehlinger.com</div></div></div>'
       + '<div style="margin-bottom:14px;"><div style="background:#c8982a;color:#fff;padding:5px 10px;border-radius:3px 3px 0 0;display:flex;justify-content:space-between;">'
