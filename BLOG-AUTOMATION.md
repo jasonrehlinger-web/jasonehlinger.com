@@ -32,7 +32,7 @@ category: Leadership   # or Finance (MUST be exactly one of these)
 keywords: "primary keyword, secondary 1, secondary 2, ..."
 ---
 ```
-The content collection schema (`src/content/config.ts`) requires `title`, `description`, `date`, `author`, `category` (enum: Leadership | Finance). `keywords` and `image` are optional.
+The content collection schema (`src/content.config.ts`) requires `title`, `description`, `date`, `author`, `category` (enum: Leadership | Finance). `keywords` and `image` are optional.
 
 ### Body structure
 Markdown with inline HTML. Follow this shape:

@@ -7,7 +7,7 @@ Paste this into a new Claude Cowork chat to continue the work. It summarizes eve
 ## Project context
 
 - **Site:** jasonehlinger.com, a personal consulting/advice site for Jason Ehlinger (leadership + finance coaching). Replacing the old jasonehlinger.com.
-- **Stack:** Astro 4 + `@astrojs/mdx`, deployed via **Netlify**, source on **GitHub** (build command `npm run build`, publish dir `dist`, NODE_VERSION 20 per `netlify.toml`).
+- **Stack:** Astro 7 + `@astrojs/mdx`, deployed via **Netlify**, source on **GitHub** (build command `npm run build`, publish dir `dist`, NODE_VERSION 24 per `netlify.toml`).
 - **Folder:** "Jason Ehlinger website" (the connected/working folder).
 - **Design system:** gold (`--gold #C8982A`) + black, defined in `src/styles/global.css`. Reusable classes: `.btn`, `.btn-gold`, `.btn-dark`, `.btn-outline`, `.section`, `.section-gray`, `.section-dark`, `.section-label`, `.card`, `.page-hero`, `.container`. Match these when adding anything.
 
