@@ -1,0 +1,477 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const words = ['Build', 'Serve', 'Protect', 'Lead', 'Equip', 'Empower', 'Restore', 'Teach', 'Grow', 'Create', 'Deliver', 'Strengthen', 'Honor', 'Inspire', 'Simplify', 'Champion', 'Steward', 'Provide', 'Encourage', 'Transform', 'Integrity', 'Excellence', 'Family', 'Faith', 'Freedom', 'Generosity', 'Courage', 'Trust', 'Service', 'Legacy'];
+
+const personalExamples = [
+  'I will lead my family with faith, patience, and humor, and build a home where people feel safe to grow. At work I will be the one others can count on: honest when it costs me, steady when things get loud, and generous with credit. I will measure my life by the people I helped become better, not by what I owned.',
+  'My mission is to use my gift for organizing chaos to give people peace of mind. I will serve my clients with integrity, tell them the truth even when it is hard to hear, and never take advantage of anyone’s trust. I will build a business that provides for my family and leaves room to give.',
+  'I exist to teach and encourage. I will use my voice, my story, and my mistakes to help people believe they can change. I will keep learning, stay humble, and show up for my family first.',
+];
+
+const companyExamples = [
+  ['Ridgeline Heating & Air', 'We keep families comfortable and safe in their homes by showing up on time, telling the truth about what is broken, and fixing it right the first time.'],
+  ['Cornerstone Bookkeeping', 'We give small business owners clear numbers and calm nights, so they can lead with confidence instead of guessing.'],
+  ['Maple Street Kitchen', 'We feed our neighbors like family, with food made from scratch and a table where everyone belongs.'],
+];
+---
+
+<Layout
+  title="Free Mission Statement Mapper"
+  description="Write a personal mission statement, and your company's, with a free guided worksheet from Jason Ehlinger. Seven simple steps, saved as you go, with a branded PDF download."
+  keywords="personal mission statement worksheet, how to write a personal mission statement, mission statement template, company mission statement, mission statement examples, Jason Ehlinger"
+>
+
+  <section class="page-hero">
+    <span class="section-label">Free Tool · Leadership &amp; Life</span>
+    <h1>Mission Statement Mapper</h1>
+    <p>Find the few sentences that say who you are, what you stand for, and where you are headed. Work through seven steps, then download your mission as a PDF.</p>
+  </section>
+
+  <!-- WHY -->
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="container msm-narrow">
+      <p class="msm-lead">A mission statement is the shortest honest answer to the biggest question you will ever be asked: what is your life for?</p>
+      <p>Done right, it is only a few sentences long. It names who you are, draws a hard line around who you refuse to be, and explains why you get up and do the work. Then it becomes the filter for every decision you make. When a new opportunity shows up, you hold it up against your mission. If it does not fit, you pass, even when the money looks good.</p>
+      <div class="msm-callout">
+        <span class="msm-eyebrow">Why I ask my team to do this</span>
+        <p>Every person who joins my team writes a personal mission statement. Not because I want a nice paragraph for their file, but because hard seasons come for everybody. When they do, you need to remember why you are here, and see how the seat you sit in connects to the bigger thing we are building together. Good seasons need it too, so success does not pull you off course.</p>
+        <p class="msm-sig">Jason Ehlinger</p>
+      </div>
+      <h3 class="msm-h3">How to use this</h3>
+      <ul class="msm-list">
+        <li>Set aside an hour somewhere quiet, with your phone in another room.</li>
+        <li>Your answers save in this browser as you type, so you can stop and come back.</li>
+        <li>Treat it as discovery, not invention. Your mission is already in you. This just helps you dig it out.</li>
+        <li>Do not rush. Finish a step, walk away, and come back with fresh eyes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:1rem;">
+    <div class="container msm-narrow">
+
+      <!-- PROGRESS BAR -->
+      <div class="msm-bar" id="msmBar">
+        <div class="msm-progress">
+          <span class="msm-progress-label"><strong id="msmCount">0</strong> of <span id="msmTotal">0</span> answered</span>
+          <div class="msm-track"><div class="msm-fill" id="msmFill"></div></div>
+        </div>
+        <div class="msm-bar-actions">
+          <span class="msm-saved" id="msmSaved" aria-live="polite"></span>
+          <button type="button" class="btn btn-gold msm-btn" id="msmPdf">⬇ <span class="msm-hide-sm">Download </span>PDF</button>
+        </div>
+      </div>
+
+      <form id="msmForm" autocomplete="off" onsubmit="return false;">
+
+        <!-- STEP 1 -->
+        <div class="msm-step" id="step-1">
+          <span class="msm-num">Step 1</span>
+          <h2>Start Where You Are</h2>
+          <p>Before you write anything polished, get honest about where you are right now. A personal mission statement puts into plain words who you are, what matters most, and where you are aiming your life. Warm up with three questions.</p>
+          <label for="s1a">When do you feel most like yourself?</label>
+          <textarea id="s1a" name="s1a" rows="2"></textarea>
+          <label for="s1b">What do people usually come to you for?</label>
+          <textarea id="s1b" name="s1b" rows="2"></textarea>
+          <label for="s1c">If nothing changed in the next ten years, what would you regret most?</label>
+          <textarea id="s1c" name="s1c" rows="2"></textarea>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="msm-step" id="step-2">
+          <span class="msm-num">Step 2</span>
+          <h2>What You Are Good At</h2>
+          <p>List what you are good at. Think beyond your job title: what you do well at home, in your church or community, and in the hard moments when people look to you.</p>
+          <label for="s2">Your skills and abilities</label>
+          <p class="msm-ex"><strong>Examples:</strong> leading people, teaching, solving problems under pressure, organizing chaos, selling, building systems, writing, fixing things, coaching, encouraging others.</p>
+          <textarea id="s2" name="s2" rows="4"></textarea>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="msm-step" id="step-3">
+          <span class="msm-num">Step 3</span>
+          <h2>How You Are Wired</h2>
+          <p>Write down the traits that describe you on your best day, and be honest about the ones that show up on your worst. Both are part of the picture.</p>
+          <label for="s3">Your personality traits</label>
+          <p class="msm-ex"><strong>Examples:</strong> steady, bold, curious, analytical, competitive, compassionate, detail-driven, big-picture, funny, calm, intense, loyal, outgoing, reserved.</p>
+          <textarea id="s3" name="s3" rows="4"></textarea>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="msm-step" id="step-4">
+          <span class="msm-num">Step 4</span>
+          <h2>What You Stand For and Dream About</h2>
+          <p>These are the things you will not compromise on, the things you dream about, and the things that light you up.</p>
+          <label for="s4a">Values I will not compromise on</label>
+          <textarea id="s4a" name="s4a" rows="2"></textarea>
+          <label for="s4b">Dreams I have for my life and family</label>
+          <textarea id="s4b" name="s4b" rows="2"></textarea>
+          <label for="s4c">Things I am passionate about</label>
+          <textarea id="s4c" name="s4c" rows="2"></textarea>
+
+          <h3 class="msm-h3">The people who shaped you</h3>
+          <p>Your values often show up most clearly in the people you admire. Pick one to three people you have actually known: a parent, a coach, a boss, a pastor, a drill sergeant. Skip celebrities and historical figures. What you admire in them usually points straight at what you value yourself.</p>
+          <label for="s4d">Who are they?</label>
+          <textarea id="s4d" name="s4d" rows="2"></textarea>
+          <label for="s4e">What do you admire most about how they lived or led?</label>
+          <textarea id="s4e" name="s4e" rows="3"></textarea>
+          <label for="s4f">How are you different because you knew them?</label>
+          <textarea id="s4f" name="s4f" rows="3"></textarea>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="msm-step" id="step-5">
+          <span class="msm-num">Step 5</span>
+          <h2>Draft Your Personal Mission Statement</h2>
+          <p>Time to pull it together. Look back at Steps 1 through 4. The words that keep showing up are your raw materials.</p>
+          <div class="msm-callout">
+            <span class="msm-eyebrow">The question you are answering</span>
+            <p class="msm-question">When my life is over, what do I want it to have built, and what will the people closest to me say I stood for?</p>
+          </div>
+
+          <details class="msm-details">
+            <summary>See three example statements</summary>
+            {personalExamples.map((ex) => <blockquote class="msm-quote">“{ex}”</blockquote>)}
+          </details>
+
+          <div class="msm-frame">
+            <span class="msm-eyebrow">Stuck? Start with this frame</span>
+            <p class="msm-frame-line">
+              I am a <input type="text" id="f1" name="f1" aria-label="I am a" placeholder="husband and father" />
+              who uses my <input type="text" id="f2" name="f2" aria-label="who uses my" placeholder="gift for teaching" />
+              to <input type="text" id="f3" name="f3" aria-label="to" placeholder="help people grow" />
+              for <input type="text" id="f4" name="f4" aria-label="for" placeholder="my family and my team" />.
+              I will always <input type="text" id="f5" name="f5" aria-label="I will always" placeholder="tell the truth" />.
+              I will never <input type="text" id="f6" name="f6" aria-label="I will never" placeholder="trade my family for a paycheck" />.
+            </p>
+            <button type="button" class="btn btn-dark msm-btn" id="msmUseFrame">Use this as my starting draft</button>
+            <span class="msm-frame-msg" id="msmFrameMsg" aria-live="polite"></span>
+          </div>
+
+          <label for="s5">My first draft</label>
+          <p class="msm-ex">Write fast and keep going. You can cut it down later; you cannot edit a blank page.</p>
+          <textarea id="s5" name="s5" rows="7" class="msm-wordtarget"></textarea>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="msm-step" id="step-6">
+          <span class="msm-num">Step 6 · Optional</span>
+          <h2>Map Your Company’s Mission</h2>
+          <p>If you own a business or lead a team, your company’s mission should grow straight out of your personal one. You cannot separate who the leader is from what the company becomes.</p>
+          <p>It does not have to be perfect. It has to be true. Write it so a new hire understands it on day one, and a customer would recognize it in how you treat them. You can sharpen it later.</p>
+          <label for="s6a">Why does this business exist, beyond making money?</label>
+          <textarea id="s6a" name="s6a" rows="2"></textarea>
+          <label for="s6b">Who do we serve, specifically?</label>
+          <textarea id="s6b" name="s6b" rows="2"></textarea>
+          <label for="s6c">What do we do differently or better than anyone else?</label>
+          <textarea id="s6c" name="s6c" rows="2"></textarea>
+          <label for="s6d">What do we stand for, no matter what?</label>
+          <textarea id="s6d" name="s6d" rows="2"></textarea>
+
+          <details class="msm-details">
+            <summary>See three example company missions</summary>
+            <p class="msm-ex">These businesses are made up. The pattern is what matters: who they serve, what they do, and how they do it.</p>
+            {companyExamples.map(([name, text]) => (
+              <div class="msm-co">
+                <span class="msm-eyebrow">{name}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </details>
+
+          <label for="s6">Our mission</label>
+          <textarea id="s6" name="s6" rows="4" class="msm-wordtarget"></textarea>
+        </div>
+
+        <!-- WORD BANK -->
+        <div class="msm-wordbank">
+          <span class="msm-eyebrow">Word bank</span>
+          <p>Stuck on the wording? Click a word to add it to the draft you are working on.</p>
+          <div class="msm-words">
+            {words.map((w) => <button type="button" class="msm-word" data-word={w}>{w}</button>)}
+          </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="msm-step" id="step-7">
+          <span class="msm-num">Step 7</span>
+          <h2>Live It</h2>
+          <p>A mission statement that lives in a drawer is just a nice paragraph. Make it part of your week.</p>
+          <ul class="msm-list">
+            <li>Put the final version where you will see it every morning.</li>
+            <li>Read it before big decisions. If a decision does not fit your mission, that is your answer.</li>
+            <li>Share it with your leader and with one person who will hold you to it.</li>
+            <li>Revisit it once a year. Your mission rarely changes, but your words for it will get sharper.</li>
+          </ul>
+          <label for="s7">My mission statement (final)</label>
+          <textarea id="s7" name="s7" rows="5" class="msm-wordtarget msm-final"></textarea>
+          <button type="button" class="msm-link" id="msmCopyDraft">Start from my first draft</button>
+          <div class="msm-meta">
+            <div>
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" />
+            </div>
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" />
+            </div>
+          </div>
+        </div>
+
+        <div class="msm-actions">
+          <button type="button" class="btn btn-gold" id="msmPdf2">⬇ Download My Mission (PDF)</button>
+          <button type="button" class="msm-link msm-clear" id="msmClear">Clear all answers</button>
+        </div>
+        <p class="msm-privacy">Your answers stay in this browser on this device. Nothing is sent to anyone.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark text-center">
+    <div class="container" style="max-width:640px;">
+      <span class="section-label">Next Steps</span>
+      <h2 style="font-size:2rem; color:var(--white); margin-bottom:1rem;">Want Help Putting Your Mission to Work?</h2>
+      <p style="color:#ccc; margin-bottom:2rem;">Clarity is step one. A plan you can actually run is step two. That is what I help leaders and families build.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-gold">Book a Free Intro Call</a>
+        <a href="/services" class="btn btn-outline">Take The Forge, Free</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="printView" style="display:none;"></div>
+
+</Layout>
+
+<style>
+  .msm-narrow { max-width: 760px; }
+  .msm-lead { font-family: var(--font-serif, Georgia, serif); font-size: 1.35rem; font-style: italic; color: var(--black); line-height: 1.5; margin-bottom: 1.25rem; }
+  .msm-narrow > p { color: var(--gray); margin-bottom: 1.25rem; }
+  .msm-callout { background: var(--light-gray); border-left: 4px solid var(--gold); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; }
+  .msm-callout p { color: var(--dark); margin: 0.5rem 0 0; }
+  .msm-sig { font-family: Georgia, serif; font-style: italic; color: var(--gray) !important; }
+  .msm-question { font-family: Georgia, serif; font-size: 1.2rem; font-style: italic; line-height: 1.5; color: var(--black) !important; }
+  .msm-eyebrow { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); }
+  .msm-h3 { font-family: Georgia, serif; font-size: 1.25rem; margin: 2rem 0 0.75rem; color: var(--black); }
+  .msm-list { padding-left: 1.2rem; color: var(--dark); }
+  .msm-list li { margin-bottom: 0.4rem; }
+  .msm-list li::marker { color: var(--gold); }
+
+  .msm-bar { position: sticky; top: 64px; z-index: 50; background: var(--black); color: var(--white); border-radius: 6px; padding: 0.85rem 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  .msm-progress { flex: 1; min-width: 180px; }
+  .msm-progress-label { font-size: 0.85rem; color: #ccc; }
+  .msm-progress-label strong { color: var(--gold); }
+  .msm-track { height: 6px; background: #333; border-radius: 3px; margin-top: 0.4rem; overflow: hidden; }
+  .msm-fill { height: 100%; width: 0; background: var(--gold); transition: width 0.3s; }
+  .msm-bar-actions { display: flex; align-items: center; gap: 0.85rem; }
+  .msm-saved { font-size: 0.78rem; color: #999; }
+  .msm-btn { padding: 0.65rem 1.2rem; font-size: 0.8rem; }
+
+  .msm-step { border-top: 1px solid #e6e6e6; padding: 2.25rem 0 1rem; }
+  .msm-num { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .msm-step h2 { font-family: Georgia, serif; font-size: 1.8rem; color: var(--black); padding-bottom: 0.6rem; border-bottom: 2px solid var(--gold); margin-bottom: 1rem; }
+  .msm-step > p { color: var(--gray); margin-bottom: 0.75rem; }
+  .msm-step label, .msm-meta label { display: block; font-weight: 700; color: var(--black); margin: 1.25rem 0 0.4rem; font-size: 0.98rem; }
+  .msm-ex { font-size: 0.88rem; font-style: italic; color: var(--gray); margin: -0.15rem 0 0.5rem; }
+  .msm-step textarea, .msm-meta input { width: 100%; font: inherit; font-size: 1rem; color: var(--dark); border: 1px solid #d6d6d6; border-radius: 4px; padding: 0.75rem 0.9rem; background: var(--white); resize: vertical; line-height: 1.6; transition: border-color 0.15s, box-shadow 0.15s; }
+  .msm-step textarea:focus, .msm-meta input:focus, .msm-frame input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,152,42,0.18); }
+  .msm-final { border-width: 2px !important; border-color: var(--gold) !important; font-family: Georgia, serif !important; font-size: 1.1rem !important; }
+
+  .msm-details { margin: 1.25rem 0; border: 1px solid #e6e6e6; border-radius: 4px; padding: 0.85rem 1.1rem; background: #fcfcfc; }
+  .msm-details summary { cursor: pointer; font-weight: 700; color: var(--gold-dark); }
+  .msm-quote { font-family: Georgia, serif; font-style: italic; color: var(--dark); border-left: 3px solid var(--gold); background: var(--light-gray); margin: 1rem 0 0; padding: 0.9rem 1.1rem; line-height: 1.6; }
+  .msm-co { margin-top: 1rem; }
+  .msm-co p { font-family: Georgia, serif; font-style: italic; color: var(--dark); margin: 0.25rem 0 0; }
+
+  .msm-frame { background: var(--light-gray); border-radius: 4px; padding: 1.25rem 1.4rem; margin: 1.25rem 0 0.5rem; }
+  .msm-frame-line { line-height: 2.6; color: var(--dark); margin: 0.5rem 0 1rem; }
+  .msm-frame input { font: inherit; font-size: 0.95rem; border: none; border-bottom: 2px solid var(--gold); background: var(--white); padding: 0.15rem 0.4rem; width: 11rem; max-width: 100%; border-radius: 2px 2px 0 0; }
+  .msm-frame-msg { margin-left: 0.75rem; font-size: 0.85rem; color: var(--gold-dark); }
+
+  .msm-wordbank { background: var(--black); color: var(--white); border-radius: 6px; padding: 1.5rem; margin: 2rem 0 0.5rem; }
+  .msm-wordbank .msm-eyebrow { color: var(--gold); }
+  .msm-wordbank p { color: #bbb; font-size: 0.92rem; margin: 0.4rem 0 1rem; }
+  .msm-words { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .msm-word { background: #1f1f1f; color: var(--white); border: 1px solid #333; border-radius: 999px; padding: 0.4rem 0.9rem; font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: background 0.15s, border-color 0.15s, color 0.15s; }
+  .msm-word:hover, .msm-word:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
+
+  .msm-link { background: none; border: none; padding: 0; margin-top: 0.5rem; color: var(--gold-dark); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; text-decoration: underline; }
+  .msm-meta { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; }
+  .msm-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e6e6e6; }
+  .msm-clear { color: #999; margin: 0; }
+  .msm-privacy { font-size: 0.82rem; color: #999; margin-top: 0.75rem; }
+
+  @media (max-width: 640px) {
+    .msm-bar { top: 56px; padding: 0.6rem 0.8rem; flex-wrap: nowrap; gap: 0.75rem; }
+    .msm-progress { min-width: 0; }
+    .msm-progress-label { font-size: 0.78rem; }
+    .msm-btn { padding: 0.55rem 0.85rem; font-size: 0.75rem; white-space: nowrap; }
+    .msm-saved, .msm-hide-sm { display: none; }
+    .msm-step h2 { font-size: 1.5rem; }
+    .msm-meta { grid-template-columns: 1fr; }
+    .msm-frame input { width: 100%; }
+    .msm-frame-line { line-height: 2.2; }
+  }
+
+  @media print {
+    header, footer, nav, section, .page-hero { display: none !important; }
+    #printView { display: block !important; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #000; background: #fff; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'jem-mission-mapper-v1';
+    var form = document.getElementById('msmForm');
+    var fields = Array.prototype.slice.call(form.querySelectorAll('textarea, input'));
+    var answerFields = fields.filter(function (el) { return el.tagName === 'TEXTAREA'; });
+    var savedEl = document.getElementById('msmSaved');
+    var lastTarget = document.getElementById('s5');
+
+    // ---- storage (per-viewer convenience; page works without it) ----
+    function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+    function save() {
+      var data = {};
+      fields.forEach(function (el) { if (el.value) data[el.id] = el.value; });
+      try { localStorage.setItem(KEY, JSON.stringify(data)); savedEl.textContent = 'Saved'; } catch (e) { savedEl.textContent = ''; }
+    }
+    var data = load();
+    fields.forEach(function (el) { if (data[el.id] != null) el.value = data[el.id]; });
+
+    // ---- textarea auto-grow ----
+    function grow(el) { if (el.tagName !== 'TEXTAREA' || el.offsetWidth < 80) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight + 2, el.rows * 26 + 26) + 'px'; }
+
+    // ---- progress ----
+    document.getElementById('msmTotal').textContent = answerFields.length;
+    function progress() {
+      var n = answerFields.filter(function (el) { return el.value.trim(); }).length;
+      document.getElementById('msmCount').textContent = n;
+      document.getElementById('msmFill').style.width = Math.round(n / answerFields.length * 100) + '%';
+    }
+
+    var t;
+    fields.forEach(function (el) {
+      grow(el);
+      el.addEventListener('input', function () { grow(el); progress(); savedEl.textContent = 'Saving...'; clearTimeout(t); t = setTimeout(save, 400); });
+      if (el.classList.contains('msm-wordtarget')) {
+        ['focus', 'click', 'keyup', 'input'].forEach(function (ev) { el.addEventListener(ev, function () { lastTarget = el; }); });
+      }
+    });
+    progress();
+
+    // ---- word bank: insert at the cursor of the draft you were last in ----
+    Array.prototype.forEach.call(document.querySelectorAll('.msm-word'), function (btn) {
+      btn.addEventListener('click', function () {
+        var el = lastTarget, w = btn.getAttribute('data-word');
+        var start = el.selectionStart != null ? el.selectionStart : el.value.length;
+        var end = el.selectionEnd != null ? el.selectionEnd : el.value.length;
+        var before = el.value.slice(0, start), after = el.value.slice(end);
+        var startOfSentence = !before.trim() || /[.!?:]\s*$/.test(before);
+        var word = (before && !/\s$/.test(before) ? ' ' : '') + (startOfSentence ? w : w.toLowerCase()) + (after && !/^\s/.test(after) ? ' ' : '');
+        el.value = before + word + after;
+        el.focus();
+        var pos = before.length + word.length;
+        try { el.setSelectionRange(pos, pos); } catch (e) {}
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    });
+
+    // ---- frame -> draft ----
+    document.getElementById('msmUseFrame').addEventListener('click', function () {
+      var v = function (id) { return document.getElementById(id).value.trim(); };
+      var parts = [];
+      if (v('f1') || v('f2') || v('f3') || v('f4')) {
+        var s = 'I am ' + (v('f1') ? 'a ' + v('f1') : 'someone');
+        if (v('f2')) s += ' who uses my ' + v('f2');
+        if (v('f3')) s += ' to ' + v('f3');
+        if (v('f4')) s += ' for ' + v('f4');
+        parts.push(s + '.');
+      }
+      if (v('f5')) parts.push('I will always ' + v('f5') + '.');
+      if (v('f6')) parts.push('I will never ' + v('f6') + '.');
+      var msg = document.getElementById('msmFrameMsg');
+      if (!parts.length) { msg.textContent = 'Fill in a few blanks first.'; return; }
+      var draft = document.getElementById('s5');
+      draft.value = (draft.value.trim() ? draft.value.trim() + '\n\n' : '') + parts.join(' ');
+      draft.dispatchEvent(new Event('input', { bubbles: true }));
+      msg.textContent = 'Added to your first draft below.';
+      draft.focus();
+    });
+
+    // ---- final <- draft ----
+    document.getElementById('msmCopyDraft').addEventListener('click', function () {
+      var draft = document.getElementById('s5').value.trim(), fin = document.getElementById('s7');
+      if (!draft) { document.getElementById('s5').focus(); return; }
+      if (fin.value.trim() && !confirm('Replace what is in your final statement with your first draft?')) return;
+      fin.value = draft;
+      fin.dispatchEvent(new Event('input', { bubbles: true }));
+      fin.focus();
+    });
+
+    // ---- clear ----
+    document.getElementById('msmClear').addEventListener('click', function () {
+      if (!confirm('Clear every answer on this page? This cannot be undone.')) return;
+      fields.forEach(function (el) { el.value = ''; grow(el); });
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      progress(); savedEl.textContent = '';
+    });
+
+    // ---- PDF (print view) ----
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/\n/g, '<br>'); }
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function block(label, id) {
+      var v = val(id);
+      if (!v) return '';
+      return '<div style="break-inside:avoid;margin:0 0 10px;"><div style="font-size:10px;font-weight:700;color:#1a1a1a;margin-bottom:2px;">' + esc(label) + '</div>'
+        + '<div style="font-size:11px;color:#333;line-height:1.5;">' + esc(v) + '</div></div>';
+    }
+    function section(title, inner) {
+      if (!inner) return '';
+      return '<div style="margin:0 0 16px;"><div style="font-family:Georgia,serif;font-size:14px;font-weight:700;color:#0a0a0a;border-bottom:2px solid #c8982a;padding-bottom:3px;margin-bottom:8px;">' + title + '</div>' + inner + '</div>';
+    }
+    function downloadPDF() {
+      var name = val('name'), dateVal = val('date');
+      var dateText = dateVal ? new Date(dateVal + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+      var finalText = val('s7') || val('s5');
+      var finalLabel = val('s7') ? 'My Mission Statement' : 'My Mission Statement (first draft)';
+      var hero = finalText
+        ? '<div style="background:#f7f3ea;border-left:4px solid #c8982a;padding:16px 20px;margin:0 0 18px;break-inside:avoid;"><div style="font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#a87d20;margin-bottom:6px;">' + finalLabel + '</div>'
+          + '<div style="font-family:Georgia,serif;font-size:15px;font-style:italic;line-height:1.6;color:#0a0a0a;">' + esc(finalText) + '</div></div>'
+        : '';
+      var company = val('s6')
+        ? '<div style="background:#f5f5f5;border-left:4px solid #1a1a1a;padding:12px 18px;margin:0 0 18px;break-inside:avoid;"><div style="font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#4a4a4a;margin-bottom:5px;">Our Company Mission</div>'
+          + '<div style="font-family:Georgia,serif;font-size:13px;font-style:italic;line-height:1.55;color:#0a0a0a;">' + esc(val('s6')) + '</div></div>'
+        : '';
+      var work = section('Where I Am Today', block('When do you feel most like yourself?', 's1a') + block('What do people usually come to you for?', 's1b') + block('What would you regret most if nothing changed?', 's1c'))
+        + section('What I Am Good At and How I Am Wired', block('Skills and abilities', 's2') + block('Personality traits', 's3'))
+        + section('What I Stand For and Dream About', block('Values I will not compromise on', 's4a') + block('Dreams for my life and family', 's4b') + block('Things I am passionate about', 's4c'))
+        + section('The People Who Shaped Me', block('Who they are', 's4d') + block('What I admire most', 's4e') + block('How I am different because I knew them', 's4f'))
+        + section('My Company', block('Why this business exists', 's6a') + block('Who we serve', 's6b') + block('What we do differently', 's6c') + block('What we stand for', 's6d'));
+      if (!finalText && !company && !work) { alert('Write a few answers first, then download your PDF.'); return; }
+      var html = '<div style="max-width:720px;margin:0 auto;font-family:Arial,sans-serif;padding:18px;">'
+        + '<div style="background:#0a0a0a;color:#fff;padding:20px 24px;border-bottom:4px solid #c8982a;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;">'
+        + '<div><div style="color:#c8982a;font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;">A Jason Ehlinger Worksheet</div>'
+        + '<div style="font-family:Georgia,serif;font-size:24px;font-weight:700;">Mission Statement Mapper</div>'
+        + (name || dateText ? '<div style="color:#bbb;font-size:11px;margin-top:4px;">' + esc([name, dateText].filter(Boolean).join('  ·  ')) + '</div>' : '') + '</div>'
+        + '<div style="color:#888;font-size:9px;text-align:right;">jasonehlinger.com</div></div>'
+        + hero + company + work
+        + '<div style="margin-top:18px;padding:10px 14px;background:#f9f9f9;border-left:3px solid #c8982a;font-size:10px;color:#444;break-inside:avoid;"><strong style="color:#a87d20;">Live it:</strong> read it before big decisions, share it with one person who will hold you to it, and revisit it once a year.</div>'
+        + '<div style="text-align:center;margin-top:14px;color:#aaa;font-size:9px;">jasonehlinger.com · Leadership and personal finance coaching · Free tools at jasonehlinger.com/tools</div>'
+        + '</div>';
+      var pv = document.getElementById('printView');
+      pv.innerHTML = html;
+      pv.style.display = 'block';
+      window.print();
+      setTimeout(function () { pv.style.display = 'none'; }, 500);
+    }
+    document.getElementById('msmPdf').addEventListener('click', downloadPDF);
+    document.getElementById('msmPdf2').addEventListener('click', downloadPDF);
+
+    // Some browsers restore typed values on back/forward without firing input.
+    window.addEventListener('pageshow', function () { fields.forEach(grow); progress(); });
+  })();
+</script>
